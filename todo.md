@@ -1,0 +1,24 @@
+# Online shop (merch.evon.fi)
+
+- Hero
+- Dynaamiset tuotteet
+    - Printful API
+- Ostoskori
+- Asiakkaan tiedot
+    - Nimi
+    - Sähköposti
+    - Puhelinnumero
+    - Osoite
+        - Lähiosoite
+        - Postinumero
+        - Maan
+- Shipping rate calculator
+- Stripe API
+    - Stripe React Components
+- Payment handling
+    - Confirmation
+        - Printful API
+            - Printful order confirmation
+            - Sähköposti asiakkaalle
+    - Rejected
+        - Try again -sivu
