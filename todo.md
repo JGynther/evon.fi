@@ -11,8 +11,8 @@
     - Osoite
         - Lähiosoite
         - Postinumero
-        - Maan
-            -Error handling
+        - Maa
+        - Error handling
 - Shipping rate calculator
 - Stripe API
     - Stripe React Components
