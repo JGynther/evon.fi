@@ -4,7 +4,7 @@
 - Dynaamiset tuotteet
     - Printful API
 - Ostoskori
-- Asiakkaan tiedot
+- Asiakkaan tiedot (MongoDB)
     - Nimi
     - Sähköposti
     - Puhelinnumero
@@ -12,6 +12,7 @@
         - Lähiosoite
         - Postinumero
         - Maan
+            -Error handling
 - Shipping rate calculator
 - Stripe API
     - Stripe React Components
