@@ -4,7 +4,7 @@ import Link from 'next/link'
 import 'tailwindcss/tailwind.css'
 import Navigation from "../components/nav"
 import Footer from "../components/footer"
-import Arrow from "../../public/arrow.svg"
+import Arrow from "../public/arrow.svg"
 
 export default function Waitlist() {
     return (

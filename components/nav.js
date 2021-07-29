@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import Arrow from "../../public/arrow.svg"
+import Arrow from "../public/arrow.svg"
 
 export default function Navigation() {
     return (

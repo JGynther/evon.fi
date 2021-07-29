@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import 'tailwindcss/tailwind.css'
-import Arrow from "../../public/arrow.svg"
+import Arrow from "../public/arrow.svg"
 import Navigation from "../components/nav"
 import Footer from "../components/footer"
 
