@@ -18,14 +18,13 @@ export default function Navigation() {
 
         <div className="flex gap-10 items-center tracking-wider ">
 
-            <Link href="https://merch.evon.fi" passHref>
-                <a className="transition hover:text-indigo-500 flex items-center cursor-not-allowed" disabled>
+            
+                <a className="transition flex items-center cursor-not-allowed" disabled>
                     Merch
                     <span className="text-white bg-indigo-500 text-xs py-1 px-2 rounded ml-2">
                        Tulossa pian!
                     </span>
                 </a>
-            </Link>
 
             <Link href="/" passHref>
                 <a className="transition hover:text-indigo-500">
@@ -33,7 +32,7 @@ export default function Navigation() {
                 </a>
             </Link>
 
-            <Link href="/" passHref>
+            <Link href="/contact" passHref>
                 <a className="transition hover:text-indigo-500">
                     Yhteystiedot
                 </a>
