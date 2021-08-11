@@ -5,7 +5,7 @@ import Logo from "../public/logo.png"
 
 export default function Navigation() {
     return (
-        <nav className="flex items-center justify-between mx-24 py-8 text-lg">
+        <nav className="flex flex-wrap items-center justify-between mx-24 py-8 text-lg">
 
         <Link href="/" passHref>
             <div className="flex items-center gap-4">
@@ -16,7 +16,7 @@ export default function Navigation() {
             </div>
         </Link>
 
-        <div className="flex gap-10 items-center tracking-wider ">
+        <div className="flex flex-wrap gap-10 items-center tracking-wider ">
 
             
                 <a className="transition flex items-center cursor-not-allowed" disabled>
@@ -38,9 +38,9 @@ export default function Navigation() {
                 </a>
             </Link>
 
-            <Link href="/" passHref>
+            <Link href="/portal" passHref>
                 <a>
-                    <button className="border-2 transition hover:bg-indigo-500 border-indigo-500 rounded-lg py-2 px-5 group tracking-wider text-lg">
+                    <button className="border-2 transition hover:bg-indigo-500 border-indigo-500 rounded py-2 px-5 group tracking-wider text-lg">
                         <span className="flex justify-center items-center">
                             Omistajille
                             <Arrow className="transition transform group-hover:translate-x-1 m-0"/>

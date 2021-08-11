@@ -5,9 +5,9 @@ export default function Footer() {
         <footer className="py-10 flex justify-center text-base text-center bg-gray-900 text-white">
             <div className="opacity-80">
                 <p>©2021 - Evon Group</p>
-                <div className="flex gap-3 my-2">
-                    <Link href="/" passHref>
-                        <a className="transition hover:text-indigo-500">
+                <div className="flex gap-5 my-2">
+                    <Link href="/tietosuojaseloste.pdf" passHref>
+                        <a target="_blank" className="transition hover:text-indigo-500">
                         Tietosuojaseloste
                         </a>
                     </Link>
