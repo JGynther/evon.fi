@@ -1,7 +1,10 @@
 import { useState } from "react"
 import { Formik, Form, Field, ErrorMessage, useField  } from "formik"
 import * as Yup from "yup"
+import ReCAPTCHA from "react-google-recaptcha"
 
+import { useRouter } from "next/router"
+import Head from "next/head"
 import Link from "next/link"
 
 import Arrow from "../../public/arrow.svg"
@@ -47,17 +50,28 @@ export default function Sitoumus() {
 }
 
 function FormComponent() {
+  const router = useRouter();
   const phoneRegex = /^(\+\d{3})?[\s.-]?\(?\d{2,3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
   return (
     <div className="mt-12">
       <Formik
-        initialValues={{ name: "", email: "", phone: "", streetaddress: "", postalcode: "", city: "", stock: "", toggle: false,}}
+        initialValues={{ name: "", email: "", phone: "", streetaddress: "", postalcode: "", city: "", stock: "", acceptedterms: false, captcha: null,}}
 
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          },400);
+        onSubmit={async (values, { setSubmitting }) => {
+          const response = await fetch("/api/submitform", {
+            body: JSON.stringify(values),
+            headers: {
+              "Content-Type": "application/json"
+            },
+            method: "POST",
+          })
+
+          if (response.status === 200) {
+            router.push("/osakeanti/success");
+          } else {
+            router.push("/osakeanti/error")
+          }
+
         }}
         
         validationSchema={Yup.object({
@@ -70,7 +84,7 @@ function FormComponent() {
           phone: Yup.string()
             .matches(phoneRegex, "Virheellinen puhelinnumero")
             .required("Pakollinen"),
-          toggle: Yup.boolean()
+          acceptedterms: Yup.boolean()
             .oneOf([true], "Ehdot on hyväksyttävä")
             .required("Pakollinen"),
           streetaddress: Yup.string()
@@ -82,11 +96,14 @@ function FormComponent() {
           stock: Yup.number()
             .typeError("Lukumäärän tulee olla numero")
             .min(1, "Osakkeita tulee merkitä vähintään yksi")
-            .max()
+            .max(100000)
+            .required("Pakollinen"),
+          captcha: Yup.string()
+            .typeError("Pakollinen")
             .required("Pakollinen")
         })}
       >
-        {({ isSubmitting, errors }) => (
+        {({ isSubmitting, setFieldValue, errors }) => (
           <Form>
             <InputFieldWithFeedback label="Koko nimesi" id="name" name="name" placeholder="Matti Mikko Meikäläinen" helpText="Muodossa kaikki etunimet sukunimi" type="text" autoFocus/>
             <InputFieldWithFeedback label="Sähköposti" id="email" name="email" placeholder="matti@meikäläinen.fi" helpText="" type="email" />
@@ -98,10 +115,21 @@ function FormComponent() {
 
             <AcceptTermsElement />
 
+            <CaptchaElement setFieldValue={setFieldValue}/>
+
             <SubmitResetButtons isSubmitting={isSubmitting} errors={errors}/>
           </Form>
         )}
       </Formik>
+    </div>
+  )
+}
+
+function CaptchaElement({ setFieldValue }) {
+  return (
+    <div className="flex flex-wrap items-center gap-5">
+      <ReCAPTCHA sitekey="6LddGPwbAAAAAOIcVYk9XtQ3APmdEeU7eAOfl30q" onChange={(value) => { setFieldValue("captcha", value) }} theme="dark" className="mb-5"/>
+      <ErrorMessage name="captcha" component="p" className="text-red-700 text-lg tracking-wider" />
     </div>
   )
 }
@@ -140,13 +168,13 @@ function AcceptTermsElement() {
   return (
     <div className="grid items-center my-12">
       <span className="flex items-center gap-4 mb-4 md:mb-0">
-        <Field name="toggle" type="checkbox" className="mx-4 md:mx-0"/>
+        <Field name="acceptedterms" type="checkbox" className="mx-4 md:mx-0"/>
         <span className="grid md:flex items-center gap-3">
           <p className="tracking-wider text-white text-opacity-80 text-sm md:text-base">Olen lukenut, ymmärtänyt ja hyväksyn </p>
           <OpenNewTabButton href="/osakeannin_ehdot.pdf">Osakeannin ehdot</OpenNewTabButton>
         </span>
       </span>
-      <ErrorMessage name="toggle" component="p" className="text-red-700 tracking-wider"/>
+      <ErrorMessage name="acceptedterms" component="p" className="text-red-700 tracking-wider"/>
     </div>
   )
 }

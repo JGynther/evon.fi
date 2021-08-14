@@ -35,7 +35,7 @@ export default function Osakeanti() {
 
               <div className="flex flex-wrap gap-7 items-center my-10 text-center tracking-wider text-sm">
 
-                <OpenNewTabButton href="">
+                <OpenNewTabButton href="/osakeanti_infopaketti.pdf">
                   Osakeantiesitys
                 </OpenNewTabButton>
 
@@ -43,7 +43,7 @@ export default function Osakeanti() {
                   Tulosennuste 2020-2025
                 </OpenNewTabButton>
 
-                <OpenNewTabButton href="">
+                <OpenNewTabButton href="/perustietoasiakirja.pdf">
                   Yhtiön perustietoasiakirja
                 </OpenNewTabButton>
 

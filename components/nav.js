@@ -8,12 +8,12 @@ export default function Navigation() {
         <nav className="flex flex-wrap items-center justify-center md:justify-between mx-5 md:mx-24 pt-8 md:py-8 text-lg">
 
         <Link href="/" passHref>
-            <div className="flex items-center gap-4">
+            <a className="flex items-center gap-4">
                 <Image src={Logo} alt="" width={75} height={60} className="object-cover cursor-pointer"/>
-                <a className="tracking-widest text-2xl cursor-pointer font-semibold">
+                <p className="tracking-widest text-2xl cursor-pointer font-semibold">
                     EVON CAPITAL
-                </a>
-            </div>
+                </p>
+            </a>
         </Link>
 
         <div className="hidden md:flex md:flex-wrap md:gap-10 md:items-center md:tracking-wider">
