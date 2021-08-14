@@ -5,7 +5,7 @@ import Logo from "../public/logo.png"
 
 export default function Navigation() {
     return (
-        <nav className="flex flex-wrap items-center justify-between mx-24 py-8 text-lg">
+        <nav className="flex flex-wrap items-center justify-center md:justify-between mx-5 md:mx-24 pt-8 md:py-8 text-lg">
 
         <Link href="/" passHref>
             <div className="flex items-center gap-4">
@@ -16,7 +16,7 @@ export default function Navigation() {
             </div>
         </Link>
 
-        <div className="flex flex-wrap gap-10 items-center tracking-wider ">
+        <div className="hidden md:flex md:flex-wrap md:gap-10 md:items-center md:tracking-wider">
 
             
                 <a className="transition flex items-center cursor-not-allowed" disabled>

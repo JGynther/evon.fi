@@ -79,8 +79,10 @@ function FormComponent() {
             .required("Pakollinen"),
           city: Yup.string()
             .required("Pakollinen"),
-          stock: Yup.number("Virheellinen merkki")
+          stock: Yup.number()
+            .typeError("Lukumäärän tulee olla numero")
             .min(1, "Osakkeita tulee merkitä vähintään yksi")
+            .max()
             .required("Pakollinen")
         })}
       >
@@ -123,7 +125,7 @@ function StockSelectionElement() {
         <Subtitle>Osakeanti</Subtitle>
         <Prose large>
           Kuinka monta osaketta olet merkitsemässä? Osakkeita on merkittävä vähintään yksi (1) kappale. 
-          Osakkeiden merkintähinta on yhtiökokouksen päätöksen mukaisesti 0,30 EUR kappale.
+          Osakkeiden merkintähinta on yhtiökokouksen päätöksen mukaisesti 0,30 EUR kappale. Osakkeita tarjotaan merkittäväksi yhteensä miljoona (1 000 000) kappaletta.
         </Prose>
         <Prose large>Päätös merkitä osakkeita on sitova. Tutustu riskeihin ennen sijoittamista.</Prose>
       </div>

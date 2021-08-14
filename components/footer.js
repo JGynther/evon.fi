@@ -11,9 +11,9 @@ export default function Footer() {
                         Tietosuojaseloste
                         </a>
                     </Link>
-                    <Link href="/" passHref>
+                    <Link href="/contact" passHref>
                         <a className="transition hover:text-indigo-500">
-                            Yleiset ehdot
+                            Yhteystiedot
                         </a>
                     </Link>
                 </div>
