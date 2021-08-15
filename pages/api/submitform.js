@@ -23,7 +23,7 @@ async function main(data) {
 
   await transporter.sendMail({
     from: "'Evon Group' <info@evon.fi>",
-    to: "joona.gynther@evon.fi",
+    to: "joona.gynther@evon.fi, aatu.pulkkinen@evon.fi",
     subject: `Uusi osakkeiden merkintä ${data.name}`,
     html: 
     ` <p>Nimi: ${data.name}</p>
@@ -39,13 +39,12 @@ async function main(data) {
     from: "'Evon Group' <info@evon.fi>",
     to: data.email,
     replyTo: "aatu.pulkkinen@evon.fi",
-    subject: "Onneksi olkoon osakkeiden merkinnästä! - Evon Group",
+    subject: "Vahvistus osakkeiden merkinnästä - Evon Group",
     html: `
-    <div style="background-color:black;color:white;">
-      <h1>Onnittelut!</h1>
+    <div>
       <h3>Olet merkinnyt Evon Groupin osakkeita osakeannissamme.</h3>
       <p>Alla vielä vahvistuksena tekemäsi merkintä. 
-      Mikäli esimerkiksi tietosi ovat väärin, ota yhteyttä mahdollisimman pian esimerkiksi vastaamalla tähän sähköpostiin.</p>
+      Mikäli esimerkiksi tietosi ovat väärin, ota yhteyttä mahdollisimman pian vastaamalla tähän sähköpostiin.</p>
       <p>Kaikki merkinnät tarkistetaan vielä manuaalisesti. Otamme yhteyttä mikäli merkintäsi kanssa on ongelma.</p>
       <br>
       <div>

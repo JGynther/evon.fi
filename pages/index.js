@@ -96,7 +96,7 @@ export default function Home() {
               Yhtiön arvot
             </button>
           </Link>
-          <Link href="/yritys" passHref>
+          <Link href="/" passHref>
             <button className="bg-gray-800 flex-grow text-center text-white text-opacity-80 tracking-wider text-lg rounded py-5 shadow hover:shadow-xl transition transform hover:scale-105">
               Yhtiön johto
             </button>

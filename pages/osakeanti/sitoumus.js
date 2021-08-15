@@ -96,7 +96,7 @@ function FormComponent() {
           stock: Yup.number()
             .typeError("Lukumäärän tulee olla numero")
             .min(1, "Osakkeita tulee merkitä vähintään yksi")
-            .max(100000)
+            .max(100000, "Jos haluat merkitä yli 100 000 osaketta, ota yhteyttä")
             .required("Pakollinen"),
           captcha: Yup.string()
             .typeError("Pakollinen")
@@ -139,7 +139,7 @@ function AddressInputElement() {
     <div className="my-12">
       <InputFieldWithFeedback noGap label="Lähiosoite" id="street-address" name="streetaddress" type="text"/>
       <span className="flex flex-wrap justify-between my-4 gap-4 md:gap-10">
-        <InputFieldWithFeedback noGap fill label="Postinumero" id="postal-code" name="postalcode" type="tel" />
+        <InputFieldWithFeedback number noGap fill label="Postinumero" id="postal-code" name="postalcode" type="number" />
         <InputFieldWithFeedback noGap fill label="Kaupunki" id="city" name="city" type="text" autoComplete="home city"/>
       </span>
     </div> 
@@ -155,10 +155,13 @@ function StockSelectionElement() {
           Kuinka monta osaketta olet merkitsemässä? Osakkeita on merkittävä vähintään yksi (1) kappale. 
           Osakkeiden merkintähinta on yhtiökokouksen päätöksen mukaisesti 0,30 EUR kappale. Osakkeita tarjotaan merkittäväksi yhteensä miljoona (1 000 000) kappaletta.
         </Prose>
+        <Prose large>
+        Tällä lomakkeella voi merkitä maksimissaan 100 000 osaketta. Jos haluat merkitä enemmän, <Link href="/contact" passHref><a className="text-indigo-500 hover:text-indigo-700 transition">ota suoraan yhteyttä.</a></Link>
+        </Prose>
         <Prose large>Päätös merkitä osakkeita on sitova. Tutustu riskeihin ennen sijoittamista.</Prose>
       </div>
       <div className="flex-grow whitespace-nowrap">
-        <InputFieldWithFeedback label="Osakkeiden lukumäärä" id="stock" name="stock" type="numher" />
+        <InputFieldWithFeedback number label="Osakkeiden lukumäärä" id="stock" name="stock" type="number"/>
       </div>
     </div>
   )
@@ -179,18 +182,19 @@ function AcceptTermsElement() {
   )
 }
 
-function InputFieldWithFeedback({ label, helpText, noGap, fill,  ...props }) {
+function InputFieldWithFeedback({ label, helpText, noGap, fill, number,  ...props }) {
   const [field, meta] = useField(props);
   const [didFocus, setDidFocus] = useState(false);
   const handleFocus = () => setDidFocus(true);
-  const showFeedback = (!!didFocus && field.value.trim().length > 2) || meta.touched;
+  const handleNumberType = Number ? (!!didFocus) : (!!didFocus && field.value.trim().length > 2);
+  const showFeedback = handleNumberType || meta.touched;
 
   return (
     <div className={`${noGap ? "" : "my-6"} ${fill ? "flex-grow" : ""}`}>
       <div className="grid">
-        <div className="flex justify-between items-center">
+        <div className="flex flex-wrap justify-between items-center">
           <label className="text-lg tracking-wider">{label}</label>
-          <p className={`transition text-lg tracking-wider ${meta.error ? "text-red-700" : "text-green-500 text-2xl"}`}>{ showFeedback ? (meta.error ? meta.error : "✓") : null }</p>
+          <p className={`transition text-lg tracking-wider whitespace-normal ${meta.error ? "text-red-700" : "text-green-500 text-2xl"}`}>{ showFeedback ? (meta.error ? meta.error : "✓") : null }</p>
         </div>
         <input {...props} {...field} onFocus={handleFocus} className={`py-2 px-3 my-1 rounded bg-gray-800 shadow tracking-wider outline-none ring ring-transparent focus:ring-blue-500 ${showFeedback ? (meta.error ? "ring-red-700" : "ring-green-500") : null}`}/>
         <p className="text-white text-sm text-opacity-80">{helpText}</p>
