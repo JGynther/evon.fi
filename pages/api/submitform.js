@@ -22,7 +22,7 @@ async function main(data) {
   })
   try {
     await transporter.sendMail({
-      from: "'Evon Group' <info@evon.fi>",
+      from: "Evon Group <info@evon.fi>",
       to: "joona.gynther@evon.fi, aatu.pulkkinen@evon.fi",
       subject: `Uusi osakkeiden merkintä ${data.name}`,
       html: 
