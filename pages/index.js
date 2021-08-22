@@ -245,7 +245,7 @@ export default function Home() {
 
         <FAQitem title="Mitä yritysjohdolle maksetaan?">Yhtiön johtohenkilöille ei makseta palkkaa eikä sellaista mahdollisuutta ole suunniteltu tulevaisuuteenkaan. Johtotehtävissä toimiminen perustuu lähtökohtaisesti omaan kiinnostukseen ja vapaaehtoisuuteen. Yhtiöjohtoa saatetaan kuitenkin tulevaisuudessa palkita yhtiökokouksen hyväksymin optio-oikeuksin tai hallituksen hyväksymällä oikeudella ostaa yhtiön hallussa olevia osakkeita suunnilleen yhtiön matemaattisen arvon mukaisesti.</FAQitem>
         <FAQitem title="Mitä riskejä sijoituksella on?">Riskit ovat pitkälti samat kuin missä hyvänsä arvopaperisijoituksessa. Pyrimme räväkkään ja keskivertoa riskialttiimpaan sijoitustoimintaan, joten tämä on hyvä ottaa huomioon päätöstäsi tehdessä. </FAQitem>
-        <FAQitem title="Miksi Evon Capital pyrkii keräämään jatkuvasti uutta pääomaa?">Vaikka pääoman määrä ei ole itseisarvo, niin sen kerääminen on kuitenkin meille oleellista, sillä se luo uusia mahdollisuuksia. Esimerkiksi lainan hakeminen ja sen mahdolliset ehdot paranevat. Yksittäisten transaktioiden kulut laskevat ja kiinteiden kulujen suhde pääomaan paranee. Myös kiinteistönvälitys -projektin kannalta pääoman kartuttaminen on kriittistä.</FAQitem>
+        <FAQitem title="Miksi Evon Capital pyrkii keräämään jatkuvasti uutta pääomaa?">Vaikka pääoman määrä ei ole itseisarvo, niin sen kerääminen on kuitenkin meille oleellista, sillä se luo uusia mahdollisuuksia. Esimerkiksi lainan hakeminen ja sen mahdolliset ehdot paranevat. Yksittäisten transaktioiden kulut laskevat ja kiinteiden kulujen suhde pääomaan paranee. Myös kiinteistösijoitus -projektin kannalta pääoman kartuttaminen on kriittistä.</FAQitem>
 
       </Section>
 
