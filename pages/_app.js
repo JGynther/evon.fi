@@ -7,10 +7,7 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter()
   const handleAccept = () => router.reload(window.location.pathname);
   const cookieConsentValue = getCookieConsentValue("evon-cookie-consent");
-  let consent;
-  if (cookieConsentValue === "true") {
-    consent = true;
-  } else consent = false;
+  const consent = cookieConsentValue === "true" ? true : false;
   return (
     <>
       <Head>
@@ -47,7 +44,7 @@ function CookiesElement({ handleAccept }) {
         contentClasses="text-white opacity-80"
         buttonWrapperClasses="grid gap-5 mt-7"
         buttonClasses="text-white tracking-wider bg-green-500 hover:bg-green-700 transition flex-grow px-4 py-2 rounded"
-        declineButtonClasses="text-sm text-white tracking-wider bg-red-500 hover:bg-red-400 bg-opacity-60 transition px-4 py-1 mx-20 rounded whitespace-nowrap"
+        declineButtonClasses="text-sm text-white tracking-wider bg-red-500 bg-opacity-60 hover:bg-opacity-80 transition px-4 py-1 mx-20 rounded whitespace-nowrap"
         disableStyles={true}
         onAccept={handleAccept}
       >
