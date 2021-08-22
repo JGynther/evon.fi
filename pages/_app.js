@@ -6,10 +6,15 @@ import { useRouter } from 'next/router'
 function MyApp({ Component, pageProps }) {
   const router = useRouter()
   const handleAccept = () => router.reload(window.location.pathname);
+  const cookieConsentValue = getCookieConsentValue("evon-cookie-consent");
+  let consent;
+  if (cookieConsentValue === "true") {
+    consent = true;
+  } else consent = false;
   return (
     <>
       <Head>
-      { !!getCookieConsentValue("evon-cookie-consent") &&
+      { consent &&
         /* Global site tag (gtag.js) - Google Analytics */
         <>
           <script async src="https://www.googletagmanager.com/gtag/js?id=G-FHBK6REK3E" />
