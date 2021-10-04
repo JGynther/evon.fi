@@ -54,7 +54,7 @@ export default async function handler(req, res) {
       })
     } catch(err) {
       error = true;
-      console.log("Email delivery to customer failed.")
+      console.log(`Email delivery to customer ${data.name} (${data.email}) failed. Probably faulty email address.`)
       res.status(400).json("Email delivery to customer failed.")
     }
 
@@ -70,7 +70,9 @@ export default async function handler(req, res) {
           <p>Lähiosoite: ${data.streetaddress}</p>
           <p>Postinumero: ${data.postalcode}</p>
           <p>Kaupunki: ${data.city}</p>
-          <p>Osakkeiden lukumäärä: ${data.stock}</p>`,
+          <p>Osakkeiden lukumäärä: ${data.stock}</p>
+          <p>Merkintä euroina: ${data.stock * 0.3} EUR</p>
+          `,
       })
     } catch(err) {
       error = true;
