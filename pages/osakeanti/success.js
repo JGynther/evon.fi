@@ -23,7 +23,7 @@ export default function Contact() {
                       </button>
                     </Link>
                     <Title>Sitoumus lähetetty onnistuneesti!</Title>
-                    <Prose large>Saat pian sähköpostiisti vahvistuksen merkinnästä. Mikäli merkintästi suhteen ilmenee jotain ongelmia, olemme sinuun yhteydessä henkilökohtaisesti.</Prose>
+                    <Prose large>Saat pian sähköpostiisi vahvistuksen merkinnästä. Mikäli merkintäsi suhteen ilmenee jotain ongelmia, olemme sinuun yhteydessä henkilökohtaisesti.</Prose>
                     <Prose large>Tervetuloa omistajaksi!</Prose>
                 </Section>
             <Footer />

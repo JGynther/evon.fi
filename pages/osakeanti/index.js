@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Head from 'next/head'
 
 import PageWrapper from "@components/pageWrapper"
 import Section from "@components/section"
@@ -15,6 +16,10 @@ import Arrow from "../../public/arrow.svg"
 export default function Osakeanti() {
     return (
         <PageWrapper>
+
+          <Head>
+            <title>Osakeanti - Evon Group</title>
+          </Head>
 
           <Navigation />
 
