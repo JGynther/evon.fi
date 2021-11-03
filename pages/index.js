@@ -27,6 +27,17 @@ export default function Home() {
 
       <Navigation />
 
+      <Section>
+        <div className="bg-indigo-500 rounded p-4 text-center">
+          <h1 className="text-2xl md:text-4xl font-bold tracking-wide md:my-8 opacity-100">
+            Tervetuloa Taloustaidon lukija!
+          </h1>
+          <h2 className="my-3 text-lg md:text-xl">
+            Mukavaa, että löysit perille.
+          </h2>
+        </div>
+      </Section>
+
       <main className="flex justify-center items-center text-center mx-5">
         <div className="max-w-screen-md">
 
