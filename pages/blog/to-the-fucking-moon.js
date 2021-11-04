@@ -21,10 +21,11 @@ export default function Article() {
                         Takaisin etusivulle
                     </button>
                 </Link>
+                <br/>
                 <article>
                     <Prose large className="py-4">
-                        Toimittaja Karo Hämäläisen <Link href="https://www.taloustaito.fi/Rahat/loysalle-rahalle-riittaa-ottajia--bongaa-pahimmat-varoitusmerkit/" passHref><a className="text-indigo-500">artikkeli</a></Link> Löysälle rahalle riittää ottajia – bongaa pahimmat
-                        varoitusmerkit (Taloustaito, 3.11.2021) maalailee piruja seinille käyttäen esimerkkinä Evon Capitalia.
+                        Toimittaja Karo Hämäläisen <Link href="https://www.taloustaito.fi/Rahat/loysalle-rahalle-riittaa-ottajia--bongaa-pahimmat-varoitusmerkit/" passHref><a className="text-indigo-500">artikkeli</a></Link> <i>Löysälle rahalle riittää ottajia – bongaa pahimmat
+                        varoitusmerkit</i> (Taloustaito, 3.11.2021) maalailee piruja seinille käyttäen esimerkkinä Evon Capitalia.
                         On hienoa, että toimintamme herättää kiinnostusta ja keskustelua, oli se sitten positiivista tai
                         negatiivista. Johtuen siitä, että yhtiötämme käytettiin artikkelin varoittavana esimerkkinä, koemme,
                         että on syytä avata laajemmin yhtiön toimintaa ja vastata yhtiötä koskeviin väitteisiin, sillä artikkeli
@@ -118,7 +119,7 @@ export default function Article() {
                     <Prose large italic className="py-4">Evon Capitalin hallitus ja johtoryhmä</Prose>
                     <Prose large className="py-4">Lisätietoa:</Prose>
                     <Prose large className="">Toimitusjohtaja Aatu Pulkkinen, 045 278 3733, aatu.pulkkinen@evon.fi</Prose>
-                    <p>Hallituksen puheenjohtaja Joona Gynther, 050 323 6750, joona.gynther@evon.fi</p>
+                    <Prose large>Hallituksen puheenjohtaja Joona Gynther, 050 323 6750, joona.gynther@evon.fi</Prose>
                 </article>
             </Section>
         </PageWrapper>
