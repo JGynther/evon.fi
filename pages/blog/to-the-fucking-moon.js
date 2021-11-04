@@ -2,7 +2,7 @@ import Link from "next/link"
 
 import Arrow from "../../public/arrow.svg"
 
-import Section from "@components/Section"
+import Section from "@components/section"
 import PageWrapper from "@components/pageWrapper"
 import Prose from "@components/prose"
 

@@ -33,8 +33,10 @@ export default function Home() {
             Tervetuloa Taloustaidon lukija!
           </h1>
           <h2 className="my-3 text-lg md:text-xl">
-            Mukavaa, että löysit perille.
+            Mukavaa, että löysit perille.  <br />
+            <Link href="/blog/to-the-fucking-moon" passHref><a className="text-white text-xl underline">Tästä voi lukea meidän vastineen.</a></Link>
           </h2>
+
         </div>
       </Section>
 
