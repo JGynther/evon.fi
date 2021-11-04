@@ -7,9 +7,14 @@ import Prose from "@components/prose"
 import Navigation from "@components/nav"
 import Footer from "@components/footer"
 
+import Head from "next/head"
+
 export default function Contact() {
     return (
         <PageWrapper>
+            <Head>
+                <title>Yhteystiedot - Evon Capital</title>
+            </Head>
             <Navigation />
                 <Section>
                     <Subtitle>Ota yhteyttä!</Subtitle>
