@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Head from 'next/head'
 
 import Arrow from "../../public/arrow.svg"
 
@@ -9,6 +10,10 @@ import Prose from "@components/prose"
 export default function Article() {
     return (
         <PageWrapper>
+            <Head>
+                <title>To the fucking moon - Evon Capital Blog</title>
+                <meta property="article:published_time" content="2021-11-04" />
+            </Head>
             <Section>
                 <Link href="/" passHref>
                     <button className="flex items-center text-indigo-500 hover:text-indigo-700 transition mt-5 text-lg tracking-wider">
