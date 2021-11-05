@@ -29,12 +29,16 @@ export default function Home() {
 
       <Section>
         <div className="bg-indigo-500 rounded p-4 text-center">
-          <h1 className="text-2xl md:text-4xl font-bold tracking-wide md:my-8 opacity-100">
-            Tervetuloa Taloustaidon lukija!
+          <h1 className="text-2xl md:text-4xl font-bold tracking-wide md:my-6 opacity-100">
+            Tervetuloa!
           </h1>
-          <h2 className="my-3 text-lg md:text-xl">
-            Mukavaa, että löysit perille.  <br />
-            <Link href="/blog/to-the-fucking-moon" passHref><a className="text-white text-xl underline">Tästä voi lukea meidän vastineen.</a></Link>
+          <h2 className="my-2 text-lg md:text-xl">
+            Olet saattanut bongata meidät mediasta viime aikoina. <br/>Mukavaa, että löysit perille. <br /> <br/>
+            <Link href="/blog/to-the-fucking-moon" passHref>
+              <a className="text-white hover:text-opacity-80 transition text-xl underline">
+                Lisää meidän blogista
+              </a>
+            </Link>
           </h2>
 
         </div>
