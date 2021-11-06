@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Head from "next/head"
 
 import Arrow from "../../public/arrow.svg"
 
@@ -14,6 +15,9 @@ import Footer from "@components/footer"
 export default function Contact() {
     return (
         <PageWrapper>
+        <Head>
+            <title>Submit success!</title>
+        </Head>
             <Navigation />
                 <Section>
                     <Link href="/" passHref>

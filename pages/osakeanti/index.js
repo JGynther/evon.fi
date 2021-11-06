@@ -18,7 +18,7 @@ export default function Osakeanti() {
         <PageWrapper>
 
           <Head>
-            <title>Osakeanti - Evon Group</title>
+            <title>Osakeanti - Evon Capital</title>
           </Head>
 
           <Navigation />

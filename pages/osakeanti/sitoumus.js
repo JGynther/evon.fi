@@ -21,6 +21,9 @@ import Footer from "@components/footer"
 export default function Sitoumus() {
   return (
     <PageWrapper>
+    <Head>
+      <title>Osakentisitoumus - Evon Capital</title>
+    </Head>
       <Section>
         <Link href="/osakeanti#content" passHref>
           <button className="flex items-center text-indigo-500 hover:text-indigo-700 transition my-5 text-lg tracking-wider">
