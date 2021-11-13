@@ -50,7 +50,7 @@ function CookiesElement({ handleAccept }) {
       >
         <span className="flex gap-5 justify-center items-center">
           <p className="text-5xl">🍪</p>
-          <p>Käytetään kaiken maailman keksejä sun vaikoilemiseen. Sopiiko?</p>
+          <p>Käytetään kaiken maailman keksejä sun vakoilemiseen. Sopiiko?</p>
         </span>
         <p className="text-sm text-white text-opacity-60 text-center my-4">(Oikeasti kyllä myös sivujen parantamiseen)</p>
     </CookieConsent>
