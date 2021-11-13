@@ -285,6 +285,7 @@ export async function getStaticProps() {
   const res = await parser.parseURL("https://feeds.kauppalehti.fi/rss/klnyt");
   const rss_data = res.items.slice(0,5)
   return {
-    props: { portfolio_data, transaction_data, rss_data }
+    props: { portfolio_data, transaction_data, rss_data },
+    revalidate: 10,
   }
 }
