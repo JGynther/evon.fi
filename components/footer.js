@@ -16,6 +16,11 @@ export default function Footer() {
                             Yhteystiedot
                         </a>
                     </Link>
+                    <Link href="/portal" passHref>
+                        <a className="transition hover:text-indigo-500">
+                            Omistajaportaali
+                        </a>
+                    </Link>
                 </div>
             </div>
         </footer>
