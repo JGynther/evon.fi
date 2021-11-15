@@ -27,23 +27,6 @@ export default function Home() {
 
       <Navigation />
 
-      <Section>
-        <div className="bg-indigo-500 rounded p-4 text-center">
-          <h1 className="text-2xl md:text-4xl font-bold tracking-wide md:my-6 opacity-100">
-            Tervetuloa!
-          </h1>
-          <h2 className="my-2 text-lg md:text-xl">
-            Olet saattanut bongata meidät mediasta viime aikoina. <br/>Mukavaa, että löysit perille. <br /> <br/>
-            <Link href="/blog/to-the-fucking-moon" passHref>
-              <a className="text-white hover:text-opacity-80 transition text-xl underline">
-                Lisää meidän blogista
-              </a>
-            </Link>
-          </h2>
-
-        </div>
-      </Section>
-
       <main className="flex justify-center items-center text-center mx-5">
         <div className="max-w-screen-md">
 
