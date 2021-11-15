@@ -21,11 +21,11 @@ export default function App({ portfolio_data, transaction_data, rss_data }) {
 
   return (
     <>
-    <Head>
-      <title>Omistajaportaali</title>
-    </Head>
     {session ? (
         <PageWrapper>
+          <Head>
+            <title>Omistajaportaali - Evon Capital</title>
+          </Head>
           <PortalNav />
             <BannerNotice title="Tervetuloa portaaliin!">
               Kyseessä on portaalin ensimmäinen beta-versio. 
@@ -48,6 +48,9 @@ export default function App({ portfolio_data, transaction_data, rss_data }) {
         </PageWrapper>
       ) : (
         <PageWrapper>
+          <Head>
+            <title>Login - Evon Capital</title>
+          </Head>
           <section className="max-h-screen overflow-hidden">
             <div className="">
               <PortalNav/>
