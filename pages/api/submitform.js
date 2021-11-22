@@ -8,12 +8,12 @@ export default async function handler(req, res) {
 
     const result = await fetch(request, {
       method: "POST",
-    }).then(r => r.json())
+    }).then((r) => r.json());
 
     if (result.success !== true) {
       error = true;
-      console.log("Captcha verification failed.")
-      res.status(400).json("Captcha verification failed.")
+      console.log("Captcha verification failed.");
+      res.status(400).json("Captcha verification failed.");
     }
 
     let transporter = nodemailer.createTransport({
@@ -23,8 +23,8 @@ export default async function handler(req, res) {
       auth: {
         user: "info@evon.fi",
         pass: process.env.EMAIL_PASS,
-      }
-    })
+      },
+    });
 
     try {
       await transporter.sendMail({
@@ -56,9 +56,15 @@ export default async function handler(req, res) {
                         <td style="border:solid black;border-width: 2px 2px 0px 2px;padding:5px 10px 0px 10px;font-size:12px">Merkintä (euroa)</td>
                     </tr>
                     <tr>
-                        <td style="border:solid black;border-width:0px 2px 0px 2px;padding:0px 10px 0px 10px;font-size:16px;">${data.name}</td>
-                        <td style="border:solid black;border-width:0px 2px 2px 2px;padding:0px 10px 5px 10px;font-size:16px;">${data.stock}</td>
-                        <td style="border:solid black;border-width:0px 2px 2px 2px;padding:0px 10px 5px 10px;font-size:16px;">${data.stock*0.3} EUR</td>
+                        <td style="border:solid black;border-width:0px 2px 0px 2px;padding:0px 10px 0px 10px;font-size:16px;">${
+                          data.name
+                        }</td>
+                        <td style="border:solid black;border-width:0px 2px 2px 2px;padding:0px 10px 5px 10px;font-size:16px;">${
+                          data.stock
+                        }</td>
+                        <td style="border:solid black;border-width:0px 2px 2px 2px;padding:0px 10px 5px 10px;font-size:16px;">${
+                          data.stock * 0.3
+                        } EUR</td>
                     </tr>
                     <tr>
                         <td style="border:solid black;border-width: 0px 2px 0px 2px;padding:0px 10px 0px 10px;"><br></td>
@@ -67,7 +73,9 @@ export default async function handler(req, res) {
                         <td style="border:solid black;border-width: 0px 2px 0px 2px;padding:0px 10px 0px 10px;font-size:12px">Sähköposti</td>
                     </tr>
                     <tr>
-                        <td style="border:solid black;border-width: 0px 2px 0px 2px;padding:0px 10px 0px 10px;font-size:16px;">${data.email}</td>
+                        <td style="border:solid black;border-width: 0px 2px 0px 2px;padding:0px 10px 0px 10px;font-size:16px;">${
+                          data.email
+                        }</td>
                     </tr>
                     <tr>
                         <td style="border:solid black;border-width: 0px 2px 0px 2px;padding:0px 10px 0px 10px;"><br></td>
@@ -76,7 +84,9 @@ export default async function handler(req, res) {
                         <td style="border:solid black;border-width: 0px 2px 0px 2px;padding:0px 10px 0px 10px;font-size:12px">Puhelinnumero</td>
                     </tr>
                     <tr>
-                        <td style="border:solid black;border-width: 0px 2px 2px 2px;padding:0px 10px 5px 10px;font-size:16px;">${data.phone}</td>
+                        <td style="border:solid black;border-width: 0px 2px 2px 2px;padding:0px 10px 5px 10px;font-size:16px;">${
+                          data.phone
+                        }</td>
                     </tr>
                 </tbody>
             </table>
@@ -125,7 +135,9 @@ export default async function handler(req, res) {
                         <td style="font-size:12px;padding:0px 10px 0px 10px;">Y-tunnus</td>
                         <td></td>
                         <td></td>
-                        <td style="border:dashed black;border-width:0px 0px 0px 2px;padding:0px 10px 0px 10px;">Osakeanti ${data.name}</td>
+                        <td style="border:dashed black;border-width:0px 0px 0px 2px;padding:0px 10px 0px 10px;">Osakeanti ${
+                          data.name
+                        }</td>
                     </tr>
                     <tr>
                         <td style="padding:0px 10px 0px 10px;">3094125-8</td>
@@ -137,19 +149,23 @@ export default async function handler(req, res) {
                         <td></td>
                         <td></td>
                         <td style="border:dashed black;border-width:2px 0px 0px 2px;padding:5px 10px 0px 10px;"><b>Maksettava</b></td>
-                        <td style="border:dashed black;border-width:2px 0px 0px 0px;padding:5px 10px 0px 10px;">${data.stock * 0.3} EUR</td>
+                        <td style="border:dashed black;border-width:2px 0px 0px 0px;padding:5px 10px 0px 10px;">${
+                          data.stock * 0.3
+                        } EUR</td>
                     </tr>
                 </tbody>
               </table>
 
               <br>
           </div>
-        `
-      })
-    } catch(err) {
+        `,
+      });
+    } catch (err) {
       error = true;
-      console.log(`Email delivery to customer ${data.name} (${data.email}) failed.`)
-      res.status(400).json("Email delivery to customer failed.")
+      console.log(
+        `Email delivery to customer ${data.name} (${data.email}) failed.`
+      );
+      res.status(400).json("Email delivery to customer failed.");
     }
 
     try {
@@ -157,8 +173,13 @@ export default async function handler(req, res) {
         from: "Evon Group <info@evon.fi>",
         to: "joona.gynther@evon.fi, aatu.pulkkinen@evon.fi",
         subject: `Uusi osakkeiden merkintä ${data.name}`,
-        html: 
-        ` <p>Nimi: ${data.name}</p>
+        html: `
+          ${
+            error
+              ? "<p> HUOM! Tätä merkintää tehdessä tapahtui virhe! Se ei siis välttämättä ole mennyt asiakkaalle läpi.</p>"
+              : ""
+          } 
+        <p>Nimi: ${data.name}</p>
           <p>Sähköposti: <a href="mailto:${data.email}">${data.email}</a></p>
           <p>Puhelinnumero: ${data.phone}</p>
           <p>Lähiosoite: ${data.streetaddress}</p>
@@ -167,18 +188,17 @@ export default async function handler(req, res) {
           <p>Osakkeiden lukumäärä: ${data.stock}</p>
           <p>Merkintä euroina: ${data.stock * 0.3} EUR</p>
         `,
-      })
-    } catch(err) {
+      });
+    } catch (err) {
       error = true;
-      console.log("Email delivery to company failed.")
-      res.status(400).json("Email delivery to company failed.")
+      console.log("Email delivery to company failed.");
+      res.status(400).json("Email delivery to company failed.");
     }
 
     if (!error) {
-      res.status(200).json()
+      res.status(200).json();
     }
-
   } else {
-    res.status(405).json()
+    res.status(405).json();
   }
 }
