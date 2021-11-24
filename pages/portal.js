@@ -8,7 +8,7 @@ import TransactionTable from "@components/portal/transactiontable";
 import PortalNav from "@components/portal/portalnav";
 import Portfolio from "@components/portal/portfolio";
 
-import fetchData from "@components/fetchdata";
+import fetchData from "@lib/fetchdata";
 
 import { signIn, useSession } from "next-auth/client";
 
