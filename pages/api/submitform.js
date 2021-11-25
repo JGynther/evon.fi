@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     if (result.success !== true) {
       error = true;
       console.log("Captcha verification failed.");
-      res.status(400).json("Captcha verification failed.");
+      res.status(404).json("Captcha verification failed.");
     }
 
     sgMail.setApiKey(process.env.SENDGRID_API_KEY);

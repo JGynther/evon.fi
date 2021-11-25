@@ -7,14 +7,17 @@ import Link from "next/link";
 
 import Arrow from "../public/arrow.svg";
 
+import fetchData from "@lib/fetchdata";
+
 import PageWrapper from "@components/pagewrapper";
 import Section from "@components/section";
 import { Title, Subtitle, Prose } from "@components/text";
 
 import Navigation from "@components/nav";
+import TransactionTable from "@components/portal/transactiontable";
 import Footer from "@components/footer";
 
-export default function Home() {
+export default function Home({ transaction_data }) {
   return (
     <PageWrapper>
       <Head>
@@ -63,6 +66,10 @@ export default function Home() {
           </div>
         </div>
       </main>
+
+      <Section>
+        <TransactionTable data={transaction_data} />
+      </Section>
 
       <Section>
         <Subtitle>Tietoa yrityksestä</Subtitle>
@@ -329,4 +336,13 @@ function FAQitem({ title, startsOpen, children }) {
       </div>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const [portfolio_data, transaction_data] = await fetchData();
+
+  return {
+    props: { transaction_data },
+    revalidate: 10,
+  };
 }
