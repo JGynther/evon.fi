@@ -1,4 +1,4 @@
-const nodemailer = require("nodemailer");
+const sgMail = require("@sendgrid/mail");
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
@@ -16,23 +16,13 @@ export default async function handler(req, res) {
       res.status(400).json("Captcha verification failed.");
     }
 
-    let transporter = nodemailer.createTransport({
-      host: "mail.evon.fi",
-      port: 465,
-      secure: true,
-      auth: {
-        user: "info@evon.fi",
-        pass: process.env.EMAIL_PASS,
-      },
-    });
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-    try {
-      await transporter.sendMail({
-        from: "Evon Group <info@evon.fi>",
-        to: data.email,
-        replyTo: "aatu.pulkkinen@evon.fi",
-        subject: "Vahvistus osakkeiden merkinnästä - Evon Group",
-        html: `
+    const msg = {
+      to: data.email,
+      from: "Evon Group <info@evon.fi>",
+      subject: "Vahvistus osakkeiden merkinnästä - Evon Group",
+      html: `
           <div>
             <h3>Hei ${data.name.split(" ")[0]}!</h3>
             <br>
@@ -159,21 +149,26 @@ export default async function handler(req, res) {
               <br>
           </div>
         `,
-      });
-    } catch (err) {
-      error = true;
-      console.log(
-        `Email delivery to customer ${data.name} (${data.email}) failed.`
-      );
-      res.status(400).json("Email delivery to customer failed.");
-    }
+    };
 
-    try {
-      await transporter.sendMail({
-        from: "Evon Group <info@evon.fi>",
-        to: "joona.gynther@evon.fi, aatu.pulkkinen@evon.fi",
-        subject: `Uusi osakkeiden merkintä ${data.name}`,
-        html: `
+    sgMail
+      .send(msg)
+      .then(() => {
+        console.log("Email sent");
+      })
+      .catch((err) => {
+        error = true;
+        console.log(
+          `Email delivery to customer ${data.name} (${data.email}) failed.`
+        );
+        res.status(400).json("Email delivery to customer failed.");
+      });
+
+    const msg2 = {
+      to: "joona.gynther@evon.fi, aatu.pulkkinen@evon.fi",
+      from: "Evon Group <info@evon.fi>",
+      subject: `Uusi osakkeiden merkintä ${data.name}`,
+      html: `
           ${
             error
               ? "<p> HUOM! Tätä merkintää tehdessä tapahtui virhe! Se ei siis välttämättä ole mennyt asiakkaalle läpi.</p>"
@@ -188,12 +183,18 @@ export default async function handler(req, res) {
           <p>Osakkeiden lukumäärä: ${data.stock}</p>
           <p>Merkintä euroina: ${data.stock * 0.3} EUR</p>
         `,
+    };
+
+    sgMail
+      .send(msg2)
+      .then(() => {
+        console.log("Email sent!");
+      })
+      .catch((err) => {
+        error = true;
+        console.log("Email delivery to company failed.");
+        res.status(400).json("Email delivery to company failed.");
       });
-    } catch (err) {
-      error = true;
-      console.log("Email delivery to company failed.");
-      res.status(400).json("Email delivery to company failed.");
-    }
 
     if (!error) {
       res.status(200).json();
