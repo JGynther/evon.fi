@@ -117,7 +117,7 @@ function Chart({ data }) {
 
 import Parser from "rss-parser";
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const [portfolio_data, transaction_data] = await fetchData();
 
   let parser = new Parser();
@@ -126,6 +126,5 @@ export async function getStaticProps() {
 
   return {
     props: { portfolio_data, transaction_data, rss_data },
-    revalidate: 10,
   };
 }

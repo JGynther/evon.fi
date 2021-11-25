@@ -338,11 +338,10 @@ function FAQitem({ title, startsOpen, children }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const [portfolio_data, transaction_data] = await fetchData();
 
   return {
     props: { transaction_data },
-    revalidate: 10,
   };
 }

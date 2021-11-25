@@ -165,7 +165,7 @@ export default async function handler(req, res) {
       });
 
     const msg2 = {
-      to: "joona.gynther@evon.fi, aatu.pulkkinen@evon.fi",
+      to: "info@evon.fi",
       from: "Evon Group <info@evon.fi>",
       subject: `Uusi osakkeiden merkintä ${data.name}`,
       html: `
