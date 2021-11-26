@@ -74,47 +74,6 @@ export default function App({ portfolio_data, transaction_data, rss_data }) {
   );
 }
 
-import { Doughnut } from "react-chartjs-2";
-
-function Chart({ data }) {
-  const cut_data = data.slice(data.length - 5, data.length - 1);
-  const formated_data = {
-    labels: cut_data.map((row) => row[0]),
-    datasets: [
-      {
-        label: "testi",
-        data: cut_data.map((row) => row.slice(-2)[0].replace(",", ".")),
-        backgroundColor: ["#302e80", "#4337c9", "#6366f1", "#a5b4fb"],
-        hoverOffset: 30,
-        borderWidth: 0,
-      },
-    ],
-  };
-  return (
-    <div className="flex-grow">
-      <Doughnut
-        data={formated_data}
-        options={{
-          maintainAspectRatio: false,
-          responsive: true,
-          plugins: {
-            legend: {
-              position: "left",
-              align: "start",
-              labels: {
-                color: "white",
-                font: {
-                  size: 14,
-                },
-              },
-            },
-          },
-        }}
-      />
-    </div>
-  );
-}
-
 import Parser from "rss-parser";
 
 export async function getServerSideProps() {
