@@ -5,17 +5,17 @@ export default async function handler(req, res) {
   if (req.method === "POST") {
     let error = false;
     const data = req.body;
-    const request = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET}&response=${data.captcha}`;
+    //const request = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET}&response=${data.captcha}`;
 
-    const result = await fetch(request, {
-      method: "POST",
-    }).then((r) => r.json());
+    //const result = await fetch(request, {
+    //  method: "POST",
+    //}).then((r) => r.json());
 
-    if (result.success !== true) {
-      error = true;
-      console.log("Captcha verification failed.");
-      res.status(400).json("Captcha verification failed.");
-    }
+    //if (result.success !== true) {
+    //  error = true;
+    //  console.log("Captcha verification failed.");
+    //  res.status(400).json("Captcha verification failed.");
+    //}
 
     try {
       await axios({
