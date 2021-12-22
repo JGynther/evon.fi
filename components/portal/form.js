@@ -35,10 +35,12 @@ function FormElement({ content, fields, submitCode }) {
   }
 
   return (
-    <div className="border-2 border-gray-800 shadow rounded p-14">
+    <div className="border-2 border-gray-800 shadow rounded p-4 md:p-14">
       <div className="mb-12">
         <Subtitle>{content.subtitle}</Subtitle>
-        <Title>{content.title}</Title>
+        <Title long noMargin>
+          {content.title}
+        </Title>
         <Prose whitespacepreline>{`${content.content}`}</Prose>
       </div>
       <Formik
@@ -65,18 +67,29 @@ function FormElement({ content, fields, submitCode }) {
       >
         {({ isSubmitting }) => (
           <Form>
-            {Object.keys(fields).map((key) => (
-              <InputElement
-                key={key}
-                name={key}
-                id={key}
-                label={key}
-                placeholder={fields[key].placeholder}
-                help={fields[key].help}
-                type={fields[key].type}
-              />
-            ))}
-            <div className="flex justify-center">
+            {Object.keys(fields).map((key) =>
+              fields[key].type !== "checkbox" ? (
+                <InputElement
+                  key={key}
+                  name={key}
+                  id={key}
+                  label={key}
+                  placeholder={fields[key].placeholder}
+                  help={fields[key].help}
+                  type={fields[key].type}
+                />
+              ) : (
+                <CheckboxElement
+                  key={key}
+                  name={key}
+                  id={key}
+                  label={key}
+                  placeholder={fields[key].placeholder}
+                  help={fields[key].help}
+                />
+              )
+            )}
+            <div className="flex justify-center mt-10">
               <button
                 type="submit"
                 disabled={isSubmitting}
@@ -102,7 +115,27 @@ function FormElement({ content, fields, submitCode }) {
   );
 }
 
-function InputElement({ label, help, ...props }) {
+function CheckboxElement({ label, help, ...props }) {
+  const [field, meta] = useField(props);
+  const [didFocus, setDidFocused] = useState(false);
+  const handleFocus = () => setDidFocused(true);
+  return (
+    <div className=" my-2">
+      <label className="text-lg tracking-wider">{label}</label>
+      <div className="flex items-center my-4 mx-2 gap-5">
+        <input
+          {...field}
+          {...props}
+          type="checkbox"
+          className="accent-indigo-500 transform scale-[2]"
+        />
+        {help && <p className="text-white text-opacity-80">{help}</p>}
+      </div>
+    </div>
+  );
+}
+
+function InputElement({ label, help, type, ...props }) {
   const [field, meta] = useField(props);
   const [didFocus, setDidFocused] = useState(false);
   const handleFocus = () => setDidFocused(true);
@@ -123,6 +156,7 @@ function InputElement({ label, help, ...props }) {
       <input
         {...props}
         {...field}
+        type={type || "text"}
         onFocus={handleFocus}
         className={`py-2 px-3 my-1 rounded bg-gray-800 shadow tracking-wider outline-none transition ring-0 focus:ring-blue-500 ${
           didFocus

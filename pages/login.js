@@ -36,12 +36,16 @@ export default function Login() {
           <div className="flex-grow max-w-xs md:max-w-md">
             {error === "invalidCredentials" && (
               <div className="bg-indigo-500 bg-opacity-50 text-white text-center text-opacity-80 tracking-wider rounded p-5 my-10">
-                Error. Invalid username or password.
+                Virheellinen käyttäjätunnus tai salasana.
               </div>
             )}
-            <Input label="Username" value={username} setValue={setUsername} />
             <Input
-              label="Password"
+              label="Käyttäjätunnus"
+              value={username}
+              setValue={setUsername}
+            />
+            <Input
+              label="Salasana"
               type="password"
               value={password}
               setValue={setPassword}
@@ -56,7 +60,7 @@ export default function Login() {
                 "
               >
                 <span className="flex justify-center items-center">
-                  Sign in{" "}
+                  Kirjaudu sisään{" "}
                   <Arrow className="transition transform group-hover:translate-x-1" />
                 </span>
               </button>

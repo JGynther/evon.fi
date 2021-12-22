@@ -31,7 +31,7 @@ export default function Yhtiokokous() {
                 🏢\u00A0\u00A0\u00A0 Missä: Aulangon suuri huvila, Aulangon-heikkilän tie 168, 13900 Hämeenlinna
                 📅\u00A0\u00A0\u00A0 Milloin: tiistai 8.2.2022 klo 15 alkaen
                 💶\u00A0\u00A0\u00A0 Mitä maksaa: ei mitään, yöpyminen 23,– EUR
-                🍕\u00A0\u00A0\u00A0 Onko ruokaa: yhtiö tarjoaa pientä purtavaa, omia eväitä suositellaan
+                🍕\u00A0\u00A0\u00A0 Onko ruokaa: yhtiö tarjoaa pientä purtavaa ja juotavaa, omia eväitä suositellaan
               `,
         }}
         fields={{
@@ -39,19 +39,31 @@ export default function Yhtiokokous() {
             default: "",
             placeholder: "Mikko Matti Matias Mallikas",
             help: "",
-            type: null,
+            type: "text",
           },
           Sähköposti: {
             default: "",
             placeholder: "mikko.mallikas@evon.fi",
             help: "",
-            type: "",
+            type: "email",
           },
           Puhelin: {
             default: "",
             placeholder: "+358 01 2345678",
             help: "",
-            type: "",
+            type: "tel",
+          },
+          Majoitus: {
+            default: "false",
+            placeholder: null,
+            help: "Haluan majoituksen 8. - 9.2. väliseksi yöksi ( 23,00 EUR sis.alv. )",
+            type: "checkbox",
+          },
+          Ruokavalio: {
+            default: "",
+            placeholder: "Pähkinäallergia, vegaani...",
+            help: "Mahdolliset erikoisruokavaliot tai allergiat, vastaa ” - ” jos ei mitään.",
+            type: "text",
           },
         }}
         submitCode="6554"
