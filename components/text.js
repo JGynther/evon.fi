@@ -14,12 +14,14 @@ export function Subtitle({ children }) {
   );
 }
 
-export function Prose({ children, large, italic }) {
+export function Prose({ children, large, italic, whitespacepreline }) {
   return (
     <p
-      className={`opacity-80 mt-5 max-w-prose ${large ? "text-lg" : ""} ${
-        italic ? "italic" : ""
-      }`}
+      className={`opacity-80 mt-5 max-w-prose 
+        ${large ? "text-lg" : ""}
+        ${italic ? "italic" : ""}
+        ${whitespacepreline ? "whitespace-pre-line" : ""}
+      `}
     >
       {children}
     </p>

@@ -12,6 +12,7 @@ import fetchData from "@lib/fetchdata";
 import PageWrapper from "@components/pagewrapper";
 import Section from "@components/section";
 import { Title, Subtitle, Prose } from "@components/text";
+import { LinkButton } from "@components/button";
 
 import Navigation from "@components/nav";
 import TransactionTable from "@components/portal/transactiontable";
@@ -44,19 +45,7 @@ export default function Home({ transaction_data }) {
             Kiinnostaako lähteä mukaan? 👇
           </h2>
 
-          <Link href="/osakeanti" passHref>
-            <button
-              className="
-              bg-indigo-500 py-3 px-5 my-2 rounded tracking-wider text-lg my-8 font-normal
-              transition hover:bg-indigo-700 focus:ring group text-center
-              "
-            >
-              <span className="flex items-center">
-                Osallistu osakeantiin
-                <Arrow className="transition transform group-hover:translate-x-1" />
-              </span>
-            </button>
-          </Link>
+          <LinkButton href="/osakeanti">Osallistu osakeantiin</LinkButton>
 
           <div className="text-white text-opacity-60 text-center my-2">
             <p>Lue lisää</p>
@@ -289,20 +278,7 @@ export default function Home({ transaction_data }) {
       <Section>
         <div className="py-10 px-5 bg-gray-800 rounded shadow grid justify-center text-center">
           <Title noMargin>Oletko valmis sijoittamaan?</Title>
-
-          <Link href="/osakeanti" passHref>
-            <button
-              className="
-              bg-indigo-500 py-3 px-5 rounded tracking-wider text-lg mt-10 font-normal
-              transition hover:bg-indigo-700 focus:ring group text-center
-              "
-            >
-              <span className="flex items-center justify-center">
-                Osallistu osakeantiin
-                <Arrow className="transition transform group-hover:translate-x-1" />
-              </span>
-            </button>
-          </Link>
+          <LinkButton href="/osakeanti">Osallistu osakeantiin</LinkButton>
         </div>
       </Section>
 
