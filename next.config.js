@@ -1,5 +1,6 @@
 module.exports = {
   env: {
+    GOOGLE_APPLICATION_CREDENTIALS: process.env.GOOGLE_APPLICATION_CREDENTIALS,
     GOOGLE_API_KEY: process.env.GOOGLE_API_KEY,
     GOOGLE_SHEETS_ID: process.env.GOOGLE_SHEETS_ID,
     SENDGRID_API_KEY: process.env.SENDGRID_API_KEY,
