@@ -102,7 +102,7 @@ export default async function handler(req, res) {
                 <p>Maksettava: 23,00 EUR</p>
                 <p>Saaja: Tree2u Oy</p>
                 <p>IBAN: FI16 7997 7995 3487 16</p>
-                <p>Eräpäivä: 21.2.2022</p>
+                <p>Eräpäivä: 21.1.2022</p>
                 <p>Viesti: ${data.Nimi}</p>
               </div>
             </div>
