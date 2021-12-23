@@ -95,8 +95,8 @@ export default async function handler(req, res) {
             <div>
               <h3>Lasku majoituksesta</h3>
               <div>
-                <p>Hinta: 20,70 EUR</p>
-                <p>Arvonlisävero 10 %: 2,30 EUR</p>
+                <p>Hinta: 20,91 EUR</p>
+                <p>Arvonlisävero 10 %: 2,09 EUR</p>
               </div>
               <div>
                 <p>Maksettava: 23,00 EUR</p>
