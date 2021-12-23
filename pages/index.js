@@ -7,7 +7,7 @@ import Link from "next/link";
 
 import Arrow from "../public/arrow.svg";
 
-import fetchData from "@lib/fetchdata";
+import { fetchData } from "@lib/fetchdata";
 
 import PageWrapper from "@components/pagewrapper";
 import Section from "@components/section";
@@ -31,13 +31,13 @@ export default function Home({ transaction_data }) {
       <main className="flex justify-center items-center text-center mx-5">
         <div className="max-w-screen-md">
           <h1 className="text-4xl md:text-6xl font-bold tracking-wide md:my-8 opacity-100">
-            Ole omistaja, älä sijoittaja.
+            Ole omistaja, älä pelkkä sijoittaja.
           </h1>
 
           <h2 className="my-3 md:text-lg opacity-80">
             Evon Capital on erittäin tuottohakuisten piensijoittajien
-            yhteisyritys, joka sijoittaa varojaan pitkällä aikahorisontilla.
-            Yhtiö yhdistää niin osakkaidensa varat kuin osaamisen — ja hakee
+            yhteisyritys, joka sijoittaa varojaan pitkällä aikavälillä. Yhtiö
+            yhdistää niin osakkaidensa varat kuin osaamisen — ja hakee
             markkinoihin nähden ylituottoa tällä synergialla.
           </h2>
 
@@ -71,14 +71,23 @@ export default function Home({ transaction_data }) {
           markkinatilanteissa.
         </Prose>
         <Prose large>
+          Jokainen omistaja voi osallistua yhtiön toimintaan niin paljon tai
+          niin vähän kuin suinkin haluaa. Yhtiön sisältä löytyy monia erilaisia
+          tiimejä, joissa voi hyödyntää omaa osaamistaan samalla oppien uutta.
+          Yhteisöllisen sijoittamisen ajatusta noudattaen yhtiön sisältä löytyy
+          jokaiselle kiinnostuneelle omistajalle avoin Financial Advisory Board
+          (FAB), jossa voi ehdottaa sijoituskohteita sekä keskustella niistä.
+        </Prose>
+        <Prose large>
           Yhtiömme pyrkii myös perinteisen markkina-analyysin sekä sijoittamisen
-          ohella tuottamaan omistajilleen lisäarvoa erilaisilla projekteilla,
-          joihin lukeutuu tämänhetkinen koneoppimis-projekti. Sen tarkoituksena
-          on pystyä lähitulevaisuudessa analysoimaan markkinoita tekoälyn avulla
-          ja reagoida tämän analyysin perusteella nopeasti osakkeiden
-          markkina-arvojen heilahteluihin. Tekoälyn on tarkoitus arvioida
-          uutisten, Twitterin ja esimerkiksi onnettomuuksien vaikutuksia
-          osakekurssiin nopeammin kuin ihminen pystyy tiedon käsittelemään.
+          ohella tuottamaan omistajilleen lisäarvoa erilaisilla tapahtumilla ja
+          projekteilla, joihin lukeutuu esimerkiksi tämänhetkinen
+          koneoppimisprojekti. Sen tarkoituksena on pystyä lähitulevaisuudessa
+          analysoimaan markkinoita tekoälyn avulla ja reagoida tämän analyysin
+          perusteella nopeasti osakkeiden markkina-arvojen heilahteluihin.
+          Tekoälyn on tarkoitus arvioida uutisten, Twitterin ja esimerkiksi
+          onnettomuuksien vaikutuksia osakekurssiin nopeammin kuin ihminen
+          pystyy tiedon käsittelemään.
         </Prose>
       </Section>
 
@@ -117,8 +126,7 @@ export default function Home({ transaction_data }) {
               Tavoitteemme on luoda sijoittajien yhteisö, joka tunnetaan
               kansallisella tasolla sen räväkkyydestä ja hyvästä meiningistä.
               Emme pelkää tehdä, yrittää tai kertoa keitä me olemme. Kävelemme
-              ylpeästi kabinetista toiseen sikari suussa ja apina -logo
-              paidassa.
+              ylpeästi kabinetista toiseen sikari suussa ja apina-logo paidassa.
             </Prose>
           </span>
 
@@ -128,10 +136,10 @@ export default function Home({ transaction_data }) {
               Kaiken keskiössä on juuri sinun osakkeiden arvon kasvattaminen.
               Sijoitusten pitää tuottaa, taseen kasvaa ja osaamisen karttua.
               Yritysjohto on sitoutunut minimoimaan aivan kaikki kulut
-              kampaviinereistä omaan palkkaansa, jota ei muuten makseta, jotta
+              kampaviinereistä omaan palkkioonsa, jota ei muuten makseta, jotta
               tulokset ovat mahdollisimman voitokkaat omistajilleen. Kaikki
-              hankkeet ja projektit, joihin yritys lähtee mukaan tai
-              toteuttamaan, on taustalla voitokkaan tuloksen hankkiminen.
+              hankkeet ja projektit, joihin yritys lähtee mukaan tai niitä
+              toteuttamaan, tehdään tulos edellä.
             </Prose>
           </span>
 
@@ -139,14 +147,14 @@ export default function Home({ transaction_data }) {
             <h3 className="text-xl font-bold tracking-wide">Omistajuus</h3>
             <Prose>
               Toimintamme tärkein arvo on omistajuus. Jokainen osakkeita ostava
-              henkilö saa myös automaattisesti tittelin Omistaja. Tämä
-              tarkoittaa useita erilaisia eksklusiivisia etuja ja työkaluja,
-              jotka saat käyttöösi, ja joita ei muiden yritysten osakkeita
-              ostamalla saa. Jokainen Omistaja on lähtökohtaisesti myös osakas
-              ja jokaisella Omistajalla on mahdollisuus osallistua yrityksen
-              operatiiviseen toimintaan, mikäli intoa ja osaamista löytyy.
-              Omistajilla on mahdollisuus vaikuttaa yhtiön sijoituksiin
-              esimerkiksi Financial Advisor Boardin kautta.
+              henkilö voi ylpeästi kutsua itseään meidän omistajaksi. Tämä
+              tarkoittaa jo nyt, ja etenkin tulevaisuudessa, useita erilaisia
+              eksklusiivisia etuja ja työkaluja, jotka saat käyttöösi, ja joita
+              ei muiden yritysten osakkeita ostamalla saa. Kaikilla on pääsy
+              mukaan yrityksen operatiiviseen toimintaan, mikäli intoa ja
+              osaamista löytyy. Omistajilla on matalan kynnyksen mahdollisuus
+              vaikuttaa yhtiön sijoituksiin esimerkiksi Financial Advisory
+              Boardin kautta.
             </Prose>
           </span>
         </div>
@@ -156,17 +164,18 @@ export default function Home({ transaction_data }) {
         <Subtitle>Toimitusjohtajan tervehdys</Subtitle>
         <Title>Tervetuloa!</Title>
         <Prose large italic>
-          Tervetuloa mukaan Evon Capitalin eeppiselle (legendaariselle)
-          matkalle. Olen tämän jahdin kippari sekä toimitusjohtaja Aatu
-          Pulkkinen. Tehtävänäni on pitää huolta, että kyseessä on tuottoisa,
-          eeppinen (legendaarinen) ja kaikin puolin loistava risteily. Yhtiömme
-          keskittyy jatkuvasti nostamaan osakkeen arvoa, mutta tavoitteenamme on
-          myös huolehtia kunnollisesta riskienhallinnasta. Vaikka yksittäiset
-          positiomme voivat olla jopa erittäin riskialttiita, pyrimme salkun
-          laajaan hajautukseen ja markkinoiden tarkkaan seurantaan. Hienoa, että
-          olet päätynyt jo sivuillemme, mutta toivottavasti voimme kohta kutsua
-          sinuakin Omistajaksi ja juhlistaa tätä sikarien sekä viskilasillisen
-          äärellä. Antoisaa sijoittamista!
+          Tervetuloa mukaan Evon Capitalin eeppiselle ja legendaariselle
+          matkalle. Olen tämän nuorilla opportunisteilla täytetyn jahdin kippari
+          sekä toimitusjohtaja Aatu Pulkkinen. Tehtävänäni on pitää huolta, että
+          kyseessä on tuottoisa, eeppinen ja kaikin puolin loistava risteily.
+          Yhtiömme keskittyy jatkuvasti nostamaan osakkeen arvoa, mutta
+          tavoitteenamme on myös huolehtia kunnollisesta riskienhallinnasta.
+          Vaikka yksittäiset positiomme voivat olla erittäin riskialttiita,
+          pyrimme salkun laajaan hajautukseen ja markkinoiden tarkkaan
+          seurantaan. Hienoa, että olet päätynyt jo sivuillemme, sillä
+          toivottavasti voimme kohta kutsua sinuakin Omistajaksi ja juhlistaa
+          tätä hienoa päätöstä sikarin sekä viskilasillisen äärellä. Antoisaa
+          sijoittamista!
         </Prose>
         <Prose large italic>
           “To the fucking Moon!” 🚀🚀🚀
@@ -180,24 +189,72 @@ export default function Home({ transaction_data }) {
         <Subtitle>Omistajaksi</Subtitle>
         <Title>Miksi juuri sinun pitäisi olla omistaja?</Title>
         <Prose large>
-          Koska haluat joku päivä olla rikas. Me kaikki haluamme olla. Se on
-          meidän toimintamme päämäärä. Evon Capitalin Omistajuus on kaikille
-          niille henkilöille, jotka tavoittelevat elämässään taloudellista
-          vapautta ja miljoonia sen rajapyykin ylittämisen päälle.
+          Me tarjoamme sinulle eeppisen matkan täynnä mielenkiintoisia ihmisiä
+          ja huikeita kokemuksia. Syitä olla mukana on monia: puhtaasti
+          taloudellinen voitto, eeppisyys, verkostot, halu saada kokemusta
+          projekteista tai oppia uutta sijoittamisesta. Mikään vaihtoehto ei ole
+          sen enempää oikein tai väärin. Emme kuitenkaan halua mukaan yhtään
+          ihmistä, joka ei ymmärrä mistä on kyse, jota tämä ei oikeasti
+          kiinnosta tai joka ei kestä riskinottoa.
         </Prose>
         <Prose large>
-          Toimintamallimme mahdollistaa useita tapoja olla Omistaja. Osalle
-          Omistajuus voi olla pelkkä passiivinen sijoitus, joka jatkaa kasvuaan
-          kyseisen henkilön elämän taustalla. Toisille se voi olla hyvän
-          henkinen yhteisö, jossa voi keskustella sijoittamisesta ja löytää
-          samanhenkisiä tyyppejä samalla, kun sijoitukset jylläävät taustalla.
-          Lopuille se voi olla kaikkea tätä ja aktiivista osallistumista
-          yrityksen sijoitustoimintaan, projekteihin, hankkeisiin tai
-          pyörittämiseen. Me haluamme, että Omistajamme pystyvät olemaan
-          yrityksemme toiminnassa mukana juuri niin paljon kuin he itse haluavat
-          ja kykenevät. He ovat ylpeitä omistuksestaan ja kokevat kuuluvansa
-          mahtavaan yhteisöön, joka on täynnä voittajia ja elämässään menestyviä
-          ihmisiä.
+          Toimintamallimme mahdollistaa useita tapoja olla omistaja. Osalle
+          omistajuus voi olla pelkkä passiivinen sijoitus, joka jatkaa kasvuaan
+          elämän taustalla. Toisille se voi olla samanhenkisten ihmisten
+          yhteisö, jossa voi rennosti keskustella sijoittamisesta ja
+          verkostoitua tulevaisuutta varten. Lopuille se voi olla kaikkea tätä
+          ja lisäksi aktiivista osallistumista yrityksen sijoitustoimintaan,
+          projekteihin, hankkeisiin tai pyörittämiseen. Me haluamme, että
+          omistajamme pystyvät olemaan yrityksemme toiminnassa mukana juuri niin
+          paljon kuin he itse haluavat ja kykenevät. He ovat ylpeitä
+          omistuksestaan ja kokevat kuuluvansa mahtavaan yhteisöön, joka on
+          täynnä voittajia ja tulevaisuudessa menestyviä ihmisiä.
+        </Prose>
+      </Section>
+
+      <Section>
+        <Subtitle>Tiimit</Subtitle>
+        <Title>Financial Advisory Board - FAB</Title>
+        <Prose large>
+          FAB on matalan kynnyksen ryhmä yhtiön aktiivisille ja sijoittamisesta
+          erityisen kiinnostuneille osakkaille. Ryhmän toiminta on hyvin
+          aktiivista ja mukaan pääsee jokainen ryhmän jäsenyydestä kiinnostunut
+          omistaja. Keskustelua käydään aktiivisesti niin WhatsAppissa kuin
+          FAB:n tapaamisissakin. FAB:n keskeisin tehtävä on tuottaa
+          sijoitusideoita yhtiöjohdolle ja käydä keskustelua tehdyistä
+          päätöksistä. Ryhmää informoidaan yhtiön oleellisesta tapahtumista
+          lähes reaaliajassa.
+        </Prose>
+        <Prose large>
+          FAB pyrkii järjestämään mahdollisuuksien mukaan yritysvierailuja,
+          saunailtoja ja muuta oheistoimintaa jäsenilleen. Mukaan voi lähteä
+          oppimaan tai jakamaan omaa viisauttaan koko yhtiön käyttöön.
+          Esimerkiksi yhtiöjohdon tuottamat analyysit jaetaan myös FAB:n
+          jäsenten käyttöön ja jäsenille tarjotaan mahdollisuus osallistua
+          analyysien tekoon.
+        </Prose>
+        <Prose large>
+          Financial Advisory Boardin puheenjohtajana toimii strategiajohtaja
+          Tomi Puurunen
+        </Prose>
+      </Section>
+
+      <Section>
+        <Subtitle>Mahdollisuudet</Subtitle>
+        <Title>Oletko kiinnostunut tekemään hommia?</Title>
+        <Prose large>
+          Mikäli intoa löytyy, ole yhteydessä meihin, sillä tekemistä löytyy.
+          Haemme jatkuvasti uusia innostuneita, ja mielellään myös edes hieman
+          osaavia ihmisiä mukaan tekemään Evon Capitalista vielä suurempaa!
+        </Prose>
+        <Prose large>
+          Tiimit
+          <ul>
+            <li>- Sijoitustiimi (FAB) </li>
+            <li>- Tapahtumatiimi </li>
+            <li>- Markkinointitiimi</li>
+            <li>- Vero- ja paratiisisuunnittelutiimi</li>
+          </ul>
         </Prose>
       </Section>
 
@@ -209,7 +266,7 @@ export default function Home({ transaction_data }) {
           kysymykseesi? Ota yhteyttä!
         </Prose>
 
-        <FAQitem title="Mikä ihmeen Tree2u Oy?" startsOpen>
+        <FAQitem title="Mikä ihmeen Tree2u Oy?">
           Yhtiön virallinen rekisteröity nimi on Tree2u Oy (3094125-8) johtuen
           tilanteesta, jossa PRH hylkäsi Evon Oy nimen vedoten sen olevan
           genetiivimuoto maantieteellisestä alueesta. Yhtiö toimii nimellä Evon
@@ -219,12 +276,13 @@ export default function Home({ transaction_data }) {
         </FAQitem>
 
         <FAQitem title="Ketä tässä kusetetaan?">
-          Suora vastaus on, että ei yhtään ketään. Toimintamme on omistajillemme
-          läpinäkyvää ja osallistavaa. Tämän lisäksi osakeanneissaan Evon Group
-          pyrkii siihen, että merkinnän hintataso vastaa noin seuraavan vuoden
-          matemaattista arvoa. Yrityksemme operatiivinen johto vastaa kaikkiin
-          kysymyksiin ja huoliin, mikäli sellaisia ilmenee. Ota siis vain
-          rohkeasti yhteyttä.
+          Suora vastaus on, että ei yhtään ketään. Tai no… yhtiöjohtoa ehkä
+          vähän, joka työskentelee ilman palkkiota 24/7 Sigma grindset
+          -mentaliteetilla. Toimintamme on omistajillemme läpinäkyvää ja
+          osallistavaa. Tämän lisäksi osakeanneissaan Evon Group pyrkii siihen,
+          että merkinnän hintataso vastaa noin seuraavan vuoden matemaattista
+          arvoa. Yrityksemme operatiivinen johto vastaa kaikkiin kysymyksiin ja
+          huoliin, mikäli sellaisia ilmenee. Ota siis rohkeasti yhteyttä.
         </FAQitem>
 
         <FAQitem title="Kierrättekö te veroja?">
@@ -234,21 +292,22 @@ export default function Home({ transaction_data }) {
         </FAQitem>
 
         <FAQitem title="Onko yritysjohtonne pätevä?">
-          Yritysjohtomme koostuu yliopistoissa ja työssäkäyvistä henkilöistä,
-          joten tutkintoja tai sertifikaatteja heiltä ei vielä löydy, mutta
-          tuore näkemys, intohimo taloutta ja markkinoita kohtaan sekä suuri
-          määrä työ-, yrittäjyys- ja järjestökokemusta kuitenkin takaavat jo
-          tarpeeksi hyvin pätevyytemme. Jokainen johtoon kuuluva henkilö
-          opiskelee yliopistoissa tai/ja omatoimisesti omaan rooliin liittyviä
-          asioita, jotta osaamista ja tietämystä karttuu lisää.
+          Yritysjohto koostuu yliopisto-opiskelijoista ja työssäkäyvistä
+          henkilöistä, joten tutkintoja tai sertifikaatteja heiltä ei
+          välttämättä vielä löydy, mutta tuore näkemys, intohimo taloutta ja
+          markkinoita kohtaan sekä suuri määrä työ-, yrittäjyys- ja
+          järjestökokemusta kuitenkin takaavat jo tarpeeksi riittävän
+          pätevyyden. Jokainen johtoon kuuluva henkilö opiskelee yliopistossa
+          tai/ja omatoimisesti omaan rooliin liittyviä asioita, joten osaamista
+          ja tietämystä karttuu koko ajan lisää.
         </FAQitem>
 
         <FAQitem title="Onko yritysjohtoon mahdollista päästä johonkin rooliin?">
           Kyllä. Mikäli sinulta löytyy halua, osaamista sekä ideoita, voit ottaa
           yhteyttä yrityksen operatiiviseen johtoon ja ilmoittaa halukkuutesi jo
-          olemassa olevaan rooliin tai ehdottaa jotain uutta roolia. Yritysjohto
-          sitten arvioi onko uusille rooleille tai roolin vaihdoille tarvetta
-          tai perusteita.
+          olemassa olevaan rooliin tai ehdottaa jotain uutta roolia. Yhtiöjohto
+          arvioi onko uusille rooleille tai roolin vaihdoille tarvetta tai
+          perusteita.
         </FAQitem>
 
         <FAQitem title="Mitä yritysjohdolle maksetaan?">
@@ -260,18 +319,23 @@ export default function Home({ transaction_data }) {
           hyväksymällä oikeudella ostaa yhtiön hallussa olevia osakkeita
           suunnilleen yhtiön matemaattisen arvon mukaisesti.
         </FAQitem>
+
         <FAQitem title="Mitä riskejä sijoituksella on?">
-          Riskit ovat pitkälti samat kuin missä hyvänsä arvopaperisijoituksessa.
+          Riskit ovat pitkälti samat kuin missä tahansa arvopaperisijoituksessa.
           Pyrimme räväkkään ja keskivertoa riskialttiimpaan sijoitustoimintaan,
-          joten tämä on hyvä ottaa huomioon päätöstäsi tehdessä.{" "}
+          joten tämä on hyvä ottaa huomioon päätöstä tehtäessä. Tämän lisäksi
+          listaamattoman arvopaperin likviditeetti on luonnollisesti huomattavan
+          heikko verrattuna julkisesti listattuihin tuotteisiin.
         </FAQitem>
+
         <FAQitem title="Miksi Evon Capital pyrkii keräämään jatkuvasti uutta pääomaa?">
           Vaikka pääoman määrä ei ole itseisarvo, niin sen kerääminen on
           kuitenkin meille oleellista, sillä se luo uusia mahdollisuuksia.
           Esimerkiksi lainan hakeminen ja sen mahdolliset ehdot paranevat.
-          Yksittäisten transaktioiden kulut laskevat ja kiinteiden kulujen suhde
-          pääomaan paranee. Myös kiinteistösijoitus -projektin kannalta pääoman
-          kartuttaminen on kriittistä.
+          Yksittäisten transaktioiden suhteelliset kulut laskevat ja kiinteiden
+          kulujen suhde pääomaan paranee. Myös tulevaisuuden sijoitusprojektien
+          (esim. kiinteistösijoittaminen) kannalta pääoman kartuttaminen on
+          kriittistä.
         </FAQitem>
       </Section>
 

@@ -7,6 +7,7 @@ import { useState } from "react";
 
 import PageWrapper from "@components/pagewrapper";
 import PortalNav from "@components/portal/portalnav";
+import Footer from "@components/footer";
 
 import Arrow from "../public/arrow.svg";
 
@@ -68,6 +69,7 @@ export default function Login() {
           </div>
         </div>
       </div>
+      <Footer />
     </PageWrapper>
   );
 }

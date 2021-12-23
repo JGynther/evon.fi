@@ -2,11 +2,14 @@ import Head from "next/head";
 
 import PageWrapper from "@components/pagewrapper";
 import PortalNav from "@components/portal/portalnav";
+import Footer from "@components/footer";
 import FormComponent from "components/portal/form";
 
 import { getSession } from "next-auth/client";
+import { getNumberSold } from "@lib/fetchdata";
 
-export default function Yhtiokokous() {
+export default function Yhtiokokous({ number_sold }) {
+  console.log(number_sold);
   return (
     <PageWrapper>
       <Head>
@@ -26,6 +29,8 @@ export default function Yhtiokokous() {
                 
                 Yhtiökokoukseen sekä osakasjuhlaan osallistuminen ovat luonnollisesti maksuttomia. Ainoastaan yöpymismahdollisuus maksaa.
 
+                Yöpymislippuja saatavilla ${30 - number_sold} / 30 kpl
+
                 Tl;dr: 
                 ❓\u00A0\u00A0\u00A0 Mitä: varsinainen yhtiökokous
                 🏢\u00A0\u00A0\u00A0 Missä: Aulangon suuri huvila, Aulangon-heikkilän tie 168, 13900 Hämeenlinna
@@ -44,7 +49,7 @@ export default function Yhtiokokous() {
           Sähköposti: {
             default: "",
             placeholder: "mikko.mallikas@evon.fi",
-            help: "",
+            help: "Saat vahvistuksen ja lisätietoja tänne.",
             type: "email",
           },
           Puhelin: {
@@ -56,7 +61,9 @@ export default function Yhtiokokous() {
           Majoitus: {
             default: "false",
             placeholder: null,
-            help: "Haluan majoituksen 8. - 9.2. väliseksi yöksi ( 23,00 EUR sis.alv. )",
+            help: `Haluan majoituksen 8. - 9.2. väliseksi yöksi. Hinta 23,00 EUR (${
+              30 - number_sold
+            } / 30 saatavilla)`,
             type: "checkbox",
           },
           Ruokavalio: {
@@ -68,6 +75,7 @@ export default function Yhtiokokous() {
         }}
         submitCode="6554"
       />
+      <Footer />
     </PageWrapper>
   );
 }
@@ -84,7 +92,9 @@ export async function getServerSideProps(context) {
     };
   }
 
+  const number_sold = await getNumberSold();
+
   return {
-    props: { session },
+    props: { session, number_sold },
   };
 }
