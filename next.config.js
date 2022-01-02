@@ -16,7 +16,7 @@ module.exports = {
     return [
       {
         source: "/qr",
-        destination: "/osakeanti",
+        destination: "/",
         permanent: true,
       },
     ];

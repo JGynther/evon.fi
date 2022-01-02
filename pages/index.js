@@ -31,13 +31,13 @@ export default function Home({ transaction_data }) {
       <main className="flex justify-center items-center text-center mx-5">
         <div className="max-w-screen-md">
           <h1 className="text-4xl md:text-6xl font-bold tracking-wide md:my-8 opacity-100">
-            Ole omistaja, älä pelkkä sijoittaja.
+            Ole opportunisti, älä pelkkä sijoittaja.
           </h1>
 
           <h2 className="my-3 md:text-lg opacity-80">
             Evon Capital on erittäin tuottohakuisten piensijoittajien
-            yhteisyritys, joka sijoittaa varojaan pitkällä aikavälillä. Yhtiö
-            yhdistää niin osakkaidensa varat kuin osaamisen — ja hakee
+            yhteisyritys, joka sijoittaa varojaan pitkällä aikahorisontilla.
+            Yhtiö yhdistää niin osakkaidensa varat kuin osaamisen — ja hakee
             markkinoihin nähden ylituottoa tällä synergialla.
           </h2>
 
@@ -45,7 +45,7 @@ export default function Home({ transaction_data }) {
             Kiinnostaako lähteä mukaan? 👇
           </h2>
 
-          <LinkButton href="/osakeanti">Osallistu osakeantiin</LinkButton>
+          <LinkButton href="/">Liity odotuslistalle</LinkButton>
 
           <div className="text-white text-opacity-60 text-center my-2">
             <p>Lue lisää</p>
@@ -378,10 +378,11 @@ function FAQitem({ title, startsOpen, children }) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const [portfolio_data, transaction_data] = await fetchData();
 
   return {
     props: { transaction_data },
+    revalidate: 600,
   };
 }
