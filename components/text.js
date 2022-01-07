@@ -16,11 +16,20 @@ export function Subtitle({ children }) {
   );
 }
 
-export function Prose({ children, large, italic, whitespacepreline }) {
+export function Prose({
+  children,
+  noMargin,
+  large,
+  small,
+  italic,
+  whitespacepreline,
+}) {
   return (
     <p
-      className={`opacity-80 mt-5 max-w-prose 
+      className={`opacity-80 max-w-prose
+        ${noMargin ? "" : "mt-5"} 
         ${large ? "text-lg" : ""}
+        ${small ? "text-sm" : ""}
         ${italic ? "italic" : ""}
         ${whitespacepreline ? "whitespace-pre-line" : ""}
       `}

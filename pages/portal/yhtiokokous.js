@@ -9,7 +9,6 @@ import { getSession } from "next-auth/client";
 import { getNumberSold } from "@lib/fetchdata";
 
 export default function Yhtiokokous({ number_sold }) {
-  console.log(number_sold);
   return (
     <PageWrapper>
       <Head>
@@ -67,7 +66,7 @@ export default function Yhtiokokous({ number_sold }) {
             type: "checkbox",
           },
           Ruokavalio: {
-            default: "",
+            default: "-",
             placeholder: "Pähkinäallergia, vegaani...",
             help: "Mahdolliset erikoisruokavaliot tai allergiat, vastaa ” - ” jos ei mitään.",
             type: "text",

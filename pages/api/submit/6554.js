@@ -1,4 +1,4 @@
-const { GoogleSpreadsheet } = require("google-spreadsheet");
+import { getGoogleSheet } from "@lib/googleUtils";
 const axios = require("axios").default;
 
 export default async function handler(req, res) {
@@ -13,15 +13,7 @@ export default async function handler(req, res) {
     res.status(400).json();
   } else {
     try {
-      const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEETS_6554_ID);
-
-      await doc.useServiceAccountAuth({
-        client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-        private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n"),
-      });
-
-      await doc.loadInfo();
-      const sheet = doc.sheetsByIndex[0];
+      const sheet = await getGoogleSheet(process.env.GOOGLE_SHEETS_6554_ID, 0);
 
       await sheet.addRow({
         Nimi: data.Nimi,

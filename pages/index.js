@@ -45,14 +45,7 @@ export default function Home({ transaction_data }) {
             Kiinnostaako lähteä mukaan? 👇
           </h2>
 
-          <LinkButton href="/">Liity odotuslistalle</LinkButton>
-
-          <div className="text-white text-opacity-60 text-center my-2">
-            <p>Lue lisää</p>
-            <span className="flex justify-center animate-bounce my-3">
-              <Arrow className="transform rotate-90 scale-125 fill-current" />
-            </span>
-          </div>
+          <LinkButton href="/waitlist">Liity odotuslistalle</LinkButton>
         </div>
       </main>
 
@@ -81,13 +74,7 @@ export default function Home({ transaction_data }) {
         <Prose large>
           Yhtiömme pyrkii myös perinteisen markkina-analyysin sekä sijoittamisen
           ohella tuottamaan omistajilleen lisäarvoa erilaisilla tapahtumilla ja
-          projekteilla, joihin lukeutuu esimerkiksi tämänhetkinen
-          koneoppimisprojekti. Sen tarkoituksena on pystyä lähitulevaisuudessa
-          analysoimaan markkinoita tekoälyn avulla ja reagoida tämän analyysin
-          perusteella nopeasti osakkeiden markkina-arvojen heilahteluihin.
-          Tekoälyn on tarkoitus arvioida uutisten, Twitterin ja esimerkiksi
-          onnettomuuksien vaikutuksia osakekurssiin nopeammin kuin ihminen
-          pystyy tiedon käsittelemään.
+          projekteilla.
         </Prose>
       </Section>
 
@@ -339,13 +326,6 @@ export default function Home({ transaction_data }) {
         </FAQitem>
       </Section>
 
-      <Section>
-        <div className="py-10 px-5 bg-gray-800 rounded shadow grid justify-center text-center">
-          <Title noMargin>Oletko valmis sijoittamaan?</Title>
-          <LinkButton href="/osakeanti">Osallistu osakeantiin</LinkButton>
-        </div>
-      </Section>
-
       <Footer />
     </PageWrapper>
   );
@@ -383,6 +363,6 @@ export async function getStaticProps() {
 
   return {
     props: { transaction_data },
-    revalidate: 600,
+    revalidate: 86400, // Update every 24 hours
   };
 }

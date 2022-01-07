@@ -19,16 +19,22 @@ export function LinkButton({ href, children }) {
   );
 }
 
-export function Button({ onClick, children }) {
+export function Button({ onClick, children, ...props }) {
   return (
     <button
       onClick={onClick}
-      className="
+      className={`
         bg-indigo-500 py-3 px-5 my-2 rounded tracking-wider text-lg my-8 font-normal
-        transition hover:bg-indigo-700 focus:ring group text-center
-      "
+        transition focus:ring text-center
+        ${
+          props.disabled
+            ? "opacity-50 cursor-not-allowed"
+            : "group hover:bg-indigo-700"
+        }
+      `}
+      {...props}
     >
-      <span className="flex items-center">
+      <span className="flex justify-center items-center">
         {children}
         <Arrow className="transition transform group-hover:translate-x-1" />
       </span>
