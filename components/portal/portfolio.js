@@ -2,7 +2,7 @@ import { Title } from "@components/text";
 
 export default function Portfolio({ data }) {
   return (
-    <section className="grid justify-center overflow-hidden m-5 text-center">
+    <section className="grid justify-center overflow-hidden m-5 text-center text-sm">
       <Title>Yhtiön (osake)salkku</Title>
       <div className="overflow-x-auto rounded">
         <table className="border-2 border-indigo-500">

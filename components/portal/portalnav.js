@@ -1,12 +1,16 @@
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/router";
+
 import BackArrowButton from "../backarrowbutton";
 import { Button } from "@components/button";
 import Logo from "../../public/logo.png";
 
-import { signOut } from "next-auth/client";
-
 export default function PortalNav({ noSignout }) {
+  const router = useRouter();
+  const signOut = () => {
+    router.push("/signout");
+  };
   return (
     <nav>
       <div className="flex flex-wrap justify-between items-center mx-5 md:mx-24 pt-8 md:py-8">
@@ -33,7 +37,7 @@ export default function PortalNav({ noSignout }) {
           </Link>
         </div>
         {!noSignout && (
-          <div>
+          <div className="flex flex-grow md:flex-grow-0 justify-center">
             <Button onClick={signOut}>Kirjaudu ulos</Button>
           </div>
         )}

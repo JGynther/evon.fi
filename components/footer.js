@@ -6,6 +6,9 @@ export default function Footer() {
       <div className="opacity-80">
         <p>©{new Date().getFullYear()} - Evon Group</p>
         <div className="flex flex-col md:flex-row gap-5 mb-10 mt-5">
+          <Link href="/portal" passHref>
+            <a className="transition hover:text-indigo-500">Omistajaportaali</a>
+          </Link>
           <Link href="/tietosuojaseloste.pdf" passHref>
             <a target="_blank" className="transition hover:text-indigo-500">
               Tietosuojaseloste
@@ -13,9 +16,6 @@ export default function Footer() {
           </Link>
           <Link href="/contact" passHref>
             <a className="transition hover:text-indigo-500">Yhteystiedot</a>
-          </Link>
-          <Link href="/portal" passHref>
-            <a className="transition hover:text-indigo-500">Omistajaportaali</a>
           </Link>
         </div>
       </div>

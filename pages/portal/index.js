@@ -1,24 +1,29 @@
+import { fetchData } from "@lib/fetchdata";
+import { supabase } from "@lib/supabase";
+
 import Head from "next/head";
+import Link from "next/link";
 
 import PageWrapper from "@components/pagewrapper";
 import Banner from "@components/banner";
-
-import RSSFeed from "@components/portal/rss";
 import TransactionTable from "@components/portal/transactiontable";
 import PortalNav from "@components/portal/portalnav";
 import Portfolio from "@components/portal/portfolio";
 import Footer from "@components/footer";
 
-import { fetchData } from "@lib/fetchdata";
-
-import { getSession } from "next-auth/client";
-
-export default function App({ portfolio_data, transaction_data, rss_data }) {
+export default function App({ user, portfolio_data, transaction_data }) {
   return (
     <PageWrapper>
       <Head>
         <title>Omistajaportaali - Evon Capital</title>
       </Head>
+
+      <div className="grid justify-center text-center py-2 bg-indigo-500 bg-opacity-50 text-lg tracking-wider">
+        <p>Kirjautuneena sisään tunnuksella: {user.email}</p>
+        <Link href="/portal/profile" passHref>
+          <a className="underline">Profiiliin tästä</a>
+        </Link>
+      </div>
 
       <PortalNav />
 
@@ -35,7 +40,6 @@ export default function App({ portfolio_data, transaction_data, rss_data }) {
 
       <div className="flex flex-wrap justify-center">
         <TransactionTable data={transaction_data} />
-        <RSSFeed data={rss_data} />
       </div>
 
       <Portfolio data={portfolio_data} />
@@ -45,12 +49,10 @@ export default function App({ portfolio_data, transaction_data, rss_data }) {
   );
 }
 
-import Parser from "rss-parser";
+export async function getServerSideProps({ req }) {
+  const { user } = await supabase.auth.api.getUserByCookie(req);
 
-export async function getServerSideProps(context) {
-  const session = await getSession(context);
-
-  if (!session) {
+  if (!user) {
     return {
       redirect: {
         destination: "/login",
@@ -61,11 +63,7 @@ export async function getServerSideProps(context) {
 
   const [portfolio_data, transaction_data] = await fetchData();
 
-  let parser = new Parser();
-  const res = await parser.parseURL("https://feeds.kauppalehti.fi/rss/klnyt");
-  const rss_data = res.items.slice(0, 5);
-
   return {
-    props: { session, portfolio_data, transaction_data, rss_data },
+    props: { user, portfolio_data, transaction_data },
   };
 }

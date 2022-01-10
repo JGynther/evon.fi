@@ -25,11 +25,13 @@ export function Button({ onClick, children, ...props }) {
       onClick={onClick}
       className={`
         bg-indigo-500 py-3 px-5 my-2 rounded tracking-wider text-lg my-8 font-normal
-        transition focus:ring text-center
+        transition text-center
         ${
           props.disabled
             ? "opacity-50 cursor-not-allowed"
-            : "group hover:bg-indigo-700"
+            : props.text
+            ? "group bg-transparent hover:underline my-0"
+            : "focus:ring group hover:bg-indigo-700"
         }
       `}
       {...props}

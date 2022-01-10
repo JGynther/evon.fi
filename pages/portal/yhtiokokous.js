@@ -5,7 +5,7 @@ import PortalNav from "@components/portal/portalnav";
 import Footer from "@components/footer";
 import FormComponent from "components/portal/form";
 
-import { getSession } from "next-auth/client";
+import { supabase } from "@lib/supabase";
 import { getNumberSold } from "@lib/fetchdata";
 
 export default function Yhtiokokous({ number_sold }) {
@@ -79,13 +79,13 @@ export default function Yhtiokokous({ number_sold }) {
   );
 }
 
-export async function getServerSideProps(context) {
-  const session = await getSession(context);
+export async function getServerSideProps({ req }) {
+  const { user } = await supabase.auth.api.getUserByCookie(req);
 
-  if (!session) {
+  if (!user) {
     return {
       redirect: {
-        destination: `/login?callbackUrl=${process.env.NEXTAUTH_URL}/portal/yhtiokokous`,
+        destination: "/login",
         permanent: false,
       },
     };
@@ -94,6 +94,6 @@ export async function getServerSideProps(context) {
   const number_sold = await getNumberSold();
 
   return {
-    props: { session, number_sold },
+    props: { number_sold },
   };
 }

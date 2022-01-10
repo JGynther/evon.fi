@@ -1,30 +1,48 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-import { signIn } from "next-auth/client";
+import { supabase } from "@lib/supabase";
+import { parseEmailString } from "@lib/stringUtils";
 
 import { useState } from "react";
 
 import PageWrapper from "@components/pagewrapper";
 import PortalNav from "@components/portal/portalnav";
 import Footer from "@components/footer";
-
-import Arrow from "../public/arrow.svg";
+import { Button } from "@components/button";
 
 export default function Login() {
   const router = useRouter();
-  const { callbackUrl, error } = router.query;
+  const { callbackUrl } = router.query;
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState(true);
+  const [didSubmit, setDidSubmit] = useState(false);
 
-  const handleSignIn = () => {
-    signIn("credentials", {
-      callbackUrl: callbackUrl || `${process.env.NEXTAUTH_URL}/portal`,
-      username: username,
-      password: password,
-    });
+  async function supabaseSignIn({ email }) {
+    const { error } = await supabase.auth.signIn({ email });
+  }
+
+  const handleSignIn = (e) => {
+    e.preventDefault();
+    supabaseSignIn({ email });
+    setDidSubmit(true);
   };
+
+  if (didSubmit) {
+    return (
+      <PageWrapper>
+        <Head>
+          <title>Login - Evon Capital</title>
+        </Head>
+        <PortalNav noSignout />
+        <div className="flex justify-center tracking-wider text-xl">
+          Sähköpostiisi on lähetetty kirjautumislinkki. Voit sulkea tämän sivun.
+        </div>
+        <Footer />
+      </PageWrapper>
+    );
+  }
 
   return (
     <PageWrapper>
@@ -34,39 +52,26 @@ export default function Login() {
       <div>
         <PortalNav noSignout />
         <div className="flex justify-center">
-          <div className="flex-grow max-w-xs md:max-w-md">
+          <form
+            onSubmit={handleSignIn}
+            className="grid flex-grow max-w-xs md:max-w-md"
+          >
             {error === "invalidCredentials" && (
               <div className="bg-indigo-500 bg-opacity-50 text-white text-center text-opacity-80 tracking-wider rounded p-5 my-10">
                 Virheellinen käyttäjätunnus tai salasana.
               </div>
             )}
             <Input
-              label="Käyttäjätunnus"
-              value={username}
-              setValue={setUsername}
+              label="Sähköpostiosoite"
+              value={email}
+              setValue={setEmail}
+              error={error}
+              setError={setError}
             />
-            <Input
-              label="Salasana"
-              type="password"
-              value={password}
-              setValue={setPassword}
-            />
-            <div className="flex flex-grow justify-center">
-              <button
-                onClick={handleSignIn}
-                className="
-                  flex-grow bg-indigo-500 py-3 px-5 mt-2
-                  rounded tracking-wider text-lg font-normal
-                  transition hover:bg-indigo-700 focus:ring group text-center
-                "
-              >
-                <span className="flex justify-center items-center">
-                  Kirjaudu sisään{" "}
-                  <Arrow className="transition transform group-hover:translate-x-1" />
-                </span>
-              </button>
-            </div>
-          </div>
+            <Button type="submit" disabled={error}>
+              Kirjaudu sisään
+            </Button>
+          </form>
         </div>
       </div>
       <Footer />
@@ -74,16 +79,41 @@ export default function Login() {
   );
 }
 
-function Input({ label, type, value, setValue }) {
+function Input({ label, htmlFor, value, setValue, error, setError }) {
+  const [visited, setVisited] = useState(false);
+
+  const handleBlur = () => setVisited(true);
+
+  const handleChange = (e) => {
+    setValue(e.target.value);
+    setError(parseEmailString(e.target.value) === null);
+  };
+
   return (
-    <div className="grid my-2">
-      <label className="text-lg tracking-wider">{label}</label>
+    <>
+      <label htmlFor={htmlFor} className="text-lg tracking-wider">
+        {label}
+      </label>
       <input
-        type={type || "text"}
+        type="email"
         value={value}
-        onInput={(e) => setValue(e.target.value)}
-        className="flex-grow py-2 px-3 my-1 rounded bg-gray-800 shadow tracking-wider outline-none"
+        onChange={handleChange}
+        onBlur={handleBlur}
+        autoFocus
+        id="email"
+        className={`py-2 px-3 my-1 rounded bg-gray-800 shadow tracking-wider outline-none transition focus:ring-2 focus:ring-indigo-500 ${
+          visited
+            ? error
+              ? "ring-2 ring-red-700"
+              : "ring-2 ring-green-700"
+            : ""
+        }`}
       />
-    </div>
+      {visited && error && (
+        <p className="text-red-700 tracking-wider">
+          Virheellinen sähköpostiosoite.
+        </p>
+      )}
+    </>
   );
 }
