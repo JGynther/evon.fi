@@ -20,10 +20,7 @@ export default function Login() {
   const [didSubmit, setDidSubmit] = useState(false);
 
   async function supabaseSignIn({ email }) {
-    const { data, error } = await supabase.auth.signIn(
-      { email },
-      { redirectTo: "http://localhost:3000" }
-    );
+    const { data, error } = await supabase.auth.signIn({ email });
     console.log(data, error);
   }
 
