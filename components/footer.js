@@ -9,6 +9,9 @@ export default function Footer() {
           <Link href="/portal" passHref>
             <a className="transition hover:text-indigo-500">Omistajaportaali</a>
           </Link>
+          <Link href="/blog" passHref>
+            <a className="transition hover:text-indigo-500">Blogi</a>
+          </Link>
           <Link href="/tietosuojaseloste.pdf" passHref>
             <a target="_blank" className="transition hover:text-indigo-500">
               Tietosuojaseloste

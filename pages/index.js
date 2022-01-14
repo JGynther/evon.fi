@@ -1,11 +1,9 @@
 import "tailwindcss/tailwind.css";
 
-import { useState, useEffect } from "react";
-import { supabase } from "@lib/supabase";
+import { useState } from "react";
 
 import Head from "next/head";
 import Link from "next/link";
-import { useRouter } from "next/router";
 
 import { fetchData } from "@lib/fetchdata";
 
@@ -19,15 +17,12 @@ import TransactionTable from "@components/portal/transactiontable";
 import Footer from "@components/footer";
 
 export default function Home({ transaction_data }) {
-  const user = supabase.auth.user();
   return (
     <PageWrapper>
       <Head>
         <title>Evon Capital</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <LoggedInWidget email={user?.email} />
 
       <Navigation />
 
@@ -361,18 +356,6 @@ function FAQitem({ title, startsOpen, children }) {
       </div>
     </div>
   );
-}
-
-function LoggedInWidget({ email }) {
-  if (email) {
-    return (
-      <div className="flex justify-center py-2 px-4 bg-indigo-500 bg-opacity-50 text-lg tracking-wider">
-        Kirjautuneena sisään tunnuksella: {email}
-      </div>
-    );
-  }
-
-  return null;
 }
 
 export async function getStaticProps() {
