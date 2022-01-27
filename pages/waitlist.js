@@ -1,45 +1,36 @@
 import { useState } from "react";
 
-import Head from "next/head";
-
-import PageWrapper from "@components/pagewrapper";
+import Layout from "@components/layout";
+import Section from "@components/layout/section";
 import { Title, Subtitle, Prose } from "@components/text";
 import OpenNewTabButton from "@components/opennewtabbutton";
 import { Button } from "@components/button";
-import Navigation from "@components/nav";
-import Footer from "@components/footer";
 
 import { parseEmailString } from "@lib/stringUtils";
 
 export default function Page({}) {
   return (
-    <PageWrapper>
-      <Head>
-        <title>Evon Capital - Waitlist</title>
-      </Head>
-      <Navigation />
-      <section className="container mx-auto my-10">
-        <div className="flex flex-wrap md:flex-nowrap gap-10 mx-4 max-w-screen-lg">
-          <div className="max-w-lg">
-            <Subtitle>Osakeannit</Subtitle>
-            <Title>Odotuslista</Title>
-            <Prose large>
-              Meillä ei tällä hetkellä ole käynnissä osakeantia. Mikäli olet
-              kuitenkin kiinnostunut osallistumaan, kannattaa liittyä meidän
-              odotuslistalle! Saat tiedon ensimmäisenä seuraavasta osakeannista
-              sähköpostitse.
-            </Prose>
-          </div>
+    <Layout title="Waitlist - Evon Capital">
+      <Section>
+        <div className="">
+          <Subtitle>Osakeannit</Subtitle>
+          <Title>Odotuslista</Title>
+          <Prose large>
+            Meillä ei tällä hetkellä ole käynnissä osakeantia. Mikäli olet
+            kuitenkin kiinnostunut osallistumaan, kannattaa liittyä meidän
+            odotuslistalle! Saat tiedon ensimmäisenä seuraavasta osakeannista
+            sähköpostitse.
+          </Prose>
           <Form />
         </div>
-      </section>
-      <Footer />
-    </PageWrapper>
+      </Section>
+    </Layout>
   );
 }
 
 function Form() {
   const [value, setValue] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [didSubmit, setDidSubmit] = useState(false);
   const [error, setError] = useState(true);
   const [submitError, setSubmitError] = useState(null);
@@ -48,6 +39,8 @@ function Form() {
     e.preventDefault();
 
     if (value === "") return;
+
+    setIsSubmitting(true);
 
     const response = await fetch("/api/waitlist", {
       method: "POST",
@@ -65,37 +58,37 @@ function Form() {
   };
 
   return (
-    <div className="flex flex-grow justify-center">
-      <div className="flex-grow">
-        {!didSubmit ? (
-          <form onSubmit={handleSubmit}>
-            <div className="grid">
-              <Input
-                value={value}
-                setValue={setValue}
-                error={error}
-                setError={setError}
-              />
-              <Button type="submit" disabled={error}>
-                Liity odotuslistalle
-              </Button>
-            </div>
-          </form>
-        ) : (
-          <Title>
-            {submitError
-              ? "Sähköpostilistaan liittymisessä tapahtui virhe. Kokeile uudestaan."
-              : "Sähköpostilistaan liityminen onnistui!"}
-          </Title>
-        )}
-        <Prose noMargin small>
-          Liittymällä listalle hyväksyt tietosuojaselosteemme mukaisen tietojesi
-          käsittelyn.
-        </Prose>
-        <OpenNewTabButton href="/tietosuojaseloste.pdf">
-          Tietosuojaseloste
-        </OpenNewTabButton>
-      </div>
+    <div className="max-w-lg mt-10">
+      {!didSubmit ? (
+        <form onSubmit={handleSubmit}>
+          <div className="grid">
+            <Input
+              value={value}
+              setValue={setValue}
+              error={error}
+              setError={setError}
+            />
+            <Button
+              type="submit"
+              disabled={error || isSubmitting}
+              loading={isSubmitting}
+            >
+              Liity odotuslistalle
+            </Button>
+          </div>
+        </form>
+      ) : (
+        <Title>
+          {submitError
+            ? "Sähköpostilistaan liittymisessä tapahtui virhe. Kokeile uudestaan."
+            : "Sähköpostilistaan liityminen onnistui!"}
+        </Title>
+      )}
+      <Prose noMargin small>
+        Liittymällä listalle hyväksyt tietosuojaselosteemme mukaisen tietojesi
+        käsittelyn.
+      </Prose>
+      <OpenNewTabButton href="/tietosuoja">Tietosuojaseloste</OpenNewTabButton>
     </div>
   );
 }
@@ -120,7 +113,6 @@ function Input({ value, setValue, error, setError }) {
         value={value}
         onChange={handleChange}
         onBlur={handleBlur}
-        autoFocus
         id="email"
         className={`py-2 px-3 my-1 rounded bg-gray-800 shadow tracking-wider outline-none transition focus:ring-2 focus:ring-indigo-500 ${
           visited

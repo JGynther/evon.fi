@@ -1,5 +1,17 @@
 import Link from "next/link";
-import Arrow from "../public/arrow.svg";
+import Image from "next/image";
+import Spinner from "@components/spinner";
+import { bucket } from "@lib/supabase";
+
+const Arrow = () => (
+  <Image
+    src={`${bucket}/arrow.svg`}
+    alt=""
+    className="transition transform group-hover:translate-x-1 text-white"
+    width={24}
+    height={24}
+  />
+);
 
 export function LinkButton({ href, children }) {
   return (
@@ -12,14 +24,14 @@ export function LinkButton({ href, children }) {
       >
         <span className="flex items-center justify-center">
           {children}
-          <Arrow className="transition transform group-hover:translate-x-1" />
+          <Arrow />
         </span>
       </button>
     </Link>
   );
 }
 
-export function Button({ onClick, children, ...props }) {
+export function Button({ onClick, loading, children, ...props }) {
   return (
     <button
       onClick={onClick}
@@ -37,8 +49,9 @@ export function Button({ onClick, children, ...props }) {
       {...props}
     >
       <span className="flex justify-center items-center">
+        {loading && <Spinner classProps="mr-3" />}
         {children}
-        <Arrow className="transition transform group-hover:translate-x-1" />
+        <Arrow />
       </span>
     </button>
   );

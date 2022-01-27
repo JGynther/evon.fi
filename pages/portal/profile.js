@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import { supabase } from "@lib/supabase";
 import { useRouter } from "next/router";
-import Head from "next/head";
 
-import PageWrapper from "@components/pagewrapper";
-import PortalNav from "@components/portal/portalnav";
-import Footer from "@components/footer";
+import Layout from "@components/layout";
+import Section from "@components/layout/section";
+import Loading from "@components/layout/loading";
 import { Button } from "@components/button";
 
 export default function Profile({ user }) {
@@ -47,58 +46,51 @@ export default function Profile({ user }) {
       .insert([{ id: user.id, email: user.email }]);
   }
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loading />;
 
   return (
-    <PageWrapper>
-      <Head>
-        <title>Profile - {userData.email}</title>
-      </Head>
-      <PortalNav />
-      <section className="container mx-auto">
-        <div className="flex justify-center mx-4">
-          <div className="flex-grow max-w-screen-md">
-            <div className="flex justify-between items-center">
-              <p className="text-xl">Profiili</p>
-              <Button text="true" onClick={handleEditing}>
-                {editing ? "Tallenna tiedot" : "Muokkaa tietoja"}
-              </Button>
-            </div>
-
-            <div className="bg-indigo-500 bg-opacity-50 my-5 py-2 rounded text-center text-xl tracking-wider">
-              {editing
-                ? 'Tallentaaksesi, klikkaa "Tallenna tiedot"'
-                : 'Muokataksesi tietoja, klikkaa "Muokkaa tietoja"'}
-            </div>
-
-            <form className="grid gap-5">
-              <Field name="email" data={userData} label="Sähköpostiosoite" />
-              {[
-                { type: "tel", name: "phone", label: "Puhelinnumero" },
-                { name: "firstname", label: "Etunimi" },
-                { name: "middlenames", label: "Toiset nimet" },
-                { name: "lastname", label: "Sukunimi" },
-                { name: "address", label: "Lähiosoite" },
-                { name: "postalcode", label: "Postinumero" },
-                { name: "city", label: "Kaupunki" },
-                { name: "country", label: "Maa" },
-              ].map((obj) => (
-                <Field
-                  key={obj.name}
-                  type={obj.type || "text"}
-                  name={obj.name}
-                  didChange={setDidChange}
-                  data={userData}
-                  label={obj.label}
-                  editing={editing}
-                />
-              ))}
-            </form>
+    <Layout title="Profile - Evon capital" portal>
+      <Section>
+        <div className="flex-grow max-w-screen-md">
+          <div className="flex justify-between items-center">
+            <p className="text-xl">Profiili</p>
+            <Button text="true" onClick={handleEditing}>
+              {editing ? "Tallenna tiedot" : "Muokkaa tietoja"}
+            </Button>
           </div>
+
+          <div className="bg-indigo-500 bg-opacity-50 my-5 py-2 rounded text-center text-xl tracking-wider">
+            {editing
+              ? 'Tallentaaksesi, klikkaa "Tallenna tiedot"'
+              : 'Muokataksesi tietoja, klikkaa "Muokkaa tietoja"'}
+          </div>
+
+          <form className="flex-grow grid gap-5">
+            <Field name="email" data={userData} label="Sähköpostiosoite" />
+            {[
+              { type: "tel", name: "phone", label: "Puhelinnumero" },
+              { name: "firstname", label: "Etunimi" },
+              { name: "middlenames", label: "Toiset nimet" },
+              { name: "lastname", label: "Sukunimi" },
+              { name: "address", label: "Lähiosoite" },
+              { name: "postalcode", label: "Postinumero" },
+              { name: "city", label: "Kaupunki" },
+              { name: "country", label: "Maa" },
+            ].map((obj) => (
+              <Field
+                key={obj.name}
+                type={obj.type || "text"}
+                name={obj.name}
+                didChange={setDidChange}
+                data={userData}
+                label={obj.label}
+                editing={editing}
+              />
+            ))}
+          </form>
         </div>
-      </section>
-      <Footer />
-    </PageWrapper>
+      </Section>
+    </Layout>
   );
 }
 
@@ -108,14 +100,14 @@ function Field({ data, didChange, name, editing, label, type }) {
     didChange(true);
   };
   return (
-    <div className="grid md:flex flex-grow flex-wrap items-center md:justify-between">
-      <label className="text-lg">{label}</label>
+    <div className="grid gap-1 md:gap-0 md:flex flex-grow flex-wrap items-center md:justify-between">
+      <label className="text-lg tracking-wider">{label}</label>
       <input
         type={type || "text"}
         disabled={!editing}
         defaultValue={data[name]}
         onChange={handleChange}
-        className={`py-1 px-4 rounded bg-gray-800 text-xl text-white ${
+        className={`flex-grow max-w-sm py-1 px-4 rounded bg-gray-800 text-xl text-white tracking-wider ${
           editing ? "" : "cursor-not-allowed text-opacity-50"
         }`}
       />

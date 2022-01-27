@@ -1,13 +1,10 @@
-import Head from "next/head";
 import { useRouter } from "next/router";
 
 import { supabase } from "@lib/supabase";
 
 import { useEffect } from "react";
 
-import PageWrapper from "@components/pagewrapper";
-import PortalNav from "@components/portal/portalnav";
-import Footer from "@components/footer";
+import Loading from "@components/layout/loading";
 
 export default function Login() {
   const router = useRouter();
@@ -26,18 +23,5 @@ export default function Login() {
     supabaseSignOut();
   }, []);
 
-  return (
-    <PageWrapper>
-      <Head>
-        <title>Signout - Evon Capital</title>
-      </Head>
-      <div>
-        <PortalNav noSignout />
-        <div className="flex justify-center tracking-wider text-xl">
-          Sinua kirjataan ulos.
-        </div>
-      </div>
-      <Footer />
-    </PageWrapper>
-  );
+  return <Loading text="Sinua kirjataan ulos." />;
 }

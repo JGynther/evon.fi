@@ -16,7 +16,10 @@ export default async function handler(req, res) {
           "h:Reply-To": "Evon Group <info@evon.fi>",
         });
         const sheet = await getGoogleSheet(process.env.GOOGLE_SHEETS_ID, 1);
-        await sheet.addRow({ email: req.body.email });
+        await sheet.addRow({
+          time: new Date().toISOString(),
+          email: req.body.email,
+        });
         res.status(200).json();
       } catch (e) {
         res.status(500).json(e);

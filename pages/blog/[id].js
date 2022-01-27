@@ -1,23 +1,16 @@
 import { supabase } from "@lib/supabase";
 
-import Head from "next/head";
-
-import PageWrapper from "@components/pagewrapper";
-import Navigation from "@components/nav";
-import Footer from "@components/footer";
+import Layout from "@components/layout";
+import Section from "@components/layout/section";
 import { Title, Subtitle, Prose } from "@components/text";
 
 export default function Post({ post }) {
   const categories = post?.categories?.categories;
+  const meta = <meta property="article:published" content={post.created_at} />;
   return (
-    <PageWrapper>
-      <Head>
-        <title>{post.title}</title>
-        <meta property="article:published" content={post.created_at} />
-      </Head>
-      <Navigation />
-      <div className="container mx-auto flex justify-center">
-        <article className="mx-4">
+    <Layout title={post.title} meta={meta}>
+      <Section>
+        <article>
           {categories && (
             <Subtitle>
               <span className="flex gap-4">
@@ -39,16 +32,15 @@ export default function Post({ post }) {
             ))}
           </div>
         </article>
-      </div>
-      <Footer />
-    </PageWrapper>
+      </Section>
+    </Layout>
   );
 }
 
 export async function getStaticPaths() {
   const posts = await supabase
     .from("posts")
-    .select()
+    .select("id")
     .then((r) => r.data);
 
   const paths = posts.map((post) => ({
@@ -67,6 +59,7 @@ export async function getStaticProps({ params }) {
     .select()
     .eq("id", params.id)
     .then((r) => r.data[0]);
+
   return {
     props: { post },
   };

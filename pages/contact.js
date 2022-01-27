@@ -1,31 +1,19 @@
-import PageWrapper from "@components/pagewrapper";
-import Section from "@components/section";
+import Layout from "@components/layout";
+import Section from "@components/layout/section";
 import { Title, Subtitle, Prose } from "@components/text";
-
-import Navigation from "@components/nav";
-import Footer from "@components/footer";
-
-import Head from "next/head";
 
 export default function Contact() {
   return (
-    <PageWrapper>
-      <Head>
-        <title>Yhteystiedot - Evon Capital</title>
-      </Head>
-      <Navigation />
+    <Layout title="Yhteystiedot - Evon Capital">
       <Section>
         <Subtitle>Ota yhteyttä!</Subtitle>
         <Title>Yhteystiedot</Title>
         <div className="flex flex-wrap justify-between items-center">
           <div className="bg-gray-800 rounded shadow px-10 pt-5 pb-8">
             <Subtitle>Yhtiön tiedot</Subtitle>
-            <Prose large>
-              Evon Group (Tree2u Oy) <br /> <br />
-              Y-tunnus: 3094125-8 <br />
-              <br />
-              Rauhankatu 2F 69, 13100 Hämeenlinna
-            </Prose>
+            <Prose large>Evon Group (Tree2u Oy)</Prose>
+            <Prose large>Y-tunnus: 3094125-8</Prose>
+            <Prose large>Rauhankatu 2F 69, 13100 Hämeenlinna</Prose>
           </div>
           <div className="rounded shadow px-10 py-5">
             <Prose large>
@@ -64,7 +52,6 @@ export default function Contact() {
           </div>
         </div>
       </Section>
-      <Footer />
-    </PageWrapper>
+    </Layout>
   );
 }

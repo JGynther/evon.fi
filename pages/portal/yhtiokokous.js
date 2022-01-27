@@ -1,20 +1,14 @@
 import Head from "next/head";
 
-import PageWrapper from "@components/pagewrapper";
-import PortalNav from "@components/portal/portalnav";
-import Footer from "@components/footer";
-import FormComponent from "components/portal/form";
+import Layout from "@components/layout";
+import FormComponent from "@components/portal/form";
 
 import { supabase } from "@lib/supabase";
 import { getNumberSold } from "@lib/fetchdata";
 
 export default function Yhtiokokous({ number_sold }) {
   return (
-    <PageWrapper>
-      <Head>
-        <title>Yhtiökokous - Evon Capital</title>
-      </Head>
-      <PortalNav />
+    <Layout title="Yhtiökokous - Evon Capital" portal>
       <FormComponent
         content={{
           title: "Yhtiökokousilmoitautuminen",
@@ -74,8 +68,7 @@ export default function Yhtiokokous({ number_sold }) {
         }}
         submitCode="6554"
       />
-      <Footer />
-    </PageWrapper>
+    </Layout>
   );
 }
 

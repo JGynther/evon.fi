@@ -4,13 +4,19 @@ import Link from "next/link";
 
 import { supabase } from "@lib/supabase";
 
-import PageWrapper from "@components/pagewrapper";
-import Section from "@components/section";
+import Layout from "@components/layout";
+import Section from "@components/layout/section";
 import { Title, Subtitle } from "@components/text";
-import Navigation from "@components/nav";
-import Footer from "@components/footer";
 
 export default function Blog() {
+  return (
+    <Layout title="Blog - Evon Capital">
+      <Posts />
+    </Layout>
+  );
+}
+
+export function Posts() {
   const [posts, setPosts] = useState(null);
 
   useEffect(() => {
@@ -27,31 +33,23 @@ export default function Blog() {
   };
 
   return (
-    <PageWrapper>
-      <Navigation />
-      <Section>
-        <div className="grid justify-center">
-          <Subtitle>Blogi</Subtitle>
-          <Title>Viimeisimmät blogimme</Title>
-          {posts && (
-            <ul className="grid">
-              {posts.map((post) => (
-                <li key={post.id}>
-                  <Subtitle>
-                    <Link href={`/blog/${post.id}`} passHref>
-                      <a>
-                        {new Date(post.created_at).toLocaleDateString()} -{" "}
-                        {post.title}
-                      </a>
-                    </Link>
-                  </Subtitle>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      </Section>
-      <Footer />
-    </PageWrapper>
+    <Section>
+      <Subtitle>Blogi</Subtitle>
+      <Title>Viimeisimmät blogimme</Title>
+      {posts && (
+        <ul className="grid gap-5">
+          {posts.map((post) => (
+            <li key={post.id}>
+              <Link href={`/blog/${post.id}`} passHref>
+                <a className="text-indigo-500 hover:text-indigo-700 transition tracking-wider text-lg">
+                  {new Date(post.created_at).toLocaleDateString()} -{" "}
+                  {post.title}
+                </a>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
+    </Section>
   );
 }

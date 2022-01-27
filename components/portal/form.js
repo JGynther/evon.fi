@@ -1,8 +1,19 @@
 import { useState } from "react";
+import Image from "next/image";
 import { Formik, Form, useField } from "formik";
-import Arrow from "../../public/arrow.svg";
 import { Title, Subtitle, Prose } from "@components/text";
-import Section from "@components/section";
+import Section from "@components/layout/section";
+import { bucket } from "@lib/supabase";
+
+const Arrow = () => (
+  <Image
+    src={`${bucket}/arrow.svg`}
+    alt=""
+    className="transition transform group-hover:translate-x-1 text-white"
+    width={24}
+    height={24}
+  />
+);
 
 export default function FormComponent({ content, fields, submitCode }) {
   return (

@@ -9,8 +9,15 @@ module.exports = {
     MAILGUN_URL: process.env.MAILGUN_URL,
     NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
     NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+    NEXT_PUBLIC_SUPABASE_BUCKET_URL:
+      process.env.NEXT_PUBLIC_SUPABASE_BUCKET_URL,
   },
   reactStrictMode: true,
+  images: {
+    domains: [
+      process.env.NEXT_PUBLIC_SUPABASE_BUCKET_URL.replace("https://", ""),
+    ],
+  },
   async redirects() {
     return [
       {

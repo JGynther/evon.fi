@@ -2,50 +2,39 @@ import "tailwindcss/tailwind.css";
 
 import { useState } from "react";
 
-import Head from "next/head";
 import Link from "next/link";
 
 import { fetchData } from "@lib/fetchdata";
 
-import PageWrapper from "@components/pagewrapper";
-import Section from "@components/section";
+import Layout from "@components/layout";
+import Section from "@components/layout/section";
 import { Title, Subtitle, Prose } from "@components/text";
 import { LinkButton } from "@components/button";
 
-import Navigation from "@components/nav";
+import { Posts } from "@pages/blog";
 import TransactionTable from "@components/portal/transactiontable";
-import Footer from "@components/footer";
 
 export default function Home({ transaction_data }) {
   return (
-    <PageWrapper>
-      <Head>
-        <title>Evon Capital</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <Layout title="Evon Capital">
+      <Section textcenter>
+        <h1 className="text-4xl md:text-6xl font-bold tracking-wide md:my-8 opacity-100">
+          Ole opportunisti, älä pelkkä sijoittaja.
+        </h1>
 
-      <Navigation />
+        <h2 className="my-3 md:text-lg opacity-80">
+          Evon Capital on erittäin tuottohakuisten piensijoittajien
+          yhteisyritys, joka sijoittaa varojaan pitkällä aikahorisontilla. Yhtiö
+          yhdistää niin osakkaidensa varat kuin osaamisen — ja hakee
+          markkinoihin nähden ylituottoa tällä synergialla.
+        </h2>
 
-      <main className="flex justify-center items-center text-center mx-5">
-        <div className="max-w-screen-md">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-wide md:my-8 opacity-100">
-            Ole opportunisti, älä pelkkä sijoittaja.
-          </h1>
+        <h2 className="mt-8 md:text-lg opacity-80">
+          Kiinnostaako lähteä mukaan? 👇
+        </h2>
 
-          <h2 className="my-3 md:text-lg opacity-80">
-            Evon Capital on erittäin tuottohakuisten piensijoittajien
-            yhteisyritys, joka sijoittaa varojaan pitkällä aikahorisontilla.
-            Yhtiö yhdistää niin osakkaidensa varat kuin osaamisen — ja hakee
-            markkinoihin nähden ylituottoa tällä synergialla.
-          </h2>
-
-          <h2 className="mt-8 md:text-lg opacity-80">
-            Kiinnostaako lähteä mukaan? 👇
-          </h2>
-
-          <LinkButton href="/waitlist">Liity odotuslistalle</LinkButton>
-        </div>
-      </main>
+        <LinkButton href="/waitlist">Liity odotuslistalle</LinkButton>
+      </Section>
 
       <Section>
         <TransactionTable data={transaction_data} />
@@ -75,6 +64,8 @@ export default function Home({ transaction_data }) {
           projekteilla.
         </Prose>
       </Section>
+
+      <Posts />
 
       <Section>
         <Title>Tutustu yhtiöön tarkemmin</Title>
@@ -325,9 +316,7 @@ export default function Home({ transaction_data }) {
           kriittistä.
         </FAQitem>
       </Section>
-
-      <Footer />
-    </PageWrapper>
+    </Layout>
   );
 }
 

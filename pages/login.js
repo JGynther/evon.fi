@@ -6,12 +6,11 @@ import { parseEmailString } from "@lib/stringUtils";
 
 import { useState } from "react";
 
-import PageWrapper from "@components/pagewrapper";
-import PortalNav from "@components/portal/portalnav";
-import Footer from "@components/footer";
+import Layout from "@components/layout";
+import Section from "@components/layout/section";
 import { Button } from "@components/button";
 
-export default function Login() {
+export default function Login({ env }) {
   const router = useRouter();
   const { callbackUrl } = router.query;
 
@@ -19,44 +18,27 @@ export default function Login() {
   const [error, setError] = useState(true);
   const [didSubmit, setDidSubmit] = useState(false);
 
-  async function supabaseSignIn({ email }) {
-    const { data, error } = await supabase.auth.signIn({ email });
-    console.log(data, error);
-  }
-
   const handleSignIn = (e) => {
     e.preventDefault();
-    supabaseSignIn({ email });
+    supabaseSignIn(env, email);
     setDidSubmit(true);
   };
 
   if (didSubmit) {
     return (
-      <PageWrapper>
-        <Head>
-          <title>Login - Evon Capital</title>
-        </Head>
-        <PortalNav noSignout />
+      <Layout title="Login - Evon Capital">
         <div className="flex justify-center tracking-wider text-xl">
           Sähköpostiisi on lähetetty kirjautumislinkki. Voit sulkea tämän sivun.
         </div>
-        <Footer />
-      </PageWrapper>
+      </Layout>
     );
   }
 
   return (
-    <PageWrapper>
-      <Head>
-        <title>Login - Evon Capital</title>
-      </Head>
-      <div>
-        <PortalNav noSignout />
+    <Layout title="Login - Evon Capital">
+      <Section>
         <div className="flex justify-center">
-          <form
-            onSubmit={handleSignIn}
-            className="grid flex-grow max-w-xs md:max-w-md"
-          >
+          <form onSubmit={handleSignIn} className="grid flex-grow max-w-md">
             {error === "invalidCredentials" && (
               <div className="bg-indigo-500 bg-opacity-50 text-white text-center text-opacity-80 tracking-wider rounded p-5 my-10">
                 Virheellinen käyttäjätunnus tai salasana.
@@ -74,9 +56,8 @@ export default function Login() {
             </Button>
           </form>
         </div>
-      </div>
-      <Footer />
-    </PageWrapper>
+      </Section>
+    </Layout>
   );
 }
 
@@ -117,4 +98,24 @@ function Input({ label, htmlFor, value, setValue, error, setError }) {
       )}
     </>
   );
+}
+
+async function supabaseSignIn(env, email) {
+  if (env === "prod") {
+    const { data, error } = await supabase.auth.signIn({ email });
+  } else {
+    const { data, error } = await supabase.auth.signIn(
+      { email },
+      { redirectTo: "http://localhost:3000" }
+    );
+  }
+}
+
+export async function getStaticProps() {
+  const env = process.env.NODE_ENV === "production" ? "prod" : "dev";
+  return {
+    props: {
+      env: env,
+    },
+  };
 }
