@@ -42,6 +42,9 @@ export async function getServerSideProps({ req }) {
     event: "admin_login_users",
     userid: user.id,
     email: user.email,
+    content: {
+      role: userdata[0].role,
+    },
   });
 
   const { data, error } = await supabaseServer.auth.api.listUsers();

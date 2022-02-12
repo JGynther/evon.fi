@@ -32,6 +32,9 @@ export async function getServerSideProps({ req }) {
     event: "admin_login_logs",
     userid: user.id,
     email: user.email,
+    content: {
+      role: userdata[0].role,
+    },
   });
 
   return {
