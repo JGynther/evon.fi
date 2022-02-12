@@ -5,16 +5,16 @@ import PortalNav from "components/portal/portalnav";
 import Navigation from "@components/layout/nav";
 import Footer from "@components/layout/footer";
 
-export default function Layout({ title, meta, portal, user, children }) {
+export default function Layout({ title, meta, noNav, portal, user, children }) {
   return (
     <PageWrapper>
       <Head>
         <title>{title}</title>
         {meta}
       </Head>
-      {portal ? <PortalNav user={user} /> : <Navigation />}
+      {!noNav && (portal ? <PortalNav user={user} /> : <Navigation />)}
       {children}
-      <Footer />
+      {!noNav && <Footer />}
     </PageWrapper>
   );
 }

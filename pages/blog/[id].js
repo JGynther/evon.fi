@@ -13,7 +13,7 @@ export default function Post({ post }) {
         <article>
           {categories && (
             <Subtitle>
-              <span className="flex gap-4">
+              <span className="flex flex-wrap gap-4">
                 {categories.map((category) => (
                   <span key={category}>{category}</span>
                 ))}

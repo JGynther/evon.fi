@@ -1,6 +1,7 @@
 import { getGoogleSheet } from "@lib/googleUtils";
 import { parseEmailString } from "@lib/stringUtils";
 import { sendMail } from "@lib/mail";
+import { createAdminLogEntry } from "@lib/supabase";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
@@ -15,11 +16,21 @@ export default async function handler(req, res) {
           text: "Tämä on vahvistus liittymisestäsi osakeannin odotuslistalle.\n\nTerveisin,\nEvon Groupin tiimi",
           "h:Reply-To": "Evon Group <info@evon.fi>",
         });
+
         const sheet = await getGoogleSheet(process.env.GOOGLE_SHEETS_ID, 1);
+
         await sheet.addRow({
           time: new Date().toISOString(),
           email: req.body.email,
         });
+
+        await createAdminLogEntry({
+          event: "waitlist_join",
+          content: {
+            email: req.body.email,
+          },
+        });
+
         res.status(200).json();
       } catch (e) {
         res.status(500).json(e);

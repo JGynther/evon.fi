@@ -3,7 +3,7 @@ import Image from "next/image";
 import Spinner from "@components/spinner";
 import { bucket } from "@lib/supabase";
 
-const Arrow = () => (
+export const Arrow = () => (
   <Image
     src={`${bucket}/arrow.svg`}
     alt=""
@@ -18,7 +18,7 @@ export function LinkButton({ href, children }) {
     <Link href={href} passHref>
       <button
         className="
-        bg-indigo-500 py-3 px-5 my-2 rounded tracking-wider text-lg my-8 font-normal
+        bg-indigo-500 py-3 px-5 rounded tracking-wider text-lg my-8 font-normal
         transition hover:bg-indigo-700 focus:ring group text-center
       "
       >
@@ -36,7 +36,7 @@ export function Button({ onClick, loading, children, ...props }) {
     <button
       onClick={onClick}
       className={`
-        bg-indigo-500 py-3 px-5 my-2 rounded tracking-wider text-lg my-8 font-normal
+        bg-indigo-500 py-3 px-5 rounded tracking-wider text-lg my-8 font-normal
         transition text-center
         ${
           props.disabled

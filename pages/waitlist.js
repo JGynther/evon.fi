@@ -8,21 +8,19 @@ import { Button } from "@components/button";
 
 import { parseEmailString } from "@lib/stringUtils";
 
-export default function Page({}) {
+export default function Page() {
   return (
     <Layout title="Waitlist - Evon Capital">
       <Section>
-        <div className="">
-          <Subtitle>Osakeannit</Subtitle>
-          <Title>Odotuslista</Title>
-          <Prose large>
-            Meillä ei tällä hetkellä ole käynnissä osakeantia. Mikäli olet
-            kuitenkin kiinnostunut osallistumaan, kannattaa liittyä meidän
-            odotuslistalle! Saat tiedon ensimmäisenä seuraavasta osakeannista
-            sähköpostitse.
-          </Prose>
-          <Form />
-        </div>
+        <Subtitle>Osakeannit</Subtitle>
+        <Title>Odotuslista</Title>
+        <Prose large>
+          Meillä ei tällä hetkellä ole käynnissä osakeantia. Mikäli olet
+          kuitenkin kiinnostunut osallistumaan, kannattaa liittyä meidän
+          odotuslistalle! Saat tiedon ensimmäisenä seuraavasta osakeannista
+          sähköpostitse.
+        </Prose>
+        <Form />
       </Section>
     </Layout>
   );
@@ -78,11 +76,11 @@ function Form() {
           </div>
         </form>
       ) : (
-        <Title>
+        <div className="text-green-500 text-opacity-60 tracking-wider text-lg mb-8 border rounded border-gray-700 py-3 px-4">
           {submitError
             ? "Sähköpostilistaan liittymisessä tapahtui virhe. Kokeile uudestaan."
             : "Sähköpostilistaan liityminen onnistui!"}
-        </Title>
+        </div>
       )}
       <Prose noMargin small>
         Liittymällä listalle hyväksyt tietosuojaselosteemme mukaisen tietojesi

@@ -1,5 +1,5 @@
 import { fetchData } from "@lib/fetchdata";
-import { supabase } from "@lib/supabase";
+import { supabase, createAdminLogEntry } from "@lib/supabase";
 
 import Layout from "@components/layout";
 import Banner from "@components/banner";
@@ -9,17 +9,6 @@ import Portfolio from "@components/portal/portfolio";
 export default function App({ user, portfolio_data, transaction_data }) {
   return (
     <Layout title="Portal - Evon Capital" portal user={user}>
-      <Banner
-        title="Yhtiökokousilmoitautuminen"
-        long={true}
-        subtitle="Varsinainen yhtiökokous"
-        button="Ilmoitautumaan"
-        href="/portal/yhtiokokous"
-      >
-        Yhtiökokous lähestyy nopeasti. Kannattaa hoitaa ilmoitautuminen kuntoon
-        ennemmin kuin myöhemmin. Majoituslippuja saatavilla rajoitetusti!
-      </Banner>
-
       <div className="flex flex-wrap justify-center">
         <TransactionTable data={transaction_data} />
       </div>
@@ -40,6 +29,12 @@ export async function getServerSideProps({ req }) {
       },
     };
   }
+
+  await createAdminLogEntry({
+    event: "portal_login",
+    userid: user.id,
+    email: user.email,
+  });
 
   const [portfolio_data, transaction_data] = await fetchData();
 

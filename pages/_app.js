@@ -15,6 +15,9 @@ function MyApp({ Component, pageProps }) {
     const { data: authListener } = supabase.auth.onAuthStateChange(
       (event, session) => {
         updateSupabaseCookie(event, session);
+        if (event === "SIGNED_IN") {
+          router.push("/portal");
+        }
       }
     );
     return () => {

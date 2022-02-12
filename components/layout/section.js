@@ -1,6 +1,6 @@
 export default function Section({ id, textcenter, children }) {
   return (
-    <section id={id || null} className="container mx-auto mb-32">
+    <section id={id || null} className="container mx-auto">
       <div className="flex justify-center mx-5">
         <div
           className={`flex-grow max-w-screen-md ${

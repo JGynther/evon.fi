@@ -1,7 +1,11 @@
-export default function Spinner({ size = "h-5 w-5", classProps }) {
+export default function Spinner({
+  textColor = "text-white",
+  size = "h-5 w-5",
+  classProps,
+}) {
   return (
     <svg
-      className={`animate-spin text-white ${size} ${classProps}`}
+      className={`animate-spin ${textColor} ${size} ${classProps}`}
       viewBox="0 0 24 24"
       fill="none"
     >

@@ -16,12 +16,13 @@ export default function Login({ env }) {
 
   const [email, setEmail] = useState("");
   const [error, setError] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [didSubmit, setDidSubmit] = useState(false);
 
   const handleSignIn = (e) => {
     e.preventDefault();
-    supabaseSignIn(env, email);
-    setDidSubmit(true);
+    setIsSubmitting(true);
+    supabaseSignIn(env, email, setDidSubmit);
   };
 
   if (didSubmit) {
@@ -51,7 +52,11 @@ export default function Login({ env }) {
               error={error}
               setError={setError}
             />
-            <Button type="submit" disabled={error}>
+            <Button
+              type="submit"
+              disabled={error || isSubmitting}
+              loading={isSubmitting}
+            >
               Kirjaudu sisään
             </Button>
           </form>
@@ -100,7 +105,7 @@ function Input({ label, htmlFor, value, setValue, error, setError }) {
   );
 }
 
-async function supabaseSignIn(env, email) {
+async function supabaseSignIn(env, email, setDidSubmit) {
   if (env === "prod") {
     const { data, error } = await supabase.auth.signIn({ email });
   } else {
@@ -109,6 +114,7 @@ async function supabaseSignIn(env, email) {
       { redirectTo: "http://localhost:3000" }
     );
   }
+  setDidSubmit(true);
 }
 
 export async function getStaticProps() {

@@ -31,12 +31,12 @@ export default function Profile({ user }) {
 
   async function getUserData() {
     const { data, error } = await supabase.from("userdata").select();
+
     if (data[0] && !error) {
       setUserData(data[0]);
       setLoading(false);
     } else {
       createDataForUser();
-      router.reload();
     }
   }
 
@@ -44,6 +44,7 @@ export default function Profile({ user }) {
     const { data, error } = await supabase
       .from("userdata")
       .insert([{ id: user.id, email: user.email }]);
+    router.reload();
   }
 
   if (loading) return <Loading />;
@@ -107,7 +108,7 @@ function Field({ data, didChange, name, editing, label, type }) {
         disabled={!editing}
         defaultValue={data[name]}
         onChange={handleChange}
-        className={`flex-grow max-w-sm py-1 px-4 rounded bg-gray-800 text-xl text-white tracking-wider ${
+        className={`flex-grow max-w-sm py-2 px-4 rounded bg-gray-800 text-xl text-white tracking-wider ${
           editing ? "" : "cursor-not-allowed text-opacity-50"
         }`}
       />
@@ -116,7 +117,7 @@ function Field({ data, didChange, name, editing, label, type }) {
 }
 
 export async function getServerSideProps({ req }) {
-  const { user } = await supabase.auth.api.getUserByCookie(req);
+  const { user, error } = await supabase.auth.api.getUserByCookie(req);
 
   if (!user) {
     return {

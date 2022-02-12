@@ -3,7 +3,7 @@ import { Title } from "@components/text";
 export default function TransactionTable({ data }) {
   // Data is an array containing arrays with [date, name, purchase/sale, amount, price, sum]
   return (
-    <section className="grid justify-center overflow-hidden m-5 my-10 text-center">
+    <section className="grid justify-center overflow-hidden m-5  text-center">
       <Title>Yhtiön viimeisimmät kaupat</Title>
       <div className="overflow-x-auto rounded">
         <table className="border-2 border-indigo-500">
