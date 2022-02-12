@@ -13,8 +13,8 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     const { data: authListener } = supabase.auth.onAuthStateChange(
-      (event, session) => {
-        updateSupabaseCookie(event, session);
+      async (event, session) => {
+        await updateSupabaseCookie(event, session);
         if (event === "SIGNED_IN") {
           router.push("/portal");
         }
