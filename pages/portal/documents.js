@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 import Layout from "@components/layout";
 import Section from "@components/layout/section";
+import Spinner from "@components/spinner";
 
 export default function Documents({ user }) {
   const [data, setData] = useState(null);
@@ -14,6 +15,12 @@ export default function Documents({ user }) {
   return (
     <Layout title="Documents - Evon Capital" portal user={user}>
       <Section>
+        {!data && (
+          <div className="flex justify-center items-center">
+            <Spinner size="h-16 w-16" />
+          </div>
+        )}
+
         {data &&
           data.map((folder) => (
             <div key={folder.id}>
