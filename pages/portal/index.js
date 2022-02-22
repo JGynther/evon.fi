@@ -9,6 +9,16 @@ import Portfolio from "@components/portal/portfolio";
 export default function App({ user, portfolio_data, transaction_data }) {
   return (
     <Layout title="Portal - Evon Capital" portal user={user}>
+      <Banner
+        title="Yhtiökokouspöytäkirja julkaistu!"
+        long
+        button="Dokumentit"
+        href="/portal/documents"
+      >
+        Portaalin dokumentit-osiosta löytyy nyt vuoden 2022 varsinaisen
+        yhtiökokouksen dokumentit.
+      </Banner>
+
       <div className="flex flex-wrap justify-center">
         <TransactionTable data={transaction_data} />
       </div>
