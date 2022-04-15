@@ -1,4 +1,3 @@
-import { fetchData } from "@lib/fetchdata";
 import { supabase, createAdminLogEntry } from "@lib/supabase";
 
 import Layout from "@components/layout";
