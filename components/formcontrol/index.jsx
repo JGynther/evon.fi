@@ -10,3 +10,13 @@ export function Input({ label, type, error, setError, onChange }) {
     </div>
   );
 }
+
+export function Form({ onSubmit, children }) {
+  return (
+    <form onSubmit={onSubmit} className="flex justify-center">
+      <div className="max-w-md flex-grow flex flex-col gap-5 mt-8">
+        {children}
+      </div>
+    </form>
+  );
+}
