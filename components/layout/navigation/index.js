@@ -24,7 +24,6 @@ export default function Navigation() {
               } md:flex flex-wrap pt-8 pb-4 md:py-0 gap-8 md:gap-14 items-center`}
             >
               <NavItem href="/blog">Blogi</NavItem>
-              <NavItem href="/contact">Yhteystiedot</NavItem>
               <Button type="link" href="/portal">
                 Omistajaportaali
               </Button>
