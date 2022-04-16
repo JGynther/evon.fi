@@ -12,6 +12,8 @@ export default function Login({ env }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [didSubmit, setDidSubmit] = useState(false);
 
+  const onChange = (event) => setEmail(event.target.value);
+
   const handleSignIn = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -31,8 +33,8 @@ export default function Login({ env }) {
   return (
     <Layout title="Login - Evon Capital">
       <Section>
-        <Form onSubmit={handleSignIn}>
-          <Input label="Sähköpostiosoite" type="email" onChange={null} />
+        <Form onSubmit={handleSignIn} center>
+          <Input label="Sähköpostiosoite" type="email" onChange={onChange} />
           <Button type="submit" loading={isSubmitting}>
             Kirjaudu sisään
           </Button>

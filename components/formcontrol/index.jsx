@@ -11,9 +11,12 @@ export function Input({ label, type, error, setError, onChange }) {
   );
 }
 
-export function Form({ onSubmit, children }) {
+export function Form({ onSubmit, center, children }) {
   return (
-    <form onSubmit={onSubmit} className="flex justify-center">
+    <form
+      onSubmit={onSubmit}
+      className={`flex ${center ? "justify-center" : ""}`}
+    >
       <div className="max-w-md flex-grow flex flex-col gap-5 mt-8">
         {children}
       </div>
