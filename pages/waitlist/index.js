@@ -4,7 +4,7 @@ import Layout from "@components/layout";
 import Section from "@components/layout/section";
 import { Title, Subtitle, Prose } from "@components/text";
 import { Input } from "@components/formcontrol";
-import Spinner from "@components/spinner";
+import Button from "@components/button";
 
 export default function Page() {
   return (
@@ -41,15 +41,11 @@ function Form() {
         }).then(() => setLoading(false));
       }}
     >
-      <div className="flex flex-col gap-5 mt-10">
+      <div className="flex flex-col gap-5 mt-8">
         <Input label="Sähköpostiosoite" type="email" onChange={onChange} />
-        <button
-          type="submit"
-          disabled={loading}
-          className={`flex justify-center bg-indigo-700 hover:bg-indigo-800 transition py-2 px-6 rounded tracking-wide disabled:opacity-80 disabled:bg-indigo-700`}
-        >
-          {loading ? <Spinner /> : "Liity odostuslistalle"}
-        </button>
+        <Button type="submit" loading={loading}>
+          Liity odotuslistalle
+        </Button>
         <p className="text-white text-opacity-60 text-sm">
           Liitymällä listalle hyväksyt tietosuojaselosteemme mukaisen tietojesi
           käsittelyn.
