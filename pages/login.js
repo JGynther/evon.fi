@@ -2,7 +2,6 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 
 import { supabase } from "@lib/supabase";
-import { parseEmailString } from "@lib/stringUtils";
 
 import { useState } from "react";
 
