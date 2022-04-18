@@ -6,7 +6,7 @@ import { supabase } from "@lib/supabase";
 
 import Layout from "@components/layout";
 import Section from "@components/layout/section";
-import { Title, Subtitle } from "@components/text";
+import { Title, Prose } from "@components/text";
 
 export default function Blog() {
   return (
@@ -34,15 +34,15 @@ export function Posts() {
 
   return (
     <Section>
-      <Subtitle>Blogi</Subtitle>
       <Title>Viimeisimmät blogimme</Title>
+      <Prose>Tutustu viimeisimpiin blogikirjoituksiimme tästä.</Prose>
       {posts && (
-        <ul className="grid gap-5">
+        <ul className="flex flex-col mt-5 divide-y divide-neutral-700 bg-neutral-800 rounded p-3">
           {posts.map((post) => (
             <li key={post.id}>
               <Link href={`/blog/${post.id}`} passHref>
-                <a className="text-indigo-500 hover:text-indigo-700 transition tracking-wider text-lg">
-                  {new Date(post.created_at).toLocaleDateString()} -{" "}
+                <a className="flex text-white text-opacity-80 hover:bg-neutral-700 transition py-2 px-4">
+                  {new Date(post.created_at).toLocaleDateString()} {"-"}{" "}
                   {post.title}
                 </a>
               </Link>
