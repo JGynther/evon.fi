@@ -41,7 +41,7 @@ function Folder({ folder }) {
 
   useEffect(() => {
     getObjectsByFolder("documents", folder.name).then((data) => setData(data));
-  });
+  }, []);
 
   return (
     <div className="bg-neutral-800 rounded mb-5 p-5 divide-y divide-neutral-700">

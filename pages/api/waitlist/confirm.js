@@ -4,6 +4,11 @@ export default async function handler(req, res) {
   if (req.method === "POST") {
     const { token } = req.body;
 
+    if (!token) {
+      res.status(400).json({ error: "Invalid token" });
+      return;
+    }
+
     const { data, error } = await supabaseServer
       .from("waitlist")
       .update({ status: "confirmed" })

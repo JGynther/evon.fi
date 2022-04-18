@@ -9,23 +9,16 @@ export default function Confirm() {
   const router = useRouter();
 
   useEffect(() => {
-    if (router.isReady) {
-      const { token } = router.query;
+    if (router.isReady && router.query.token) {
       fetch("/api/waitlist/confirm", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ token: token }),
+        body: JSON.stringify({ token: router.query.token }),
       });
     }
   }, [router.isReady]);
 
-  return (
-    <Headless title="Confirm email">
-      <div className="flex flex-col justify-center items-center h-full">
-        testi
-      </div>
-    </Headless>
-  );
+  return <Headless title="Confirm email">testi</Headless>;
 }

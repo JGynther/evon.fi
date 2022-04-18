@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import { supabase } from "@lib/supabase";
 import { useEffect } from "react";
 import { Headless } from "@components/layout";
-import Section from "@components/layout/section";
 import { Title } from "@components/text";
 
 export default function Login() {
@@ -23,10 +22,8 @@ export default function Login() {
   }, []);
 
   return (
-    <Headless>
-      <div className="min-h-screen flex justify-center items-center">
-        <Title>Sinua kirjataan ulos...</Title>
-      </div>
+    <Headless title="Signout">
+      <Title>Sinua kirjataan ulos...</Title>
     </Headless>
   );
 }
