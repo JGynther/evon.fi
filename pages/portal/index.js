@@ -2,6 +2,7 @@ import { supabase } from "@lib/supabase";
 
 import { Portal } from "@components/layout";
 import Banner from "@components/banner";
+import { createLog } from "lib/supabase";
 
 export default function App({ user }) {
   return (
@@ -30,6 +31,12 @@ export async function getServerSideProps({ req }) {
       },
     };
   }
+
+  createLog({
+    event: "portal_login",
+    userid: user.id,
+    email: user.email,
+  });
 
   return {
     props: { user },

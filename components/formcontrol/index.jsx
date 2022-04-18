@@ -1,10 +1,11 @@
-export function Input({ label, type, error, setError, onChange }) {
+export function Input({ label, type, error, setError, onChange, ...rest }) {
   return (
     <div className="flex flex-col gap-3">
       <label className="text-white tracking-wide text-lg">{label}</label>
       <input
         type={type}
         onChange={onChange}
+        {...rest}
         className="bg-neutral-900 rounded px-4 py-2 border border-neutral-700 hover:border-neutral-500 tranform hover:-translate-y-1 focus:-translate-y-1 shadow hover:shadow-lg focus:shadow-lg outline-none focus:ring-1 focus:border-indigo-700 transition"
       />
     </div>

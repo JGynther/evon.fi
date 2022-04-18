@@ -5,6 +5,11 @@ import { randomUUID } from "crypto";
 export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
+      if (!req.body.email) {
+        res.status(400).send("Email is required");
+        return;
+      }
+
       const token = randomUUID();
 
       const { data, error } = await supabaseServer.from("waitlist").insert([
@@ -26,6 +31,7 @@ export default async function handler(req, res) {
         to: req.body.email,
         subject: "Vahvistus liittymisestä odotuslistalle",
         text: text,
+        "o:tag": "waitlist",
       });
 
       createLog({
@@ -35,7 +41,7 @@ export default async function handler(req, res) {
 
       res.status(200).json();
     } catch (e) {
-      res.status(500).json(e);
+      res.status(500).json();
     }
   }
 }
