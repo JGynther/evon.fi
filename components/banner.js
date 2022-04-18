@@ -1,5 +1,4 @@
 import { Title, Subtitle, Prose } from "@components/text";
-import { LinkButton } from "@components/button";
 
 export default function Banner({
   title,
@@ -15,7 +14,6 @@ export default function Banner({
         {subtitle && <Subtitle>{subtitle}</Subtitle>}
         <Title long={long}>{title}</Title>
         <Prose>{children}</Prose>
-        {button && <LinkButton href={href}>{button}</LinkButton>}
       </div>
     </div>
   );

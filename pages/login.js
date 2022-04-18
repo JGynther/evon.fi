@@ -5,6 +5,7 @@ import Layout from "@components/layout";
 import Section from "@components/layout/section";
 import Button from "@components/button";
 import { Input, Form } from "@components/formcontrol";
+import { Title } from "@components/text";
 
 export default function Login({ env }) {
   const [email, setEmail] = useState("");
@@ -23,9 +24,12 @@ export default function Login({ env }) {
   if (didSubmit) {
     return (
       <Layout title="Login - Evon Capital">
-        <div className="flex justify-center tracking-wider text-xl">
-          Sähköpostiisi on lähetetty kirjautumislinkki. Voit sulkea tämän sivun.
-        </div>
+        <Section>
+          <Title>
+            Sähköpostiisi on lähetetty kirjautumislinkki. Voit sulkea tämän
+            sivun.
+          </Title>
+        </Section>
       </Layout>
     );
   }

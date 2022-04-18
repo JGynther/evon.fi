@@ -1,13 +1,11 @@
-import { supabase, createAdminLogEntry } from "@lib/supabase";
+import { supabase } from "@lib/supabase";
 
-import Layout from "@components/layout";
+import { Portal } from "@components/layout";
 import Banner from "@components/banner";
-import TransactionTable from "@components/portal/transactiontable";
-import Portfolio from "@components/portal/portfolio";
 
-export default function App({ user, portfolio_data, transaction_data }) {
+export default function App({ user }) {
   return (
-    <Layout title="Portal - Evon Capital" portal user={user}>
+    <Portal title="Portal - Evon Capital" portal user={user}>
       <Banner
         title="Yhtiökokouspöytäkirja julkaistu!"
         long
@@ -17,13 +15,7 @@ export default function App({ user, portfolio_data, transaction_data }) {
         Portaalin dokumentit-osiosta löytyy nyt vuoden 2022 varsinaisen
         yhtiökokouksen dokumentit.
       </Banner>
-
-      <div className="flex flex-wrap justify-center">
-        <TransactionTable data={transaction_data} />
-      </div>
-
-      <Portfolio data={portfolio_data} />
-    </Layout>
+    </Portal>
   );
 }
 
@@ -39,15 +31,7 @@ export async function getServerSideProps({ req }) {
     };
   }
 
-  await createAdminLogEntry({
-    event: "portal_login",
-    userid: user.id,
-    email: user.email,
-  });
-
-  const [portfolio_data, transaction_data] = await fetchData();
-
   return {
-    props: { user, portfolio_data, transaction_data },
+    props: { user },
   };
 }

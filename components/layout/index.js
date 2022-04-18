@@ -2,7 +2,7 @@ import Head from "next/head";
 
 import Wrapper from "@components/layout/wrapper";
 import Content from "@components/layout/content";
-import Navigation from "@components/layout/navigation";
+import Navigation, { PortalNavigation } from "@components/layout/navigation";
 import Footer from "@components/layout/footer";
 
 export default function Layout({ title, meta, children }) {
@@ -27,6 +27,20 @@ export function Headless({ title, meta, children }) {
         {meta}
       </Head>
       <Content>{children}</Content>
+    </Wrapper>
+  );
+}
+
+export function Portal({ title, meta, children }) {
+  return (
+    <Wrapper>
+      <Head>
+        <title>{title}</title>
+        {meta}
+      </Head>
+      <PortalNavigation />
+      <Content>{children}</Content>
+      <Footer />
     </Wrapper>
   );
 }
