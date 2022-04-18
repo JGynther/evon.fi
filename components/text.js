@@ -1,5 +1,9 @@
 export function Title({ children }) {
-  return <h2 className="text-4xl font-serif tracking-wide">{children}</h2>;
+  return (
+    <h2 className="text-2xl md:text-4xl font-serif tracking-wide">
+      {children}
+    </h2>
+  );
 }
 
 export function Subtitle({ children }) {
