@@ -1,5 +1,6 @@
 import { supabase } from "@lib/supabase";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
 import Layout from "@components/layout";
 import Section from "@components/layout/section";
@@ -20,6 +21,13 @@ export default function Login({ env }) {
     setIsSubmitting(true);
     supabaseSignIn(env, email, setDidSubmit);
   };
+
+  const router = useRouter();
+  useEffect(() => {
+    if (supabase.auth.user()) {
+      router.replace("/portal");
+    }
+  });
 
   if (didSubmit) {
     return (
