@@ -1,69 +1,84 @@
 import { supabase } from "@lib/supabase";
 import { useEffect, useState } from "react";
 
-import Layout from "@components/layout";
+import { Portal } from "@components/layout";
 import Section from "@components/layout/section";
 import Spinner from "@components/spinner";
+import { Title, Prose } from "@components/text";
 
-export default function Documents({ user }) {
+export default function Documents() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    listAllObjects("documents").then((data) => setData(data));
+    getFolders("documents").then((data) => setData(data));
   }, []);
 
   return (
-    <Layout title="Documents - Evon Capital" portal user={user}>
+    <Portal title="Documents - Evon Capital">
       <Section>
-        {!data && (
-          <div className="flex justify-center items-center">
-            <Spinner size="h-16 w-16" />
-          </div>
+        <div className="mb-10">
+          <Title>Dokumentit</Title>
+          <Prose>
+            Tästä löydät kaikki yhtiön viralliset jaossa olevat dokumentit.
+            Dokumentit eivät ole linkkejä vaan avatessasi dokumentin kyseinen
+            blob-tiedosto latautuu palvelimelta ja avataan automaattisesti uuten
+            välilehteen. Jos tiedosto ei avaudu, tarkista, että sallit sivulla
+            ponnahdusikkunat.
+          </Prose>
+        </div>
+        {data ? (
+          data.map((folder) => <Folder folder={folder} key={folder.name} />)
+        ) : (
+          <Spinner />
         )}
-
-        {data &&
-          data.map((folder) => (
-            <div key={folder.id}>
-              <div className="text-xl uppercase tracking-widest">
-                {folder.id}
-              </div>
-              <div className="flex flex-col space-y-5 my-8">
-                {folder.objects.map((object) => (
-                  <a
-                    key={object.id}
-                    className="cursor-pointer tracking-wider text-white text-opacity-80 hover:text-indigo-500 transition"
-                    onClick={async () => {
-                      supabase.storage
-                        .from("documents")
-                        .download(`${folder.id}/${object.name}`)
-                        .then((r) => {
-                          const fileURL = URL.createObjectURL(r.data);
-                          window.open(fileURL);
-                        });
-                    }}
-                  >
-                    {object.name}
-                  </a>
-                ))}
-              </div>
-            </div>
-          ))}
       </Section>
-    </Layout>
+    </Portal>
   );
 }
 
-async function listAllObjects(bucket) {
-  const folders = await getFolders(bucket);
+function Folder({ folder }) {
+  const [data, setData] = useState(null);
 
-  const objects = await Promise.all(
-    folders.map(async (folder) => {
-      const data = await getObjectsByFolder(bucket, folder.name);
-      return { id: folder.name, objects: data };
-    })
+  useEffect(() => {
+    getObjectsByFolder("documents", folder.name).then((data) => setData(data));
+  });
+
+  return (
+    <div className="bg-neutral-800 rounded mb-5 p-5 divide-y divide-neutral-700">
+      <h2 className="uppercase text-lg py-2 tracking-wider">{folder.name}</h2>
+      <div className="flex flex-col divide-y divide-neutral-700">
+        {data ? (
+          data.map((object) => (
+            <Object
+              foldername={folder.name}
+              object={object}
+              key={object.name}
+            />
+          ))
+        ) : (
+          <Spinner />
+        )}
+      </div>
+    </div>
   );
+}
 
-  return objects;
+function Object({ foldername, object }) {
+  return (
+    <a
+      className="hover:bg-neutral-700 transition py-2 px-4 text-white text-opacity-80 cursor-pointer "
+      onClick={() => {
+        supabase.storage
+          .from("documents")
+          .download(`${foldername}/${object.name}`)
+          .then((response) => {
+            window.open(URL.createObjectURL(response.data));
+          });
+      }}
+    >
+      {object.name}
+    </a>
+  );
 }
 
 async function getObjectsByFolder(bucket, folder) {

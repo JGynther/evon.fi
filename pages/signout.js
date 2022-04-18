@@ -1,10 +1,9 @@
 import { useRouter } from "next/router";
-
 import { supabase } from "@lib/supabase";
-
 import { useEffect } from "react";
-
-import Loading from "@components/layout/loading";
+import { Headless } from "@components/layout";
+import Section from "@components/layout/section";
+import { Title } from "@components/text";
 
 export default function Login() {
   const router = useRouter();
@@ -16,12 +15,18 @@ export default function Login() {
       const { error } = await supabase.auth.signOut();
     }
 
-    router.push("/");
+    router.replace("/");
   }
 
   useEffect(() => {
     supabaseSignOut();
   }, []);
 
-  return <Loading text="Sinua kirjataan ulos." />;
+  return (
+    <Headless>
+      <div className="min-h-screen flex justify-center items-center">
+        <Title>Sinua kirjataan ulos...</Title>
+      </div>
+    </Headless>
+  );
 }
