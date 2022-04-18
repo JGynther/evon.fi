@@ -1,6 +1,9 @@
 import { Headless } from "@components/layout";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import Spinner from "@components/spinner";
+import { Title, Prose } from "@components/text";
+import toast from "react-hot-toast";
 
 export default function Confirm() {
   const [status, setStatus] = useState(null);
@@ -9,16 +12,37 @@ export default function Confirm() {
   const router = useRouter();
 
   useEffect(() => {
+    toast("Testi");
+    handleTokenConfirmation();
+  }, [router.isReady]);
+
+  async function handleTokenConfirmation() {
     if (router.isReady && router.query.token) {
-      fetch("/api/waitlist/confirm", {
+      const res = await fetch("/api/waitlist/confirm", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ token: router.query.token }),
       });
-    }
-  }, [router.isReady]);
 
-  return <Headless title="Confirm email">testi</Headless>;
+      if (res.ok) {
+        setStatus("success");
+      } else {
+        setStatus("error");
+      }
+
+      setLoading(false);
+    }
+  }
+
+  if (isLoading) {
+    return (
+      <Headless title="Confirm email">
+        <Spinner size="h-8 w-8" />
+      </Headless>
+    );
+  }
+
+  return <Headless title="Confirm email"></Headless>;
 }

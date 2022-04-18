@@ -27,7 +27,7 @@ export function Headless({ title, meta, children }) {
         {meta}
       </Head>
       <Content>
-        <div className="min-h-screen flex justify-center items-center">
+        <div className="min-h-screen flex flex-col justify-center items-center">
           {children}
         </div>
       </Content>
