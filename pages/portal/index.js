@@ -4,6 +4,9 @@ import { Portal } from "@components/layout";
 import Banner from "@components/banner";
 import { createLog } from "lib/supabase";
 
+import Portfolio from "@components/portfolio";
+import Transactions from "@components/transactions";
+
 export default function App({ user }) {
   return (
     <Portal title="Portal - Evon Capital" portal user={user}>
@@ -16,6 +19,8 @@ export default function App({ user }) {
         Portaalin dokumentit-osiosta löytyy nyt vuoden 2022 varsinaisen
         yhtiökokouksen dokumentit.
       </Banner>
+      <Transactions />
+      <Portfolio />
     </Portal>
   );
 }

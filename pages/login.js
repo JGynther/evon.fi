@@ -27,14 +27,14 @@ export default function Login({ env }) {
     if (supabase.auth.user()) {
       router.replace("/portal");
     }
-  });
+  }, []);
 
   if (didSubmit) {
     return (
       <Layout title="Login - Evon Capital">
         <Section>
           <Title>
-            Sähköpostiisi on lähetetty kirjautumislinkki. Voit sulkea tämän
+            Sähköpostiisi ({email}) on lähetetty kirjautumislinkki. Voit sulkea tämän
             sivun.
           </Title>
         </Section>
