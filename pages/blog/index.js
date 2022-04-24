@@ -8,6 +8,8 @@ import Layout from "@components/layout";
 import Section from "@components/layout/section";
 import { Title, Prose } from "@components/text";
 
+import Spinner from "@components/spinner";
+
 export default function Blog() {
   return (
     <Layout title="Blog - Evon Capital">
@@ -36,7 +38,7 @@ export function Posts() {
     <Section>
       <Title>Viimeisimmät blogimme</Title>
       <Prose>Tutustu viimeisimpiin blogikirjoituksiimme tästä.</Prose>
-      {posts && (
+      {posts ? (
         <ul className="flex flex-col mt-5 divide-y divide-neutral-700 bg-neutral-800 rounded p-3">
           {posts.map((post) => (
             <li key={post.id}>
@@ -49,7 +51,7 @@ export function Posts() {
             </li>
           ))}
         </ul>
-      )}
+      ) : (<Spinner />)}
     </Section>
   );
 }
