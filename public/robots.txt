@@ -5,3 +5,4 @@ Disallow: /waitlist/confirm
 Disallow: /login
 Disallow: /signout
 Disallow: /*.pdf$
+Disallow: /[*]$
