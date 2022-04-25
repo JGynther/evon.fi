@@ -37,7 +37,7 @@ export function Posts() {
   return (
     <Section>
       <Title>Viimeisimmät blogimme</Title>
-      <Prose>Tutustu viimeisimpiin blogikirjoituksiimme tästä.</Prose>
+      <Prose large>Tutustu viimeisimpiin blogikirjoituksiimme tästä.</Prose>
       {posts ? (
         <ul className="flex flex-col mt-5 divide-y divide-neutral-700 bg-neutral-800 rounded p-3">
           {posts.map((post) => (
