@@ -12,7 +12,7 @@ export default function Page() {
     <Layout title="Waitlist - Evon Capital">
       <Section>
         <Title>Odotuslista</Title>
-        <Prose>
+        <Prose large>
           Meillä ei tällä hetkellä ole käynnissä osakeantia. Mikäli olet
           kuitenkin kiinnostunut osallistumaan, kannattaa liittyä meidän
           odotuslistalle! Saat tiedon ensimmäisenä seuraavasta osakeannista
@@ -59,7 +59,7 @@ function FormComponent() {
   if (didSubmit && !error) {
     return (
       <div className="mt-10">
-        <Prose large>Kiitos! Saat pian sähköpostiisi varmennuksen.</Prose>
+        <Prose large>Kiitos! Saat pian sähköpostiisi ({email}) varmennuksen.</Prose>
       </div>
     );
   }

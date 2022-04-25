@@ -38,7 +38,6 @@ export function PortalNavigation() {
       <SubNav>
         <SubNavItem href="/portal">Portaalin etusivu</SubNavItem>
         <SubNavItem href="/portal/documents">Dokumentit</SubNavItem>
-        <SubNavItem href="/portal/profile">Profiili</SubNavItem>
       </SubNav>
     </NavContainer>
   );
