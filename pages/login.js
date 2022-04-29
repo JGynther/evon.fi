@@ -34,8 +34,8 @@ export default function Login({ env }) {
       <Layout title="Login - Evon Capital">
         <Section>
           <Title>
-            Sähköpostiisi ({email}) on lähetetty kirjautumislinkki. Voit sulkea tämän
-            sivun.
+            Sähköpostiisi ({email}) on lähetetty kirjautumislinkki. Voit sulkea
+            tämän sivun.
           </Title>
         </Section>
       </Layout>
