@@ -13,7 +13,7 @@ export default function App({ user }) {
       <Banner
         title="Osakeanti on alkanut!"
         long
-        button="Osakeantii"
+        button="Osakeantiin"
         href="/portal/osakeanti"
       >
         Evon Capitalilla on 1.5. - 16.8. käynnissä sekä suunnattu A-anti sekä
