@@ -39,22 +39,20 @@ export default async function handler(req, res) {
 
     const token = randomUUID();
 
-    const { data, error } = await supabaseServer
-      .from("osakeanti_portal")
-      .insert({
-        email: email,
-        first_name: first_name,
-        middle_names: middle_names,
-        last_name: last_name,
-        phone: phone,
-        street: street,
-        postal_code: postal_code,
-        city: city,
-        stock: stock,
-        birthdate: birthdate,
-        sum: sum,
-        token: token,
-      });
+    const { data, error } = await supabaseServer.from("osakeanti").insert({
+      email: email,
+      first_name: first_name,
+      middle_names: middle_names,
+      last_name: last_name,
+      phone: phone,
+      street: street,
+      postal_code: postal_code,
+      city: city,
+      stock: stock,
+      birthdate: birthdate,
+      sum: sum,
+      token: token,
+    });
 
     if (error) {
       return res.status(400).send();
@@ -62,7 +60,7 @@ export default async function handler(req, res) {
 
     await sendMail({
       from: "Evon Capital <osakeanti@evon.fi>",
-      to: user.email,
+      to: email,
       subject: "Osakeannin merkintä - Evon Capital",
       "o:tag": "osakeanti",
       template: "osakeanti",
