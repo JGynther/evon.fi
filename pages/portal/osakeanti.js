@@ -4,7 +4,6 @@ import toast from "react-hot-toast";
 
 import { Portal } from "@components/layout";
 import Section from "@components/layout/section";
-import Spinner from "@components/spinner";
 import { Title, Prose } from "@components/text";
 import { Input, Form } from "@components/formcontrol";
 import Button from "@components/button";
