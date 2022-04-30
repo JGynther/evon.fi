@@ -23,10 +23,14 @@ export default function Osakeanti() {
             Tutustu annin ehtoihin ja materiaaleihin
           </p>
           <div className="flex flex-wrap gap-5 mt-3">
-            <MaterialLink href="/">Markkinointimateriaali</MaterialLink>
-            <MaterialLink href="/">Osakeannin ehdot</MaterialLink>
-            <MaterialLink href="/">Yhtiön tase</MaterialLink>
-            <MaterialLink href="/">Yhtiökokouksen päätös</MaterialLink>
+            <MaterialLink href="/informaatio_paketti.pdf">
+              Markkinointimateriaali
+            </MaterialLink>
+            <MaterialLink href="/ehdot.pdf">Osakeannin ehdot</MaterialLink>
+            <MaterialLink href="/tase.pdf">Yhtiön tase</MaterialLink>
+            <MaterialLink href="/paatos.pdf">
+              Yhtiökokouksen päätös
+            </MaterialLink>
           </div>
         </div>
         <div className="mb-10">
@@ -63,7 +67,10 @@ import Link from "next/link";
 function MaterialLink({ href, children }) {
   return (
     <Link href={href} passHref>
-      <a className="text-white text-opacity-80 hover:text-opacity-100 transition underline">
+      <a
+        className="text-white text-opacity-80 hover:text-opacity-100 transition underline"
+        target="_blank"
+      >
         {children}
       </a>
     </Link>
