@@ -17,7 +17,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: "Invalid token" });
     }
 
-    createLog({
+    await createLog({
       event: "osakeanti_confirm",
       content: { email: data[0].email, token: token },
     });

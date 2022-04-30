@@ -56,7 +56,7 @@ export default function Merkinta() {
             }}
           >
             <Input label="Etunimi" placeholder="Matti" required />
-            <Input label="Toiset nimet" placeholder="Mikko" required />
+            <Input label="Toiset nimet" placeholder="Mikko" />
             <Input label="Sukunimi" placeholder="Meikäläinen" required />
             <Input label="Syntymäaika" type="date" required />
             <Input
