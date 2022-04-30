@@ -68,7 +68,7 @@ export default async function handler(req, res) {
       "v:date": new Date(Date.now() + 6.048e8).toLocaleDateString("fi-FI"), // hacky date in a week
     });
 
-    createLog({
+    await createLog({
       event: "merkinta_portal",
       userid: user.id,
       email: user.email,

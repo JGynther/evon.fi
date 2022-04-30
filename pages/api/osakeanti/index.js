@@ -80,7 +80,7 @@ export default async function handler(req, res) {
       "v:date": new Date(Date.now() + 6.048e8).toLocaleDateString("fi-FI"), // hacky date in a week
     });
 
-    createLog({
+    await createLog({
       event: "merkinta",
       email: email,
       content: {
