@@ -22,16 +22,6 @@ module.exports = {
         destination: "/",
         permanent: true,
       },
-      {
-        source: "/osakeanti",
-        destination: "/",
-        permanent: true,
-      },
-      {
-        source: "/osakeanti/sitoumus",
-        destination: "/",
-        permanent: true,
-      },
     ];
   },
 };
