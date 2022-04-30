@@ -1,15 +1,7 @@
-export default function Section({ id, textcenter, children }) {
+export default function Section({ id, children }) {
   return (
-    <section id={id || null} className="container mx-auto">
-      <div className="flex justify-center mx-5">
-        <div
-          className={`flex-grow max-w-screen-md ${
-            textcenter ? "text-center" : ""
-          }`}
-        >
-          <div>{children}</div>
-        </div>
-      </div>
+    <section id={id || null} className="flex flex-col items-center mb-32 only:mb-20">
+      <div className="w-full max-w-screen-md">{children}</div>
     </section>
   );
 }

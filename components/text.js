@@ -1,12 +1,8 @@
-export function Title({ long, noMargin, children }) {
+export function Title({ children }) {
   return (
-    <h1
-      className={`${
-        long ? "text-xl md:text-4xl" : "text-4xl"
-      } font-bold tracking-wide ${noMargin ? "" : "mb-8"}`}
-    >
+    <h2 className="text-2xl md:text-4xl font-serif tracking-wide">
       {children}
-    </h1>
+    </h2>
   );
 }
 

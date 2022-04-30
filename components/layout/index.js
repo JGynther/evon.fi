@@ -1,20 +1,50 @@
 import Head from "next/head";
 
-import PageWrapper from "@components/layout/pagewrapper";
-import PortalNav from "components/portal/portalnav";
-import Navigation from "@components/layout/nav";
+import Wrapper from "@components/layout/wrapper";
+import Content from "@components/layout/content";
+import Navigation, { PortalNavigation } from "@components/layout/navigation";
 import Footer from "@components/layout/footer";
 
-export default function Layout({ title, meta, noNav, portal, user, children }) {
+export default function Layout({ title, meta, children }) {
   return (
-    <PageWrapper>
+    <Wrapper>
       <Head>
         <title>{title}</title>
         {meta}
       </Head>
-      {!noNav && (portal ? <PortalNav user={user} /> : <Navigation />)}
-      {children}
-      {!noNav && <Footer />}
-    </PageWrapper>
+      <Navigation />
+      <Content>{children}</Content>
+      <Footer />
+    </Wrapper>
+  );
+}
+
+export function Headless({ title, meta, children }) {
+  return (
+    <Wrapper>
+      <Head>
+        <title>{title}</title>
+        {meta}
+      </Head>
+      <Content>
+        <div className="min-h-screen flex flex-col justify-center items-center">
+          {children}
+        </div>
+      </Content>
+    </Wrapper>
+  );
+}
+
+export function Portal({ title, meta, children }) {
+  return (
+    <Wrapper>
+      <Head>
+        <title>{title}</title>
+        {meta}
+      </Head>
+      <PortalNavigation />
+      <Content>{children}</Content>
+      <Footer />
+    </Wrapper>
   );
 }

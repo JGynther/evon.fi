@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /portal/
+Disallow: /api/
+Disallow: /waitlist/confirm
+Disallow: /login
+Disallow: /signout
+Disallow: /*.pdf$
+Disallow: /[*]$

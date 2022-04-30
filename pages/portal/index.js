@@ -1,30 +1,28 @@
-import { fetchData } from "@lib/fetchdata";
-import { supabase, createAdminLogEntry } from "@lib/supabase";
+import { supabase } from "@lib/supabase";
 
-import Layout from "@components/layout";
+import { Portal } from "@components/layout";
 import Banner from "@components/banner";
-import TransactionTable from "@components/portal/transactiontable";
-import Portfolio from "@components/portal/portfolio";
+import { createLog } from "lib/supabase";
 
-export default function App({ user, portfolio_data, transaction_data }) {
+import Portfolio from "@components/portfolio";
+import Transactions from "@components/transactions";
+
+export default function App({ user }) {
   return (
-    <Layout title="Portal - Evon Capital" portal user={user}>
+    <Portal title="Portal - Evon Capital" portal user={user}>
       <Banner
-        title="Yhtiökokouspöytäkirja julkaistu!"
+        title="Osakeanti on alkanut!"
         long
-        button="Dokumentit"
-        href="/portal/documents"
+        button="Osakeantiin"
+        href="/portal/osakeanti"
       >
-        Portaalin dokumentit-osiosta löytyy nyt vuoden 2022 varsinaisen
-        yhtiökokouksen dokumentit.
+        Evon Capitalilla on 1.5. - 16.8. käynnissä sekä suunnattu A-anti sekä
+        merkintäoikeusanti B-osakkeille. Nykyiset osakkaat tekevät kummankin
+        annin merkinnät portaalissa!
       </Banner>
-
-      <div className="flex flex-wrap justify-center">
-        <TransactionTable data={transaction_data} />
-      </div>
-
-      <Portfolio data={portfolio_data} />
-    </Layout>
+      <Transactions />
+      <Portfolio />
+    </Portal>
   );
 }
 
@@ -40,15 +38,13 @@ export async function getServerSideProps({ req }) {
     };
   }
 
-  await createAdminLogEntry({
+  createLog({
     event: "portal_login",
     userid: user.id,
     email: user.email,
   });
 
-  const [portfolio_data, transaction_data] = await fetchData();
-
   return {
-    props: { user, portfolio_data, transaction_data },
+    props: { user },
   };
 }

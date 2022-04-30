@@ -4,6 +4,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { supabase } from "@lib/supabase";
+import { Toaster } from "react-hot-toast";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -59,6 +60,7 @@ function MyApp({ Component, pageProps }) {
         )}
       </Head>
       <CookiesElement handleAccept={handleAccept} />
+      <Toaster />
       <Component {...pageProps} />
     </>
   );

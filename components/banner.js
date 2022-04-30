@@ -1,21 +1,19 @@
-import { Title, Subtitle, Prose } from "@components/text";
-import { LinkButton } from "@components/button";
+import { Title, Prose } from "@components/text";
+import Button from "@components/button";
 
-export default function Banner({
-  title,
-  long,
-  subtitle,
-  button,
-  href,
-  children,
-}) {
+export default function Banner({ title, long, button, href, children }) {
   return (
-    <div className="flex justify-center bg-indigo-500 bg-opacity-10  p-10">
-      <div>
-        {subtitle && <Subtitle>{subtitle}</Subtitle>}
+    <div className="flex justify-center bg-indigo-500 bg-opacity-10 p-10 mb-20 rounded">
+      <div className="flex flex-col space-y-5">
         <Title long={long}>{title}</Title>
         <Prose>{children}</Prose>
-        {button && <LinkButton href={href}>{button}</LinkButton>}
+        {button && href && (
+          <span>
+            <Button type="link" href={href}>
+              {button}
+            </Button>
+          </span>
+        )}
       </div>
     </div>
   );
