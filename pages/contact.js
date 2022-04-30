@@ -13,7 +13,7 @@ export default function Contact() {
           <a href="mailto:info@evon.fi">info@evon.fi</a>
         </Prose>
         <Prose large>
-          <i>" Ole opportunisti. "</i>
+          <i>&quot;Ole opportunisti.&quot;</i>
         </Prose>
       </Section>
     </Layout>
