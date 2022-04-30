@@ -6,20 +6,21 @@ export default function Tietosuoja() {
   return (
     <Layout title="Tietosuoja - Evon Capital">
       <Section>
-        <Title>Rekisteri- ja tietosuojaseloste Evon Group</Title>
+        <Title>Rekisteri- ja tietosuojaseloste</Title>
         <Prose large whitespacepreline>
-          Tämä on Tree2u Oy:n ja Evon Groupin EU:n yleisen tietosuoja-asetuksen
-          (GDPR) mukainen rekisteri- ja tietosuojaseloste. Rekisteri- ja
+          Tämä on Evon Capital Oy Ab:n EU:n yleisen tietosuoja-asetuksen (GDPR)
+          mukainen rekisteri- ja tietosuojaseloste. Rekisteri- ja
           tietosuojaselosteessa kuvatut ehdot ja toiminta tavat pätevät
-          yleisesti kaikessa Tree2u Oy:n liiketoiminnassa ja www.evon.fi
-          verkkosivuilla. Laadittu 8.8.2021. Viimeisin muutos 8.8.2021.
+          yleisesti kaikessa Evon Capital Oy Ab:n liiketoiminnassa ja
+          www.evon.fi verkkosivuilla. Laadittu 8.8.2021. Viimeisin muutos
+          30.4.2021.
         </Prose>
 
         <Subtitle>1. Rekisterinpitäjä </Subtitle>
         <Prose large whitespacepreline>
-          {`Tree2u Oy 
+          {`Evon Capital Oy Ab
           Osoite: Rauhankatu 2, F 69, 13100, Hämeenlinna, Suomi
-          Y-tunnus 3094125-8.
+          Y-tunnus 3094125-8
           LEI-tunnus 984500509DB365878B43
           `}
         </Prose>
@@ -27,14 +28,13 @@ export default function Tietosuoja() {
         <Subtitle>2. Rekisteristä vastaava yhteyshenkilö</Subtitle>
         <Prose large whitespacepreline>
           {`Kaarlo Tiili 
-          Puh. +358 44 0501009
-          Sähköposti: kaarlotiili@gmail.com`}
+          Sähköposti: info@evon.fi`}
         </Prose>
 
         <Subtitle>3. Rekisterin nimi</Subtitle>
         <Prose large whitespacepreline>
-          Tree2u Oy:n asiakas-, omistaja-, työntekijä-, luottamushenkilö-,
-          markkinointi- ja verkkopalvelun käyttäjärekisteri.
+          Evon Capital Oy Ab:n asiakas-, omistaja-, työntekijä-,
+          luottamushenkilö-, markkinointi- ja verkkopalvelun käyttäjärekisteri.
         </Prose>
 
         <Subtitle>
@@ -42,8 +42,8 @@ export default function Tietosuoja() {
         </Subtitle>
         <Prose large whitespacepreline>
           {`EU:n yleisen tietosuoja-asetuksen mukainen oikeusperuste henkilötietojen käsittelylle on 
-          - henkilön suostumus (dokumentoitu,vapaaehtoinen, yksilöity, tietoinen ja yksiselitteinen) 
-          - sopimus,jossa rekisteröity on osapuolena 
+          - henkilön suostumus (dokumentoitu, vapaaehtoinen, yksilöity, tietoinen ja yksiselitteinen) 
+          - sopimus, jossa rekisteröity on osapuolena 
           - laki (Laki rahanpesun ja terrorismin rahoittamisen estämisestä) 
           - rekisterinpitäjän oikeutettu etu (esim. asiakassuhde ennen sopimusta, työsuhde, jäsenyys).
           
