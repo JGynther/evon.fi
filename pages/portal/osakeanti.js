@@ -32,7 +32,7 @@ export default function Osakeanti({ user }) {
     <Portal title="Osakeanti - Evon Capital">
       <Section>
         <div className="mb-8 text-white text-opacity-80">
-          Kirjautuneena sisään: {user.email}
+          Kirjautuneena sisään: <b>{user.email}</b>
         </div>
 
         <Title>Osakeanti 1.5. - 16.8.</Title>
@@ -44,6 +44,33 @@ export default function Osakeanti({ user }) {
           Merkintäoikeusannissa taas yhtiön aiemmat osakkaat saavat merkitä
           B-osakkeita rajallisen määrän.
         </Prose>
+
+        <div>
+          <Prose large>Ohjeita onnistuneeseen merkintään</Prose>
+          <ul className="list-disc list-inside text-white text-opacity-80 mt-2">
+            <li>
+              Tutustu ensin <b>huolellisesti</b> antien materiaaleihin ja
+              ehtoihin
+            </li>
+            <li>
+              Nykyiset osakkaat tekevät <b>kaikki</b> merkinnät portaalissa!
+            </li>
+            <li>
+              Saamme osakkeiden henkilötiedot automaattisesti portaalista, joten
+              niitä ei tarvitse täyttää
+            </li>
+            <li>
+              Merkintä on sitova. Sitä voi jättämisen jälkeen enää{" "}
+              <b>korottaa!</b>
+            </li>
+            <li>
+              Korottaminen tapahtuu muutamalla omaa merkintää tällä sivulla
+            </li>
+            <li>
+              Saat merkinnästä (ja sen muuttamisesta) vahvistuksen sähköpostiin
+            </li>
+          </ul>
+        </div>
 
         <Form
           onSubmit={async (event) => {
@@ -78,7 +105,7 @@ export default function Osakeanti({ user }) {
             toast.success("Merkintä vastaanotettu!");
           }}
         >
-          <div className="bg-neutral-800 p-5 rounded">
+          <div className="bg-neutral-800 p-5 rounded text-white text-opacity-80">
             <p>A-osake: 0,40 EUR kpl, minimimerkintä 250 kpl</p>
             <p>B-osake: 0,41 EUR kpl, maksimimerkintä {max} kpl</p>
             <div className="mt-4 text-sm">
