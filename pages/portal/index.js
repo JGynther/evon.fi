@@ -11,13 +11,14 @@ export default function App({ user }) {
   return (
     <Portal title="Portal - Evon Capital" portal user={user}>
       <Banner
-        title="Yhtiökokouspöytäkirja julkaistu!"
+        title="Osakeanti on alkanut!"
         long
-        button="Dokumentit"
-        href="/portal/documents"
+        button="Osakeantii"
+        href="/portal/osakeanti"
       >
-        Portaalin dokumentit-osiosta löytyy nyt vuoden 2022 varsinaisen
-        yhtiökokouksen dokumentit.
+        Evon Capitalilla on 1.5. - 16.8. käynnissä sekä suunnattu A-anti sekä
+        merkintäoikeusanti B-osakkeille. Nykyiset osakkaat tekevät kummankin
+        annin merkinnät portaalissa! Siirry tekemään merkintä.
       </Banner>
       <Transactions />
       <Portfolio />
