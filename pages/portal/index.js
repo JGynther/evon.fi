@@ -18,7 +18,7 @@ export default function App({ user }) {
       >
         Evon Capitalilla on 1.5. - 16.8. käynnissä sekä suunnattu A-anti sekä
         merkintäoikeusanti B-osakkeille. Nykyiset osakkaat tekevät kummankin
-        annin merkinnät portaalissa! Siirry tekemään merkintä.
+        annin merkinnät portaalissa!
       </Banner>
       <Transactions />
       <Portfolio />
