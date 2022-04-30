@@ -123,7 +123,6 @@ export default function Osakeanti({ user }) {
             type="number"
             step={1}
             min={250}
-            required
             value={a}
             onChange={(event) => {
               setA(event.target.value);
@@ -134,7 +133,6 @@ export default function Osakeanti({ user }) {
             label={`B-osaketta (max ${max ? max : "loading..."})`}
             type="number"
             step={1}
-            required
             value={b}
             max={max}
             onChange={(event) => {
