@@ -9,8 +9,8 @@ import { Input, Form } from "@components/formcontrol";
 import Button from "@components/button";
 
 export default function Osakeanti({ user }) {
-  const [a, setA] = useState(0);
-  const [b, setB] = useState(0);
+  const [a, setA] = useState();
+  const [b, setB] = useState();
   const [max, setMax] = useState();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -21,8 +21,9 @@ export default function Osakeanti({ user }) {
       .eq("email", user.email)
       .then((r) => r.data[0])
       .then((data) => {
-        setA(data.a || 0);
-        setB(data.b || 0);
+        console.log(data.a, data.b);
+        data.a && setA(data.a);
+        data.b && setB(data.b);
         setMax(data.max_b);
       });
   }, [user.email]);
