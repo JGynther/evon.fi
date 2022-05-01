@@ -1,6 +1,6 @@
 import { supabaseServer, createLog } from "@lib/supabase";
 import { sendMail } from "@lib/mail";
-import { randomUUID } from "crypto";
+import { randomUUID, createHash } from "crypto";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
@@ -31,6 +31,10 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: "Invalid form" });
     }
 
+    const hash = createHash("sha256")
+      .update(`${first_name}${middle_names}${last_name}${birthdate}`)
+      .digest("hex");
+
     stock = Number(stock);
 
     if (stock < 250) return res.status(400).json({ error: "Invalid stock" });
@@ -52,6 +56,7 @@ export default async function handler(req, res) {
       birthdate: birthdate,
       sum: sum,
       token: token,
+      checksum: hash,
     });
 
     if (error) {
