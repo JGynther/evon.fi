@@ -9,8 +9,8 @@ import { Input, Form } from "@components/formcontrol";
 import Button from "@components/button";
 
 export default function Osakeanti({ user }) {
-  const [a, setA] = useState();
-  const [b, setB] = useState();
+  const [a, setA] = useState("");
+  const [b, setB] = useState("");
   const [max, setMax] = useState();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -142,7 +142,8 @@ export default function Osakeanti({ user }) {
           />
 
           <Prose large>
-            Yhteensä {Math.round((a * 0.4 + b * 0.41) * 100) / 100} euroa.
+            Yhteensä{" "}
+            {Math.round(((a && a * 0.4) + (b && b * 0.41)) * 100) / 100} euroa.
           </Prose>
 
           <div className="bg-rose-500 bg-opacity-20 rounded p-5 my-4">
