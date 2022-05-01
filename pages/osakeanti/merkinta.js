@@ -57,7 +57,9 @@ export default function Merkinta() {
                   return;
                 }
                 setIsSubmitting(false);
-                toast.error("Merkintä on virheellinen.");
+                toast.error(
+                  "Merkintä on virheellinen. Tarkista tietosi. Tarkita myös oletko jo aiemmin tehnyt merkinnän."
+                );
               }}
             >
               <Input label="Etunimi" placeholder="Matti" required />
