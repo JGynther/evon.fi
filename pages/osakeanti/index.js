@@ -18,16 +18,21 @@ export default function Osakeanti() {
           osakeannin materiaaleihin ja ehtoihin. Sijoitukseen sisältyy riskejä.
           Merkintä on sitova.
         </Prose>
-        <div className="my-10 p-5 bg-neutral-800 rounded">
+        <div className="my-10 p-6 bg-neutral-800 rounded">
           <p className="text-lg text-white text-opacity-80">
             Tutustu annin ehtoihin ja materiaaleihin
           </p>
-          <div className="flex flex-wrap gap-5 mt-3">
+          <div className="flex flex-wrap gap-5 mt-5">
             <MaterialLink href="/informaatio_paketti.pdf">
               Markkinointimateriaali
             </MaterialLink>
+            <MaterialLink href="/tietopaketti.pdf">
+              Osakeannin tietopaketti
+            </MaterialLink>
             <MaterialLink href="/ehdot.pdf">Osakeannin ehdot</MaterialLink>
-            <MaterialLink href="/tase.pdf">Yhtiön tase</MaterialLink>
+            <MaterialLink href="/tilinpaatos.pdf">
+              Yhtiön tilinpäätös
+            </MaterialLink>
             <MaterialLink href="/paatos.pdf">
               Yhtiökokouksen päätös
             </MaterialLink>
@@ -40,7 +45,10 @@ export default function Osakeanti() {
               Tutustu ensin <b>huolellisesti</b> annin materiaaleihin ja
               ehtoihin
             </li>
-            <li>Täytä kaikki tietosi erityisellä huolella!</li>
+            <li>
+              Täytä kaikki tietosi erityisellä huolella! Epämääräiset tiedot
+              johtavat merkinnän hylkäykseen.
+            </li>
             <li>Lue tarkasti mitä kysytään!</li>
             <li>
               Merkintä on sitova. Sitä voi jättämisen jälkeen enää{" "}

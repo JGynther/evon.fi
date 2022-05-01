@@ -5,23 +5,27 @@ import { Input, Form } from "@components/formcontrol";
 import Button from "@components/button";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import Link from "next/link";
 
 export default function Merkinta() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [didSubmit, setDidSubmit] = useState(false);
+  const [stock, setStock] = useState(250);
   return (
     <Layout title="Osakeanti - Evon Capital">
       <Section>
         <Title>Osallistu osakeantiin 1.5. - 16.8.</Title>
         <Prose large>
           Voit tehdä merkinnän osakeantiin täyttämällä oheisen lomakkeen. Täytä
-          erityisesti tietosi hyvin huolellisesti. Merkintä on sitova, eikä sitä
+          erityisesti tietosi hyvin huolellisesti. Epämääräiset tai virheelliset
+          tiedot johtavat merkinnän hylkäämiseen. Merkintä on sitova, eikä sitä
           voi perua.
         </Prose>
         {didSubmit ? (
           <Prose large>
-            Merkintä lähetetty onnistuneesti. Saat pian sähköpostiisi
-            vahvistuslinkin!
+            Merkintä lähetetty onnistuneesti. Vahvista merkintä sähköpostiisi
+            saapuvalla linkillä! Merkintä ei etene ilman vahvistusta. Jos
+            sähköposti ei saavu, tarkista myös roskaposti.
           </Prose>
         ) : (
           <Form
@@ -76,12 +80,7 @@ export default function Merkinta() {
               placeholder="Esimerkkikatu 4 A 2"
               required
             />
-            <Input
-              label="Postinumero"
-              type="number"
-              placeholder="00100"
-              required
-            />
+            <Input label="Postinumero" placeholder="00100" required />
             <Input label="Kaupunki" placeholder="Helsinki" required />
             <Input
               label="Osaketta (minimi 250 kpl)"
@@ -90,7 +89,11 @@ export default function Merkinta() {
               step={1}
               min={250}
               required
+              onChange={(event) => setStock(event.target.value)}
             />
+            <Prose large>
+              Yhteensä {Math.round(stock * 0.4 * 100) / 100} EUR
+            </Prose>
             <div className="bg-rose-500 bg-opacity-20 rounded p-5 my-4">
               <b>Huom!</b>
               <p className="mt-2">
@@ -104,10 +107,18 @@ export default function Merkinta() {
                   className="accent-indigo-500 transform scale-150"
                 />
                 <label>
-                  Ymmärrän mitä olen tekemässä. Hyväksyn ehdot.
+                  Ymmärrän mitä olen tekemässä.
                   <span className="text-rose-500"> *</span>
                 </label>
               </div>
+            </div>
+            <div className="space-x-3 text-white text-opacity-80 text-sm">
+              <input type="checkbox" required className="accent-indigo-500 " />
+              <label>
+                Hyväksyn annin <TextLink href="/ehdot.pdf">ehdot</TextLink> ja{" "}
+                <TextLink href="/tietosuoja">tietosuojaselosteen</TextLink>{" "}
+                mukaisen tietojeni käsittelyn.
+              </label>
             </div>
             <Button type="submit" loading={isSubmitting}>
               Tee merkintä
@@ -116,5 +127,18 @@ export default function Merkinta() {
         )}
       </Section>
     </Layout>
+  );
+}
+
+function TextLink({ href, children }) {
+  return (
+    <Link href={href} passHref>
+      <a
+        target="_blank"
+        className="underline text-white text-opacity-80 hover:text-opacity-100 transition"
+      >
+        {children}
+      </a>
+    </Link>
   );
 }
