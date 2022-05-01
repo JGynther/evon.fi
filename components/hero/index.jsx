@@ -5,7 +5,7 @@ import Button from "@components/button";
 export default function Hero() {
   return (
     <Section>
-      <div className="text-center space-y-8 my-14">
+      <div className="text-center space-y-8 md:my-14">
         <Title>
           <span className="text-4xl md:text-6xl">
             Ole opportunisti, älä pelkkä sijoittaja
