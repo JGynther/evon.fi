@@ -47,9 +47,11 @@ export default function FAQ() {
             Liiketoiminta- ja strategiariskit (kasvustrategia voi jäädä
             toteutumatta osin tai kokonaan)
           </li>
-          <li>
-            Lainsäädännölliset riskit Tärkeimmät arvopaperiin liittyvät riskit
-          </li>
+          <li>Lainsäädännölliset riskit</li>
+        </ul>
+        <br></br>
+        Tärkeimmät arvopaperiin liittyvät riskit:
+        <ul className="list-disc list-inside mt-4 text-base space-y-1">
           <li>Mahdollisuus menettää sijoitettu pääoma kokonaan tai osittain</li>
           <li>Et välttämättä saa sijoituksellesi yhtään tuottoa</li>
           <li>Osakemerkintä on peruuttamaton</li>
