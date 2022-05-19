@@ -38,7 +38,7 @@ export async function getServerSideProps({ req }) {
     };
   }
 
-  createLog({
+  await createLog({
     event: "portal_login",
     userid: user.id,
     email: user.email,

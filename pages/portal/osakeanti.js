@@ -8,6 +8,8 @@ import { Title, Prose } from "@components/text";
 import { Input, Form } from "@components/formcontrol";
 import Button from "@components/button";
 
+import { createLog } from "lib/supabase";
+
 export default function Osakeanti({ user }) {
   const [a, setA] = useState("");
   const [b, setB] = useState("");
@@ -21,7 +23,6 @@ export default function Osakeanti({ user }) {
       .eq("email", user.email)
       .then((r) => r.data[0])
       .then((data) => {
-        console.log(data.a, data.b);
         data.a && setA(data.a);
         data.b && setB(data.b);
         setMax(data.max_b);
@@ -186,6 +187,12 @@ export async function getServerSideProps({ req }) {
       },
     };
   }
+
+  await createLog({
+    event: "osakeanti_portal_visit",
+    userid: user.id,
+    email: user.email,
+  });
 
   return {
     props: { user },

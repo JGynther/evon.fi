@@ -19,7 +19,8 @@ export default async function handler(req, res) {
 
     await createLog({
       event: "osakeanti_confirm",
-      content: { email: data[0].email, token: token },
+      email: data[0].email,
+      content: { token: token },
     });
 
     res.status(200).json();

@@ -6,6 +6,8 @@ import Section from "@components/layout/section";
 import Spinner from "@components/spinner";
 import { Title, Prose } from "@components/text";
 
+import { createLog } from "lib/supabase";
+
 export default function Documents() {
   const [data, setData] = useState(null);
 
@@ -102,6 +104,12 @@ export async function getServerSideProps({ req }) {
       },
     };
   }
+
+  await createLog({
+    event: "documents_visit",
+    userid: user.id,
+    email: user.email,
+  });
 
   return {
     props: { user },
