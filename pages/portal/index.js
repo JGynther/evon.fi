@@ -10,16 +10,6 @@ import Transactions from "@components/transactions";
 export default function App({ user }) {
   return (
     <Portal title="Portal - Evon Capital" portal user={user}>
-      <Banner
-        title="Osakeanti on alkanut!"
-        long
-        button="Osakeantiin"
-        href="/portal/osakeanti"
-      >
-        Evon Capitalilla on 1.5. - 16.8. käynnissä sekä suunnattu A-anti sekä
-        merkintäoikeusanti B-osakkeille. Nykyiset osakkaat tekevät kummankin
-        annin merkinnät portaalissa!
-      </Banner>
       <Transactions />
       <Portfolio />
     </Portal>
