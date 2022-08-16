@@ -40,7 +40,6 @@ export function PortalNavigation() {
       <SubNav>
         <SubNavItem href="/portal">Portaalin etusivu</SubNavItem>
         <SubNavItem href="/portal/documents">Dokumentit</SubNavItem>
-        <SubNavItem href="/portal/osakeanti">Osakeanti 1.5. - 16.8.</SubNavItem>
       </SubNav>
     </NavContainer>
   );
