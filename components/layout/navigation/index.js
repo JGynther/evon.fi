@@ -30,6 +30,7 @@ export function PortalNavigation() {
       <Nav>
         <LogoComponent />
         <NavMenu>
+          <NavItem href="/about">Tietoa</NavItem>
           <NavItem href="/blog">Blogi</NavItem>
           <Button type="link" href="/signout">
             Kirjaudu ulos
