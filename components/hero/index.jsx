@@ -1,6 +1,7 @@
 import Section from "@components/layout/section";
 import { Title } from "@components/text";
 import Button from "@components/button";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -21,9 +22,16 @@ export default function Hero() {
           Kiinnostaako lähteä mukaan? 👇
         </div>
         <div className="">
-          <Button type="link" href="/osakeanti">
-            Osallistu osakeantiin
+          <Button type="link" href="/waitlist">
+            Liity odotuslistalle
           </Button>
+        </div>
+        <div>
+          <Link href="/about">
+            <a className="text-white text-opacity-60 hover:text-opacity-80 transition underline text-sm">
+              tai lue lisää
+            </a>
+          </Link>
         </div>
       </div>
     </Section>
