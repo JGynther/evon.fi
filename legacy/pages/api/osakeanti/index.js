@@ -87,7 +87,6 @@ export default async function handler(req, res) {
 
     await createLog({
       event: "merkinta",
-      email: email,
       content: {
         stock: stock,
         sum: sum,
