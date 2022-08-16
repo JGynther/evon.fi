@@ -5,10 +5,7 @@ import { randomUUID } from "crypto";
 export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
-      if (!req.body.email) {
-        res.status(400).send("Email is required");
-        return;
-      }
+      if (!req.body.email) return res.status(400).send("Email is required");
 
       const token = randomUUID();
 
@@ -20,11 +17,21 @@ export default async function handler(req, res) {
       ]);
 
       if (error) {
-        res.status(400).json({ error: "Invalid email" });
-        return;
+        await createLog({
+          service: "waitlist",
+          message: "waitlist join failed",
+          json: {
+            status: 400,
+            error: "invalid email",
+            email: req.body.email,
+          },
+          _source: "lambda",
+        });
+
+        return res.status(400).json({ error: "Invalid email" });
       }
 
-      const text = `Tervetuloa Evon Capitalin odotuslistalle!\n\nVahvista sähköpostiosoitteesi oheisella linkillä:\n${process.env.NEXT_PUBLIC_BASE_URL}/waitlist/confirm?token=${token}`;
+      const text = `Tervetuloa Evon Capitalin odotuslistalle!\n\nVahvista sähköpostiosoitteesi oheisella linkillä:\n${process.env.NEXT_PUBLIC_BASE_URL}/waitlist/join/${token}`;
 
       await sendMail({
         from: "Evon Capital <no-reply@evon.fi>",
@@ -34,9 +41,15 @@ export default async function handler(req, res) {
         "o:tag": "waitlist",
       });
 
-      createLog({
-        event: "waitlist_join",
-        content: { email: req.body.email },
+      await createLog({
+        service: "waitlist",
+        message: "waitlist join",
+        json: {
+          status: 200,
+          email: req.body.email,
+          token: token,
+        },
+        _source: "lambda",
       });
 
       res.status(200).json();

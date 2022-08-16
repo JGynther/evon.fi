@@ -7,6 +7,6 @@ export default function Button({ type, href, onclick, loading, children }) {
   } else if (type === "submit") {
     return <SubmitButton loading={loading}>{children}</SubmitButton>;
   } else {
-    return;
+    return null;
   }
 }

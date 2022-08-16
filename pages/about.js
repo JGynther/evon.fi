@@ -9,7 +9,7 @@ import Transactions from "@components/transactions";
 
 export default function Home() {
   return (
-    <Layout title="Evon Capital">
+    <Layout title="About - Evon Capital">
       <About />
       <Transactions />
       <Welcome />

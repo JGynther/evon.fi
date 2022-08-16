@@ -22,7 +22,7 @@ export default function Login() {
   }, []);
 
   return (
-    <Headless title="Signout">
+    <Headless title="Signout - Evon Capital">
       <Title>Sinua kirjataan ulos...</Title>
     </Headless>
   );
