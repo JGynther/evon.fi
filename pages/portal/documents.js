@@ -106,9 +106,14 @@ export async function getServerSideProps({ req }) {
   }
 
   await createLog({
-    event: "documents_visit",
-    userid: user.id,
-    email: user.email,
+    service: "portal",
+    message: "documents visit",
+    json: {
+      user: user.email,
+      id: user.id,
+      location: "documents",
+    },
+    _source: "Next getServersideProps",
   });
 
   return {

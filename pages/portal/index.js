@@ -29,9 +29,13 @@ export async function getServerSideProps({ req }) {
   }
 
   await createLog({
-    event: "portal_login",
-    userid: user.id,
-    email: user.email,
+    service: "portal",
+    message: "user login",
+    json: {
+      user: user.email,
+      id: user.id,
+    },
+    _source: "Next getServersideProps",
   });
 
   return {
