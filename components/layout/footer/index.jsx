@@ -9,7 +9,6 @@ export default function Footer() {
         </span>
         <FooterItem href="/">Etusivu</FooterItem>
         <FooterItem href="/portal">Omistajaportaali</FooterItem>
-        <FooterItem href="/blog">Blogi</FooterItem>
         <FooterItem href="/tietosuoja">Tietosuojaseloste</FooterItem>
         <FooterItem href="/contact">Yhteystiedot</FooterItem>
       </div>
