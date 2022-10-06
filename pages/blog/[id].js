@@ -1,3 +1,5 @@
+import ReactMarkdown from "react-markdown";
+
 import { supabase } from "@lib/supabase";
 
 import Layout from "@components/layout";
@@ -5,20 +7,22 @@ import Section from "@components/layout/section";
 import { Title, Subtitle, Prose } from "@components/text";
 
 export default function Post({ post }) {
-  const meta = <meta property="article:published" content={post.created_at} />;
+  const meta = (
+    <>
+      <meta property="article:published" content={post.created_at} />
+      <title>{post.title}</title>
+      <meta property="description" content={post?.description} />
+    </>
+  );
   return (
     <Layout title={post.title} meta={meta}>
       <Section>
-        <article>
-          <Subtitle>
-            {new Date(post.created_at).toLocaleDateString()} by {post.author}
-          </Subtitle>
-          <Title noMargin>{post.title}</Title>
-          {post.content.split("\n").map((line, index) => (
-            <Prose large key={index}>
-              {line}
-            </Prose>
-          ))}
+        <article className="prose prose-invert prose-lg">
+          <h4 className="text-indigo-500">
+            {new Date(post.created_at).toLocaleDateString()}, {post.author}
+          </h4>
+          <h1 className="text-indigo-">{post.title}</h1>
+          <ReactMarkdown>{post.content}</ReactMarkdown>
         </article>
       </Section>
     </Layout>
