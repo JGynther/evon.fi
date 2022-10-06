@@ -9,7 +9,6 @@ export default function Post({ post }) {
   const meta = (
     <>
       <meta property="article:published" content={post.created_at} />
-      <title>{post.title}</title>
       <meta property="description" content={post?.description} />
     </>
   );
