@@ -4,7 +4,6 @@ import { supabase } from "@lib/supabase";
 
 import Layout from "@components/layout";
 import Section from "@components/layout/section";
-import { Title, Subtitle, Prose } from "@components/text";
 
 export default function Post({ post }) {
   const meta = (
