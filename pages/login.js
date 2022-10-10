@@ -46,7 +46,12 @@ export default function Login({ env }) {
     <Layout title="Login - Evon Capital">
       <Section>
         <Form onSubmit={handleSignIn} center>
-          <Input label="Sähköpostiosoite" type="email" onChange={onChange} />
+          <Input
+            label="Sähköpostiosoite"
+            type="email"
+            onChange={onChange}
+            required
+          />
           <Button type="submit" loading={isSubmitting}>
             Kirjaudu sisään
           </Button>
