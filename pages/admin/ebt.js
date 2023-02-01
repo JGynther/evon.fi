@@ -83,10 +83,12 @@ function Content() {
       <label className="text-lg tracking-wider">Blog content</label>
       <label className="text-white text-opacity-60">
         Should be properly formatted markdown.{" "}
-        <Link href="https://commonmark.org/">
-          <a className="underline" target="_blank">
-            Learn more
-          </a>
+        <Link
+          href="https://commonmark.org/"
+          className="underline"
+          target="_blank"
+        >
+          Learn more
         </Link>
       </label>
       <textarea

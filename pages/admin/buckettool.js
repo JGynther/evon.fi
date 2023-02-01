@@ -34,13 +34,12 @@ function RecentObjectList({ refresh }) {
           </div>
           <div className="w-1/4 px-2 py-1">{object.name}</div>
           <div className="w-1/4 px-2 py-1">{object.metadata.mimetype}</div>
-          <Link href={`${bucket}/${object.name}`}>
-            <a
-              target="_blank"
-              className="w-1/4 px-2 py-1 underline text-white text-opacity-60"
-            >
-              Preview
-            </a>
+          <Link
+            href={`${bucket}/${object.name}`}
+            target="_blank"
+            className="w-1/4 px-2 py-1 underline text-white text-opacity-60"
+          >
+            Preview
           </Link>
         </div>
       ))}
