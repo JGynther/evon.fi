@@ -27,10 +27,11 @@ export default function Hero() {
           </Button>
         </div>
         <div>
-          <Link href="/about">
-            <a className="text-white text-opacity-60 hover:text-opacity-80 transition underline text-sm">
-              tai lue lisää
-            </a>
+          <Link
+            href="/about"
+            className="text-white text-opacity-60 hover:text-opacity-80 transition underline text-sm"
+          >
+            tai lue lisää
           </Link>
         </div>
       </div>

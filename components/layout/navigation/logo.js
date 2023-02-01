@@ -16,12 +16,12 @@ export default function Logo() {
 export function LogoComponent() {
   return (
     <Link href="/" passHref>
-      <a className="flex items-center gap-4">
+      <span className="flex items-center gap-4">
         <Logo />
         <p className="tracking-widest text-xl md:text-2xl cursor-pointer font-serif">
           EVON CAPITAL
         </p>
-      </a>
+      </span>
     </Link>
   );
 }

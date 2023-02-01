@@ -42,16 +42,20 @@ export function Posts() {
         <ul className="flex flex-col mt-5 divide-y divide-neutral-700 bg-neutral-800 rounded p-3">
           {posts.map((post) => (
             <li key={post.id}>
-              <Link href={`/blog/${post.id}`} passHref>
-                <a className="flex text-white text-opacity-80 hover:bg-neutral-700 transition py-2 px-4">
-                  {new Date(post.created_at).toLocaleDateString()} {"-"}{" "}
-                  {post.title}
-                </a>
+              <Link
+                href={`/blog/${post.id}`}
+                passHref
+                className="flex text-white text-opacity-80 hover:bg-neutral-700 transition py-2 px-4"
+              >
+                {new Date(post.created_at).toLocaleDateString()} {"-"}{" "}
+                {post.title}
               </Link>
             </li>
           ))}
         </ul>
-      ) : (<Spinner />)}
+      ) : (
+        <Spinner />
+      )}
     </Section>
   );
 }
