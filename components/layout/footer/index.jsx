@@ -8,6 +8,7 @@ export default function Footer() {
           © {new Date().getFullYear()} Evon Capital Oy Ab
         </span>
         <FooterItem href="/">Etusivu</FooterItem>
+        <FooterItem href="listaamattomat">Listaamattomat</FooterItem>
         <FooterItem href="/portal">Omistajaportaali</FooterItem>
         <FooterItem href="/tietosuoja">Tietosuojaseloste</FooterItem>
         <FooterItem href="/contact">Yhteystiedot</FooterItem>

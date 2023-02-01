@@ -13,6 +13,7 @@ export default function Navigation() {
       <Nav>
         <LogoComponent />
         <NavMenu>
+          <NavItem href="/listaamattomat">Listaamattomat</NavItem>
           <NavItem href="/about">Tietoa</NavItem>
           <NavItem href="/blog">Blogi</NavItem>
           <Button type="link" href="/portal">
