@@ -2,31 +2,31 @@ import Section from "@components/layout/section";
 import { Title, Prose } from "@components/text";
 
 export default function BecomeAnOwner() {
-  return (
-    <Section>
-      <Title>Omistajaksi</Title>
-      <Prose large>
-        Sijoitusyhtiömme tarkoitus on tarjota tuoton lisäksi huikeita kokemuksia
-        omistajillemme. Emme ole välttämättä tuottavin, vaan myös eeppisin.
-        Mukaan Evonin toimintaan pääsee helposti ja pienikin osakas pääsee
-        tuomaan näkökulmiaan esille. Pyrimme antamaan alustan oppiaa ja hankkia
-        kokemusta monelta sektorilta. Toisille se voi olla samanhenkisten
-        ihmisten yhteisö, jossa voi rennosti keskustella sijoittamisesta ja
-        verkostoitua tulevaisuutta varten. Lopuille se voi olla kaikkea tätä ja
-        lisäksi aktiivista osallistumista yrityksen sijoitustoimintaan,
-        projekteihin, hankkeisiin tai yrityksen pyörittämiseen.
-      </Prose>
-      <Prose large>
-        Tärkeää tietenkin on myös yhteisöllisyytemme: järjestämme osakkaille
-        monenlaisia tapahtumia, joissa pääset tutustumaan laajaan
-        omistajakuntaamme. Tapahtumatiimimme takaa säännöllisesti eeppisiä
-        kokemuksia eri puolilla maata. Sijoitustoiminnassa pyrimme katsomaan
-        laatikon ulkopuolelta, esimerkiksi etsimällä listaamattomia
-        vaihtoehtoja. Indeksit voivat olla lyömättömiä, mutta koetamme silti
-        löytää vaihtoehtoja. Sijoituspuolemme ottaa riskienhallinnan huomioon,
-        sillä vaikka olemme nuorekkaita, tällä puolella ei sekoilla.
-      </Prose>
-      <Prose large></Prose>
-    </Section>
-  );
+	return (
+		<Section>
+			<Title>Mitä meistä voi odottaa?</Title>
+			<Prose large>
+				Ensisijainen tavoitteemme on tehdä tästä eeppinen ja historiaan
+				legendana jäävä matka, joka ei kuitenkaan tingi penniäkään tuotosta.
+				Yhtiömme keskittyy jatkuvasti nostamaan osakkeen arvoa, mutta
+				tavoitteenamme on myös huolehtia kunnollisesta riskienhallinnasta.
+				Vaikka yksittäiset positiomme voivat olla jopa erittäin riskialttiita,
+				pyrimme salkun laajaan hajautukseen ja markkinoiden tarkkaan seurantaan.
+			</Prose>
+			<Prose large>
+				Haluamme antaa myös kaikille mahdollisuuden osallistua yhtiömme
+				toimintaa. Kaikilla on mahdollisuus hakeutua operatiivisiin rooleihin ja
+				otamme osaamisesi avosylin vastaan. Matalan tason osallisuudesta
+				sijoitusten suunnittelussa vastaa Financial advisory board eli FAB,
+				jonka jäseneksi kaikki pääsevät.
+			</Prose>
+			<Prose large>
+				Omistajamme ovat myös yhteisö, joka on täynnä eeppistä menoa ja
+				juhlimista. Tervetuloa juhlistamaan (tai itkemään) listaamattoman
+				sijoitusyhtiön omistajuutta sikarien sekä viskilasillisen äärellä.
+				Sinulla on tietenkin myös mahdollisuus ”ostaa ja unohtaa”, et ole
+				velvollinen osallistumaan mihinkään toimintaan jos et halua.
+			</Prose>
+		</Section>
+	);
 }
