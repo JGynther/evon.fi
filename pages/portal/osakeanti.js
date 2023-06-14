@@ -30,12 +30,12 @@ export default function Osakeanti({ user }) {
 					Kirjautuneena sisään: <b>{user.email}</b>
 				</div>
 
-				<Title>Osakeanti 7.3 - 4.4.2023 </Title>
+				<Title>Osakeanti 7.3 - 15.6.2023 </Title>
 
 				<Prose large>
-					Evon Capital Oy Ab:n suunnattu osakeanti järjestetään 7.3. - 4.4.2023
+					Evon Capital Oy Ab:n suunnattu osakeanti järjestetään 7.3. - 15.6.2023
 					välisenä aikana. Osakkeiden tulee olla maksettu yhtiön tilille
-					viimeistään 1.5.2023. Maksuohjeet saat sähköpostitse merkinnän
+					viimeistään 4.8.2023. Maksuohjeet saat sähköpostitse merkinnän
 					jälkeen.
 				</Prose>
 
