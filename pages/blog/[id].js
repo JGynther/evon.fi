@@ -15,11 +15,11 @@ export default function Post({ post }) {
   return (
     <Layout title={post.title} meta={meta}>
       <Section>
-        <article className="prose prose-invert prose-lg">
+        <article className="prose prose-invert md:prose-lg">
           <h4 className="text-indigo-500">
             {new Date(post.created_at).toLocaleDateString()}, {post.author}
           </h4>
-          <h1 className="text-indigo-">{post.title}</h1>
+          <h1 className="">{post.title}</h1>
           <ReactMarkdown>{post.content}</ReactMarkdown>
         </article>
       </Section>
