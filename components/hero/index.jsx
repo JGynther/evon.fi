@@ -22,8 +22,8 @@ export default function Hero() {
 					Kiinnostaako lähteä mukaan? 👇
 				</div>
 				<div className="">
-					<Button type="link" href="https://osakeanti.evon.fi/anti/A-1-2023">
-						Osallistu osakeantiin
+					<Button type="link" href="/waitlist">
+						Liity odotuslistalle
 					</Button>
 				</div>
 				<div>
