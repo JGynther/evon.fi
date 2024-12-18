@@ -10,7 +10,7 @@ export default function Contact() {
         <Prose large>Y-tunnus: 3094125-8</Prose>
         <Prose large>Rauhankatu 2F 69, 13100 Hämeenlinna</Prose>
         <Prose large>
-          <a href="mailto:info@evon.fi">info@evon.fi</a>
+          <a href="mailto:listaamattomat@evon.fi">listaamattomat@evon.fi</a>
         </Prose>
         <Prose large>
           <i>&quot;Ole opportunisti.&quot;</i>

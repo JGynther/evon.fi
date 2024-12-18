@@ -8,41 +8,40 @@ import SubNav from "./subnav";
 import SubNavItem from "./subnav/subnavitem";
 
 export default function Navigation() {
-	return (
-		<NavContainer>
-			<Nav>
-				<LogoComponent />
-				<NavMenu>
-					<NavItem href="/listaamattomat">Listaamattomat</NavItem>
-					<NavItem href="/about">Tietoa</NavItem>
-					<NavItem href="/blog">Blogi</NavItem>
-					<Button type="link" href="/portal">
-						Omistajaportaali
-					</Button>
-				</NavMenu>
-			</Nav>
-		</NavContainer>
-	);
+  return (
+    <NavContainer>
+      <Nav>
+        <LogoComponent />
+        <NavMenu>
+          <NavItem href="/listaamattomat">Listaamattomat</NavItem>
+          <NavItem href="/about">Tietoa</NavItem>
+          <NavItem href="/blog">Blogi</NavItem>
+          <Button type="link" href="/portal">
+            Omistajaportaali
+          </Button>
+        </NavMenu>
+      </Nav>
+    </NavContainer>
+  );
 }
 
 export function PortalNavigation() {
-	return (
-		<NavContainer>
-			<Nav>
-				<LogoComponent />
-				<NavMenu>
-					<NavItem href="/about">Tietoa</NavItem>
-					<NavItem href="/blog">Blogi</NavItem>
-					<Button type="link" href="/signout">
-						Kirjaudu ulos
-					</Button>
-				</NavMenu>
-			</Nav>
-			<SubNav>
-				<SubNavItem href="/portal">Portaalin etusivu</SubNavItem>
-				<SubNavItem href="/portal/documents">Dokumentit</SubNavItem>
-				<SubNavItem href="/portal/osakeanti">Osakeanti</SubNavItem>
-			</SubNav>
-		</NavContainer>
-	);
+  return (
+    <NavContainer>
+      <Nav>
+        <LogoComponent />
+        <NavMenu>
+          <NavItem href="/about">Tietoa</NavItem>
+          <NavItem href="/blog">Blogi</NavItem>
+          <Button type="link" href="/signout">
+            Kirjaudu ulos
+          </Button>
+        </NavMenu>
+      </Nav>
+      <SubNav>
+        <SubNavItem href="/portal">Portaalin etusivu</SubNavItem>
+        <SubNavItem href="/portal/documents">Dokumentit</SubNavItem>
+      </SubNav>
+    </NavContainer>
+  );
 }
